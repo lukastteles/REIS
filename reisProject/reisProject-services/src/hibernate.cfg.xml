@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+ "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+ "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hibernate?useUnicode=true</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password">root</property>
+		<property name="connection.pool_size">1</property>
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+		<property name="show_sql">false</property>
+		<property name="hibernate.hbm2ddl.auto">create</property> <!-- update -->
+		<!-- Mapeamentos -->
+		<mapping class="com.br.uepb.domain.CaronaDomain" />
+		<mapping class="com.br.uepb.domain.SessaoDomain" />
+		<mapping class="com.br.uepb.domain.SugestaoEncontroDomain" />
+		<mapping class="com.br.uepb.domain.UsuarioDomain" />
+		<mapping class="com.br.uepb.domain.InteresseDomain" />
+
+	</session-factory>
+</hibernate-configuration>

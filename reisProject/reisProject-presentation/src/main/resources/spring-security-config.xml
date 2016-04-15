@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:sec="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+						http://www.springframework.org/schema/security
+						http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+
+	<sec:http auto-config='true'>
+		<sec:intercept-url pattern="/login.html" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<sec:intercept-url pattern="/**" access="ROLE_USER" />
+		<sec:form-login login-page="/login.html" default-target-url="/welcome.html" always-use-default-target="true" />
+		<sec:logout invalidate-session="true" logout-success-url="/logout.html" />
+		<sec:session-management>
+			<sec:concurrency-control max-sessions="2"
+				error-if-maximum-exceeded="true" />
+		</sec:session-management>
+	</sec:http>
+
+
+	<sec:authentication-manager>
+		<sec:authentication-provider>
+			<sec:user-service>
+				<sec:user name="user1@test.com" password="user1"
+					authorities="ROLE_USER" />
+				<sec:user name="user2@test.com" password="user2"
+					authorities="ROLE_USER,ROLE_ADMIN" />
+			</sec:user-service>
+		</sec:authentication-provider>
+	</sec:authentication-manager>
+
+	<sec:global-method-security	secured-annotations="enabled" />
+	
+	<bean id="userCache"
+		class="org.springframework.security.core.userdetails.cache.EhCacheBasedUserCache">
+		<property name="cache" ref="userDetailsCache" />
+	</bean>
+
+	<bean name="userDetailsCache" class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+		<property name="cacheName" value="userCache" />
+	</bean>
+
+</beans>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	
+<!-- 	<context:annotation-config /> -->
+<!-- 	<context:component-scan base-package="com.br.uepb" /> -->
+	
+	<!-- =================SECURITY SERVICE================== 	-->
+	<!-- Uncomment to include basic spring-security  			-->
+	<!-- configuration and include your bean definitions. 		-->
+<!-- 	<import resource="classpath:/spring-security-config.xml"/> -->
+	<!-- =================CODES SERVICE================== 		-->
+	<!-- Uncomment to include basic codes decode configuration 	-->
+	<!-- and enable codes service. -->
+	<!--
+ <import resource="classpath:/codes-config.xml" />		
+	-->
+	
+	<!-- ===================MAIL SERVICE====================== 	-->
+	<!-- Uncomment to include basic mail service configuration 	-->
+	<!-- and include your bean definitions.  					-->
+	<!--
+  <import resource="classpath:/mail-config.xml" /> 		
+	-->
+	<!-- ====LOCALIZATION AND INTERNATIONALIZATION SERVICE====	-->
+	<bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+		<property name="paramName" value="language"/>
+	</bean>
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver"/>
+	
+</beans>
