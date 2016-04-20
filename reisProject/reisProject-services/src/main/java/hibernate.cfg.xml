@@ -12,7 +12,7 @@
 		<property name="hibernate.show_sql">false</property>
 		<property name="hibernate.format_sql">false</property>
 		<property name="hbm2ddl.auto">update</property>
-		<property name="hibernate.default_schema">lecodigo</property>
+		<property name="hibernate.default_schema">reis</property>
 		<property name="hibernate.connection.pool_size">1</property>
 		<property name="hibernate.current_session_context_class">thread</property>
 		<property name="hibernate.c3p0.min_size">5</property>
@@ -21,11 +21,9 @@
 		<property name="hibernate.c3p0.max_statements">50</property>
 
 		<!-- Mapeamentos -->
-		<mapping class="com.br.uepb.domain.Jogador" />
-		<mapping class="com.br.uepb.domain.Bloco" />
-		<mapping class="com.br.uepb.domain.Partida" />
-		<mapping class="com.br.uepb.domain.Questao" />
-		<mapping class="com.br.uepb.domain.RespostaDoAluno" />
-
+		<mapping class="com.br.uepb.domain.MedicaoPressaoDomain" />
+		<mapping class="com.br.uepb.domain.PacienteDomain" />
+		<mapping class="com.br.uepb.domain.PerfilDomain" />
+		
 	</session-factory>
 </hibernate-configuration>
