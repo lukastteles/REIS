@@ -5,20 +5,21 @@
 
 <tiles-definitions>
 
-	<definition name="base.layout" template="/WEB-INF/views/tiles/defaultLayout.jsp">
-		<put-attribute name="header" value="/WEB-INF/views/tiles/header.jsp" />
+	<definition name="dashboard" template="/WEB-INF/views/tiles/dashboard.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/tiles/headerdashboard.jsp" />
 		<put-attribute name="footer" value="/WEB-INF/views/tiles/credits.jsp" />
 	</definition>
 	
-	<definition name="home" extends="base.layout">
-		<put-attribute name="body" value="/WEB-INF/views/home/home.jsp" />
-	</definition>
-
-	<definition name="login" extends="base.layout">
-		<put-attribute name="body" value="/WEB-INF/views/login/login.jsp" />
+	<definition name="index" extends="dashboard">
+		<put-attribute name="body" value="/WEB-INF/views/index/index.jsp" />
 	</definition>
 	
-
-
+	<definition name="cadastrar" extends="dashboard">
+		<put-attribute name="body" value="/WEB-INF/views/index/cadastrar.jsp" />
+	</definition>
+	
+	<definition name="login" extends="dashboard">
+		<put-attribute name="body" value="/WEB-INF/views/index/login.jsp" />
+	</definition>
 
 </tiles-definitions>

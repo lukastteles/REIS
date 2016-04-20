@@ -4,7 +4,7 @@
 	<parent>
 		<artifactId>reisProject</artifactId>
 		<groupId>com.br.uepb</groupId>
-		<version>1.0-SNAPSHOT</version>
+		<version>1.0</version>
 	</parent>
 	<artifactId>reisProject-presentation</artifactId>
 	<name>reisProject-presentation</name>
@@ -42,14 +42,14 @@
 		<dependency>
 			<groupId>com.br.uepb</groupId>
 			<artifactId>reisProject-domain</artifactId>
-			<version>1.0-SNAPSHOT</version>
+			<version>1.0</version>
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.br.uepb</groupId>
 			<artifactId>reisProject-business</artifactId>
-			<version>1.0-SNAPSHOT</version>
+			<version>1.0</version>
 			<type>jar</type>
 		</dependency>
 		<dependency>
