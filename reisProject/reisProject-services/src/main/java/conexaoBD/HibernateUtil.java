@@ -20,8 +20,8 @@ public class HibernateUtil {
 			StandardServiceRegistry standardServiceRegistry = serviceRegistry.build();
 			sessionFactory = cfg.buildSessionFactory(standardServiceRegistry);
 
-		} catch (HibernateException he) {
-			throw new ExceptionInInitializerError(he);
+		} catch (HibernateException e) {
+			throw new ExceptionInInitializerError(e);
 		}
 	}
 
