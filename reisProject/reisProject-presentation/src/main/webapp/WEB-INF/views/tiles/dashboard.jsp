@@ -14,7 +14,9 @@
 <%@ include file="/WEB-INF/views/includeTags.jsp"%>
 </head>
 <body>
-	<tiles:insertAttribute name="header" />
+	<header>
+		<tiles:insertAttribute name="header" />
+	</header>
 	<section>
 		<tiles:insertAttribute name="body" />
 	</section>

@@ -28,6 +28,5 @@
 				<li class="mdl-menu__item">Legal information</li>
 			</ul>
 		</div>
-	</header>
-	
+	</header>	
 </div>
