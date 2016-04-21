@@ -21,12 +21,14 @@ public class PerfilDAO {
 	 * @param perfil Sem o ID: Salvar, com ID: atualiza
 	 */
 	public void salvaPerfil(PerfilDomain perfil){
+		SessaoAtual().beginTransaction();
 		if(ehNovoUsuario(perfil)){
 			SessaoAtual().save(perfil);
 		}
 		else{
 			SessaoAtual().update(perfil);
 		}
+		SessaoAtual().getTransaction().commit();
 		SessaoAtual().close();
 	}
 	
@@ -44,7 +46,7 @@ public class PerfilDAO {
 	@SuppressWarnings("unchecked")
 	public List<PerfilDomain> listaPerfis(){
 		List<PerfilDomain> perfis = 
-				(List<PerfilDomain>)SessaoAtual().createQuery("select * from perfil").list();
+				(List<PerfilDomain>)SessaoAtual().createQuery("from perfil").list();
 		SessaoAtual().close();
 		return perfis;
 	}
