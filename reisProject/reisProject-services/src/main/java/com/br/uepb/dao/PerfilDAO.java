@@ -45,8 +45,11 @@ public class PerfilDAO {
 	
 	@SuppressWarnings("unchecked")
 	public List<PerfilDomain> listaPerfis(){
+		
 		List<PerfilDomain> perfis = 
-				(List<PerfilDomain>)SessaoAtual().createQuery("from perfil").list();
+				(List<PerfilDomain>)SessaoAtual().createQuery("from PerfilDomain").list();
+		
+		
 		SessaoAtual().close();
 		return perfis;
 	}
