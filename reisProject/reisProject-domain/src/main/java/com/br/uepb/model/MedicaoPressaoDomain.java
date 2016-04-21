@@ -22,16 +22,16 @@ public class MedicaoPressaoDomain {
 	private PacienteDomain paciente;
 	
 	@Column(name = "pressao_sistolica")
-	double pressaoSistolica;
+	private double pressaoSistolica;
 	
 	@Column(name = "pressao_diastolica")
-	double pressaoDiastolica;
+	private double pressaoDiastolica;
 	
 	@Column(name = "pressao_media")
-	double pressaoMedia;
+	private double pressaoMedia;
 	
 	@Column(name = "taxa_pulso")
-	double taxaDePulso;
+	private double taxaDePulso;
 	
 	public int getId() {
 		return id;
