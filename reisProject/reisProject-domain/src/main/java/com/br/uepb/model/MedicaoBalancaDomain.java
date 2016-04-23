@@ -1,13 +1,41 @@
 package com.br.uepb.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table
 public class MedicaoBalancaDomain {
 	
+	@Id
+	@GeneratedValue
+	@Column(name="id")
 	private int id;
-	private double peso;
-	private double altura;
-	private double massa;
-	private int paciente_id;
 	
+	@ManyToOne
+	@JoinColumn(name = "paciente_id")
+	private PacienteDomain paciente;
+	
+	@Column(name="peso")
+	private double peso;
+	
+	@Column(name="altura")
+	private double altura;
+	
+	@Column(name="massa")
+	private double massa;
+	
+	public PacienteDomain getPaciente() {
+		return paciente;
+	}
+	public void setPaciente(PacienteDomain paciente) {
+		this.paciente = paciente;
+	}
 	public int getId() {
 		return id;
 	}
@@ -31,12 +59,6 @@ public class MedicaoBalancaDomain {
 	}
 	public void setMassa(double massa) {
 		this.massa = massa;
-	}
-	public int getPaciente_id() {
-		return paciente_id;
-	}
-	public void setPaciente_id(int paciente_id) {
-		this.paciente_id = paciente_id;
 	}
 	
 }
