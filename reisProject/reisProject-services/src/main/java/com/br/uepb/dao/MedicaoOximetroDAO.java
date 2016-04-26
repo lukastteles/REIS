@@ -4,15 +4,15 @@ import java.util.List;
 
 import org.hibernate.Session;
 
-import com.br.uepb.model.MedicaoBalancaDomain;
+import com.br.uepb.model.MedicaoOximetroDomain;
 
 import conexaoBD.HibernateUtil;
 
-public class MedicaoBalancaDAO {
-	
+public class MedicaoOximetroDAO {
+
 	private Session sessaoAtual;
 	
-	public void salvaMedicaoBalanca(MedicaoBalancaDomain medicao){
+	public void salvaMedicaoOximetro(MedicaoOximetroDomain medicao){
 		SessaoAtual().beginTransaction();
 		if(ehNovoUsuario(medicao)){
 			SessaoAtual().save(medicao);
@@ -23,22 +23,22 @@ public class MedicaoBalancaDAO {
 		SessaoAtual().getTransaction().commit();
 		SessaoAtual().close();
 	}
-	public void excluiPerfil(MedicaoBalancaDomain medicao){
+	public void excluiPerfil(MedicaoOximetroDomain medicao){
 		SessaoAtual().delete(medicao);
 		SessaoAtual().close();
 	}
 	
-	public MedicaoBalancaDomain obtemMedicaoBalanca(int idBalanca){
-		MedicaoBalancaDomain medicao = (MedicaoBalancaDomain)SessaoAtual().get(MedicaoBalancaDomain.class, idBalanca);
+	public MedicaoOximetroDomain obtemMedicaoOximetro(int idOximetro){
+		MedicaoOximetroDomain medicao = (MedicaoOximetroDomain)SessaoAtual().get(MedicaoOximetroDomain.class, idOximetro);
 		SessaoAtual().close();
 		return medicao;
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<MedicaoBalancaDomain> listaMedicoes(){
+	public List<MedicaoOximetroDomain> listaMedicoes(){
 		
-		List<MedicaoBalancaDomain> medicao = 
-				(List<MedicaoBalancaDomain>)SessaoAtual().createQuery("from MedicaoBalancaDomain").list();
+		List<MedicaoOximetroDomain> medicao = 
+				(List<MedicaoOximetroDomain>)SessaoAtual().createQuery("from MedicaoOximetroDomain").list();
 		
 		SessaoAtual().close();
 		return medicao;
@@ -51,7 +51,7 @@ public class MedicaoBalancaDAO {
 		return sessaoAtual;
 	}
 	
-	private boolean ehNovoUsuario(MedicaoBalancaDomain medicao){
+	private boolean ehNovoUsuario(MedicaoOximetroDomain medicao){
 		if(medicao.getId() > 0){
 			return false;
 		}

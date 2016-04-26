@@ -21,9 +21,12 @@
 		<property name="hibernate.c3p0.max_statements">50</property>
 
 		<!-- Mapeamentos -->
-		<!-- <mapping class="com.br.uepb.domain.MedicaoPressaoDomain" />
-		<mapping class="com.br.uepb.domain.PacienteDomain" /> -->
+		<mapping class="com.br.uepb.domain.MedicaoPressaoDomain" /> 
+		<mapping class="com.br.uepb.domain.PacienteDomain" />
 		<mapping class="com.br.uepb.model.PerfilDomain" />
+		<mapping class="com.br.uepb.model.MedicaoBalancaDomain" />
+		<mapping class="com.br.uepb.model.MedicaoOximetroDomain" /> 
+		
 		
 	</session-factory>
 </hibernate-configuration>

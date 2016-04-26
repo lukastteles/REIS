@@ -49,7 +49,6 @@ public class PerfilDAO {
 		List<PerfilDomain> perfis = 
 				(List<PerfilDomain>)SessaoAtual().createQuery("from PerfilDomain").list();
 		
-		
 		SessaoAtual().close();
 		return perfis;
 	}

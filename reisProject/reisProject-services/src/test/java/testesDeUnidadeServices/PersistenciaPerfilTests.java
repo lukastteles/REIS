@@ -16,8 +16,7 @@ public class PersistenciaPerfilTests {
 	@Before
 	public void limparBase(){
 		PerfilDAO perfilDAO = new PerfilDAO();
-		
-		
+
 	}
 	
 	@Test
