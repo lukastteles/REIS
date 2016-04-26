@@ -10,7 +10,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table
+@Table(name = "paciente")
 public class PacienteDomain {
 	
 	@Id

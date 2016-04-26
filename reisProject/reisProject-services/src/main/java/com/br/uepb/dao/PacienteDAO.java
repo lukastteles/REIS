@@ -21,7 +21,7 @@ private Session sessaoAtual;
 	 * Salva ou atualiza paciente
 	 * @param paciente Sem o ID: Salvar, com ID: atualiza
 	 */
-	public void salvaPerfil(PacienteDomain paciente){
+	public void salvaPaciente(PacienteDomain paciente){
 		SessaoAtual().beginTransaction();
 		if(ehNovoPaciente(paciente)){
 			SessaoAtual().save(paciente);
