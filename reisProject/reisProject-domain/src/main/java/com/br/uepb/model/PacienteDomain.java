@@ -26,6 +26,22 @@ public class PacienteDomain {
 	@NotNull
 	private String senha;
 	
+	@Column(name = "nome")
+	@NotNull
+	private String nome;
+	
+	@Column(name = "cidade")
+	private String cidade;
+	
+	@Column(name = "sexo")
+	private String sexo;
+	
+	@Column(name = "endereco")
+	private String endereco;
+	
+	@Column(name = "telefone_casa")
+	private String telefoneCasa;
+	
 	@ManyToOne
 	@JoinColumn(name = "perfil_id")
 	private PerfilDomain perfil;
@@ -61,6 +77,47 @@ public class PacienteDomain {
 	public void setPerfil(PerfilDomain perfil) {
 		this.perfil = perfil;
 	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
+
+	public String getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
+
+	public String getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+
+	public String getTelefoneCasa() {
+		return telefoneCasa;
+	}
+
+	public void setTelefoneCasa(String telefoneCasa) {
+		this.telefoneCasa = telefoneCasa;
+	}
+	
 	
 
 }
