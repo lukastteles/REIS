@@ -1,7 +1,10 @@
 <!-- Styles -->
+<link href="../styles/bootstrap.min.css" rel="stylesheet">
 <link href="../styles/materialDesign/material.css" rel="stylesheet">
-<link href="../styles/styles.css" rel="stylesheet">
 <link href="../styles/font-awesome/css/font-awesome.css" rel="stylesheet">
+<link href="../styles/styles.css" rel="stylesheet">
+ <link href="../styles/dashboardColor.css" rel="stylesheet">
+
 
 <!-- JavaScript -->
 <script src="../js/jquery-2.2.3.js"></script>

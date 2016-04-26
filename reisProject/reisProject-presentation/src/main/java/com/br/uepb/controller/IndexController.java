@@ -14,6 +14,7 @@ public class IndexController {
 	public ModelAndView indexGet(HttpServletRequest request) {
 
 		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("index");
 
 		return modelAndView;
 	}
@@ -22,7 +23,7 @@ public class IndexController {
 	public ModelAndView cadastrarGet(HttpServletRequest request) {
 
 		ModelAndView modelAndView = new ModelAndView();
-
+		modelAndView.setViewName("cadastrar");
 		return modelAndView;
 	}
 
@@ -30,6 +31,7 @@ public class IndexController {
 	public ModelAndView loginGet(HttpServletRequest request) {
 
 		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("login");
 
 		return modelAndView;
 	}

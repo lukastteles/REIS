@@ -6,20 +6,47 @@
 <tiles-definitions>
 
 	<definition name="dashboard" template="/WEB-INF/views/tiles/dashboard.jsp">
-		<put-attribute name="header" value="/WEB-INF/views/tiles/dashboardHeader.jsp" />
-		<put-attribute name="footer" value="/WEB-INF/views/tiles/credits.jsp" />
+		
 	</definition>
 	
-	<definition name="index" extends="dashboard">
+	<definition name="default" template="/WEB-INF/views/tiles/default.jsp">
+
+	</definition>
+
+	<definition name="index" extends="default">
+		<put-attribute name="title"	value="REIS - Registro Eletrônico para Interoperabilidade em Saúde"></put-attribute>
 		<put-attribute name="body" value="/WEB-INF/views/index/index.jsp" />
 	</definition>
-	
-	<definition name="cadastrar" extends="dashboard">
+
+	<definition name="cadastrar" extends="default">
+		<put-attribute name="title"	value="REIS | Cadastrar"></put-attribute>
 		<put-attribute name="body" value="/WEB-INF/views/index/cadastrar.jsp" />
 	</definition>
-	
-	<definition name="login" extends="dashboard">
+
+	<definition name="login" extends="default">
+		<put-attribute name="title"	value="REIS | Login "></put-attribute>
 		<put-attribute name="body" value="/WEB-INF/views/index/login.jsp" />
+	</definition>
+	
+	
+	<definition name="home" extends="dashboard">
+		<put-attribute name="title"	value="REIS | Início "></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/home/home.jsp" />
+	</definition>
+	
+	<definition name="perfil" extends="dashboard">
+		<put-attribute name="title"	value="REIS | Perfil "></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/home/perfil.jsp" />
+	</definition>
+	
+	<definition name="medicao" extends="dashboard">
+		<put-attribute name="title"	value="REIS | Medições "></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/home/medicao.jsp" />
+	</definition>
+	
+	<definition name="historico" extends="dashboard">
+		<put-attribute name="title"	value="REIS | Histórico "></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/home/historico.jsp" />
 	</definition>
 
 </tiles-definitions>

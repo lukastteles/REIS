@@ -1,0 +1,15 @@
+.azul-escuro{
+	background-color: #3F51B5;
+}
+
+.azul-claro{
+	background-color: #606fc7;
+}
+
+.cinza{
+	background-color: #FFF;
+}
+
+.mdl-navigation__link:hover{
+	background-color: #FFF;
+}

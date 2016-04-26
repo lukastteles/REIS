@@ -10,6 +10,18 @@ body {
     padding-right: 15px;
 }
 
+.mdl-card__title {
+	background-color: #2C3E50;
+}
+
+.mdl-card__title-text{
+	color: #fff;
+}
+
+.mdl-textfield__input{
+	width: 100%;
+}
+
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
@@ -42,4 +54,3 @@ p{
     background: #fff;
     color: #fff;
 }
-

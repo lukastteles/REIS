@@ -18,8 +18,9 @@ html, body {
   font-family: 'Roboto', 'Helvetica', sans-serif;
 }
 .demo-avatar {
-  width: 48px;
-  height: 48px;
+  width: 88px;
+  height: 88px;
+  margin: auto;
   border-radius: 24px;
 }
 .demo-layout .demo-header .mdl-textfield {
@@ -101,7 +102,7 @@ html, body {
   font-weight: 500;
 }
 .demo-layout .demo-navigation .mdl-navigation__link:hover {
-  background-color: #00BCD4;
+  background-color: #fff;
   color: #37474F;
 }
 .demo-navigation .mdl-navigation__link .material-icons {

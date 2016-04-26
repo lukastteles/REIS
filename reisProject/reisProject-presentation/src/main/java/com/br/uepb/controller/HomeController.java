@@ -14,8 +14,37 @@ public class HomeController {
 	public ModelAndView homeGet(HttpServletRequest request) {
 
 		ModelAndView modelAndView = new ModelAndView();
-
+		modelAndView.setViewName("home");
+		modelAndView.addObject("usuario", "fulano");
 		return modelAndView;
 	}
+	
+	@RequestMapping(value = "/home/perfil.html", method = RequestMethod.GET)
+	public ModelAndView perfilGet(HttpServletRequest request) {
+
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("perfil");
+		modelAndView.addObject("usuario", "fulano");
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/home/medicao.html", method = RequestMethod.GET)
+	public ModelAndView medicaoGet(HttpServletRequest request) {
+
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("medicao");
+		modelAndView.addObject("usuario", "fulano");
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/home/historico.html", method = RequestMethod.GET)
+	public ModelAndView historicoGet(HttpServletRequest request) {
+
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("historico");
+		modelAndView.addObject("usuario", "fulano");
+		return modelAndView;
+	}
+	
 
 }
