@@ -23,7 +23,7 @@ private Session sessaoAtual;
 	 */
 	public void salvaPerfil(PacienteDomain paciente){
 		SessaoAtual().beginTransaction();
-		if(ehNovoUsuario(paciente)){
+		if(ehNovoPaciente(paciente)){
 			SessaoAtual().save(paciente);
 		}
 		else{
@@ -62,8 +62,8 @@ private Session sessaoAtual;
 		return sessaoAtual;
 	}
 	
-	private boolean ehNovoUsuario(PacienteDomain perfil){
-		if(perfil.getId() > 0){
+	private boolean ehNovoPaciente(PacienteDomain paciente){
+		if(paciente.getId() > 0){
 			return false;
 		}
 		else{
