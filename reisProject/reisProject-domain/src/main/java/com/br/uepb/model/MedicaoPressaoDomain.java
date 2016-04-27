@@ -8,6 +8,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 @Entity
 @Table(name = "medicao_pressao")
 public class MedicaoPressaoDomain {
@@ -18,7 +23,9 @@ public class MedicaoPressaoDomain {
 	private int id;
 	
 	@ManyToOne
-	@JoinColumn(name = "paciente_id")
+	@JoinColumn(name = "paciente_id", referencedColumnName="id")
+	@Fetch(FetchMode.JOIN)
+	@Cascade(CascadeType.SAVE_UPDATE)
 	private PacienteDomain paciente;
 	
 	@Column(name = "pressao_sistolica")
