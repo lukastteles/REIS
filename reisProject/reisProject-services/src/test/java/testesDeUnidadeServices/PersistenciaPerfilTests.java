@@ -1,6 +1,6 @@
 package testesDeUnidadeServices;
 
-import static junit.framework.Assert.*;
+import static junit.framework.Assert.assertTrue;
 
 import java.util.List;
 

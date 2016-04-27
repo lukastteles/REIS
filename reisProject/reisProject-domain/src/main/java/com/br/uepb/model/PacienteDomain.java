@@ -2,12 +2,19 @@ package com.br.uepb.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 @Table(name = "paciente")
@@ -42,8 +49,10 @@ public class PacienteDomain {
 	@Column(name = "telefone_casa")
 	private String telefoneCasa;
 	
-	@ManyToOne
-	@JoinColumn(name = "perfil_id")
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "perfil_id", referencedColumnName="id")
+	@Fetch(FetchMode.JOIN)
+	@Cascade(CascadeType.SAVE_UPDATE)
 	private PerfilDomain perfil;
 
 	public int getId() {
