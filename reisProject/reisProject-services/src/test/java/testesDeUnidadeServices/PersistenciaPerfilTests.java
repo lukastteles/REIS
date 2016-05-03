@@ -4,7 +4,7 @@ import static junit.framework.Assert.assertTrue;
 import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
-import com.br.uepb.dao.PerfilDAO;
+import com.br.uepb.dao.LoginDAO;
 import com.br.uepb.model.PacienteDomain;
 
 
@@ -13,22 +13,22 @@ public class PersistenciaPerfilTests {
 	
 	@Before
 	public void limparBase(){
-		PerfilDAO perfilDAO = new PerfilDAO();
+		LoginDAO perfilDAO = new LoginDAO();
 
 	}
 	
 	@Test
 	public void criarPerfilTest() {
-		PerfilDAO perfilDAO = new PerfilDAO();
+		LoginDAO perfilDAO = new LoginDAO();
 		PacienteDomain novoPerfil = new PacienteDomain();
-		perfilDAO.salvaPaciente(novoPerfil);
+		perfilDAO.salvaLogin(novoPerfil);
 		assertTrue(novoPerfil.getId() > 0);
 	}
 	
 	@Test
 	public void obterPerfilTest(){
-		PerfilDAO perfilDAO = new PerfilDAO();
-		List<PacienteDomain> perfis = perfilDAO.listaPerfis();		
+		LoginDAO perfilDAO = new LoginDAO();
+		List<PacienteDomain> perfis = perfilDAO.listaLogins();		
 		int idUltimoPerfil = perfis.get(0).getId();
 		//PacienteDomain perfil = perfilDAO.obtemPerfil(idUltimoPerfil);
 		

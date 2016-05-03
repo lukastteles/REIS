@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import com.br.uepb.dao.MedicaoPressaoDAO;
 import com.br.uepb.dao.PacienteDAO;
-import com.br.uepb.dao.PerfilDAO;
+import com.br.uepb.dao.LoginDAO;
 import com.br.uepb.model.MedicaoPressaoDomain;
 import com.br.uepb.model.PacienteDomain;
 
@@ -17,7 +17,7 @@ public class MedicaoPressaoDAOTests {
 	@Before
 	public void criarPaciente(){
 		PacienteDAO pacienteDAO = new PacienteDAO();
-		PerfilDAO perfilDAO = new PerfilDAO();
+		LoginDAO perfilDAO = new LoginDAO();
 		PacienteDomain paciente = new PacienteDomain();
 		/*
 		PacienteDomain perfil = perfilDAO.obtemPerfil(1);
