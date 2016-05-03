@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 
-import com.br.uepb.model.PerfilDomain;
+import com.br.uepb.model.PacienteDomain;
 
 import conexaoBD.HibernateUtil;
 
@@ -20,7 +20,7 @@ public class PerfilDAO {
 	 * Salva ou atualiza perfil
 	 * @param perfil Sem o ID: Salvar, com ID: atualiza
 	 */
-	public void salvaPerfil(PerfilDomain perfil){
+	public void salvaPaciente(PacienteDomain perfil){
 		SessaoAtual().beginTransaction();
 		if(ehNovoUsuario(perfil)){
 			SessaoAtual().save(perfil);
@@ -32,25 +32,25 @@ public class PerfilDAO {
 		SessaoAtual().close();
 	}
 	
-	public void excluiPerfil(PerfilDomain perfil){
-		SessaoAtual().delete(perfil);
+	public void excluiPerfil(PacienteDomain paciente){
+		SessaoAtual().delete(paciente);
 		SessaoAtual().close();
 	}
 	
-	public PerfilDomain obtemPerfil(int idPerfil){
-		PerfilDomain perfil = (PerfilDomain)SessaoAtual().get(PerfilDomain.class, idPerfil);
+	public PacienteDomain obtemPaciente(int idPaciente){
+		PacienteDomain perfil = (PacienteDomain)SessaoAtual().get(PacienteDomain.class, idPaciente);
 		SessaoAtual().close();
 		return perfil;
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<PerfilDomain> listaPerfis(){
+	public List<PacienteDomain> listaPerfis(){
 		
-		List<PerfilDomain> perfis = 
-				(List<PerfilDomain>)SessaoAtual().createQuery("from PerfilDomain").list();
+		List<PacienteDomain> paciente = 
+				(List<PacienteDomain>)SessaoAtual().createQuery("from PerfilDomain").list();
 		
 		SessaoAtual().close();
-		return perfis;
+		return paciente;
 	}
 	
 	private Session SessaoAtual(){
@@ -60,7 +60,7 @@ public class PerfilDAO {
 		return sessaoAtual;
 	}
 	
-	private boolean ehNovoUsuario(PerfilDomain perfil){
+	private boolean ehNovoUsuario(PacienteDomain perfil){
 		if(perfil.getId() > 0){
 			return false;
 		}

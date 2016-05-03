@@ -11,7 +11,6 @@ import com.br.uepb.dao.PacienteDAO;
 import com.br.uepb.dao.PerfilDAO;
 import com.br.uepb.model.MedicaoPressaoDomain;
 import com.br.uepb.model.PacienteDomain;
-import com.br.uepb.model.PerfilDomain;
 
 public class MedicaoPressaoDAOTests {
 
@@ -20,15 +19,14 @@ public class MedicaoPressaoDAOTests {
 		PacienteDAO pacienteDAO = new PacienteDAO();
 		PerfilDAO perfilDAO = new PerfilDAO();
 		PacienteDomain paciente = new PacienteDomain();
-		
-		PerfilDomain perfil = perfilDAO.obtemPerfil(1);
-		paciente.setLogin("chicos");
-		paciente.setSenha("senha");
+		/*
+		PacienteDomain perfil = perfilDAO.obtemPerfil(1);
 		paciente.setNome("Chico Silva");
 		paciente.setSexo("M");
-		paciente.setPerfil(perfil);
+		
 		
 		pacienteDAO.salvaPaciente(paciente);
+		*/
 	}
 	
 	@Test
