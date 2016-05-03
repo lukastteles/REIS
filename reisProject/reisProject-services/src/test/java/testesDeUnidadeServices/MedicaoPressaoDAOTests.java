@@ -13,20 +13,23 @@ import com.br.uepb.model.MedicaoPressaoDomain;
 import com.br.uepb.model.PacienteDomain;
 
 public class MedicaoPressaoDAOTests {
+	
+	private int ultimaMedicao = 0;
 
 	@Before
 	public void criarPaciente(){
+		
 		PacienteDAO pacienteDAO = new PacienteDAO();
-		LoginDAO perfilDAO = new LoginDAO();
-		PacienteDomain paciente = new PacienteDomain();
-		/*
-		PacienteDomain perfil = perfilDAO.obtemPerfil(1);
-		paciente.setNome("Chico Silva");
-		paciente.setSexo("M");
-		
-		
-		pacienteDAO.salvaPaciente(paciente);
-		*/
+		if(pacienteDAO.listaPacientes().size() < 0){								
+			PacienteDomain paciente = new PacienteDomain();		
+			
+			paciente.setNome("Chico Silva");
+			paciente.setSexo("M");
+			paciente.setCidade("Campina Grande");
+			paciente.setEndereco("Rua Al");
+						
+			pacienteDAO.salvaPaciente(paciente);
+		}
 	}
 	
 	@Test
@@ -43,14 +46,14 @@ public class MedicaoPressaoDAOTests {
 		
 		medicaoDAO.salvaMedicaoPressao(medicao);
 		assertTrue(medicao.getId() > 0);
+		ultimaMedicao = medicao.getId();
 	}
 	
 	@After
-	public void limparDados(){
-		PacienteDAO pacienteDAO = new PacienteDAO();
+	public void limparDados(){		
 		MedicaoPressaoDAO medicaoDAO = new MedicaoPressaoDAO();
-		MedicaoPressaoDomain medicao = new MedicaoPressaoDomain();
-		PacienteDomain paciente = pacienteDAO.obtemPaciente(1);
+		MedicaoPressaoDomain medicao = medicaoDAO.obtemMedicaoPressao(ultimaMedicao);
+		medicaoDAO.excluiPressao(medicao);
 	}
 
 }
