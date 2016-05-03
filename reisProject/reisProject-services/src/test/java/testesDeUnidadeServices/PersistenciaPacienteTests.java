@@ -14,7 +14,7 @@ public class PersistenciaPacienteTests {
 		LoginDAO perfilDAO = new LoginDAO();
 		PacienteDomain paciente = new PacienteDomain();
 		
-		perfilDAO.salvaLogin(paciente);
+		//perfilDAO.salvaLogin(paciente);
 	}
 	
 	@Test

@@ -21,7 +21,20 @@ public class PersistenciaLoginTests {
 	@Test
 	public void criarLoginTest() {
 		LoginDAO loginDAO = new LoginDAO();
+		
 		LoginDomain novoLogin = new LoginDomain();
+		PacienteDomain novoPaciente = new PacienteDomain();
+		
+		novoPaciente.setNome("Franciso");
+		novoPaciente.setCidade("Campina Grande");
+		novoPaciente.setEndereco("Rua do Maracujá");
+		novoPaciente.setSexo("M");
+		novoPaciente.setTelefoneCasa("8333234400");
+		
+		novoLogin.setLogin("chico");
+		novoLogin.setSenha("senha123");
+		novoLogin.setPaciente(novoPaciente);
+		
 		loginDAO.salvaLogin(novoLogin);
 		assertTrue(novoLogin.getId() > 0);
 	}

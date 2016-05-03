@@ -23,7 +23,7 @@
 		<!-- Mapeamentos -->
 		<mapping class="com.br.uepb.model.MedicaoPressaoDomain" /> 
 		<mapping class="com.br.uepb.model.PacienteDomain" />
-		<mapping class="com.br.uepb.model.PerfilDomain" />
+		<mapping class="com.br.uepb.model.LoginDomain" />
 		<mapping class="com.br.uepb.model.MedicaoBalancaDomain" />
 		<mapping class="com.br.uepb.model.MedicaoOximetroDomain" /> 		
 		
