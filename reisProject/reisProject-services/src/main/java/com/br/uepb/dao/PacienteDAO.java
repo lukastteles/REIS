@@ -5,7 +5,6 @@ import java.util.List;
 import org.hibernate.Session;
 
 import com.br.uepb.model.PacienteDomain;
-import com.br.uepb.model.PerfilDomain;
 
 import conexaoBD.HibernateUtil;
 
