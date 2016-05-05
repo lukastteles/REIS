@@ -34,7 +34,7 @@ private Session sessaoAtual;
 	}
 	
 	public void excluiPressao(MedicaoPressaoDomain medicao){
-		Query query = SessaoAtual().createQuery("DELETE medicao_pressao WHERE id= :id");
+		Query query = SessaoAtual().createQuery("DELETE MedicaoPressaoDomain WHERE id= :id");
 		query.setParameter("id", medicao.getId());
 		query.executeUpdate();
 		SessaoAtual().close();
