@@ -89,7 +89,7 @@ public class tranformacaoDaStringParaHL7 {
 		
 		ca.uhn.hl7v2.model.v23.segment.MSH msh = mdm.getMSH();
 		
-		
+		//
 		
 		ca.uhn.hl7v2.model.v23.segment.OBX obx = mdm.getOBX();
 		obx.getObservationIdentifier().getIdentifier().setValue("1");
