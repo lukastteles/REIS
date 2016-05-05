@@ -13,7 +13,9 @@
 <!-- JavaScript -->
 <script src="../js/jquery-2.2.3.js"></script>
 <script src="../js/materialDesign/material.js"></script>
-<script src="../js/flat-ui/flat-ui.minl.js"></script>
+<script src="../js/flat-ui/flat-ui.min.js"></script>
+<script src="../js/chart/Chart.bundle.js"></script>
+
 
 <!-- Custom Fonts -->
 <link rel="stylesheet" type="text/css"

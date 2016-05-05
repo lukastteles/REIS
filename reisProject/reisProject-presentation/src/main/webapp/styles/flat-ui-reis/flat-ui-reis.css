@@ -1,45 +1,54 @@
+/* -- CORES -- */
 .verde {
 	color: #fff;
 	background-color: #3ABEC0;
-	
 }
-
 .azul{
 	color: #fff;
 	background-color: #52AAD2;
-	
 }
-
 .laranja{
 	color: #fff;
 	background-color: #E87352;
-	
 }
-
 .amarelo{
 	color: #fff;
 	background-color: #EBC95E;
-	
 }
-
 .marrom{
 	color: #fff;
 	background-color: #444;
-	
 }
-
 .azul-escuro{
 	color: #fff;
 	background-color: #34495E;
-	
 }
-
 .vermelho{
 	color: #fff;
 	background-color: #f06259;
-	
 }
 
+/* -- buttons -- */
+.btn-azul{
+	color: #fff;
+	background-color: #52AAD2;
+}
+
+.btn-azul:hover{
+	color: #52AAD2;
+}
+
+.btn-vermelho{
+	color: #fff;
+	background-color: #f06259;
+}
+
+.btn-vermelho:hover{
+	color: #f06259;
+}
+
+
+/* -- Outros -- */
 .mdl-layout-title{
 	margin: auto;
 }
@@ -50,4 +59,17 @@ body{
 
 .fa{
 	font-size: 24px;
+}
+
+.centro {
+	position:absolute;
+	top:25%;
+	left:40%;
+	margin-top:-50px;
+	margin-left:-50px;
+}
+
+.margin{
+	margin-top: 12px;
+	color: #fff;
 }

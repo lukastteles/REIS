@@ -45,7 +45,7 @@
 				<button
 					class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
 					id="hdrbtn">
-					<i class="fa fa-bars" style="margin-right: 0px"></i>
+					<i class="material-icons">more_vert</i>
 				</button>
 				<ul
 					class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right"

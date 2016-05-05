@@ -46,7 +46,7 @@
 				<button
 					class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
 					id="hdrbtn">
-					<i class="fa fa-bars" style="margin-right: 0px"></i>
+					<i class="material-icons">more_vert</i>
 				</button>
 				<ul
 					class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right"
@@ -75,6 +75,9 @@
 					class=" fa fa-user-md"></i>Medição
 				</a> <a class="mdl-navigation__link " href="historico.html"> <i
 					class=" fa fa-bar-chart"></i>Histórico
+				</a>
+				<a class="mdl-navigation__link " href="historico.html"> <i
+					class=" fa fa-file-text-o"></i>HL7
 				</a>
 				<div class="mdl-layout-spacer"></div>
 				<a class="mdl-navigation__link " href=""><i>NUTES - UEPB</i> <span

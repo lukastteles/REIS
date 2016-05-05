@@ -3435,6 +3435,8 @@ MaterialLayout.prototype.init = function () {
                 drawerButton.classList.add(this.CssClasses_.DRAWER_BTN);
                 var drawerButtonIcon = document.createElement('i');
                 drawerButtonIcon.classList.add(this.CssClasses_.ICON);
+                drawerButtonIcon.classList.add("margin");
+                
                 drawerButtonIcon.innerHTML = this.Constant_.MENU_ICON;
                 drawerButton.appendChild(drawerButtonIcon);
             }

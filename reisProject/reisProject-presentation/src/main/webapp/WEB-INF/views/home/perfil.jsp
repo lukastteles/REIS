@@ -37,15 +37,12 @@
 	<div class="mdl-cell mdl-cell--12-col">
 
 		<div class="mdl-cell mdl-cell--6-col">
-			<a
-				class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect azul"
-				href=""> Atualizar Dados</a>
-		</div>
-
-		<div class="mdl-cell mdl-cell--6-col">
-			<a
-				class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect vermelho"
-				href=""> Deletar</a>
+			<button
+				class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-azul"> <span class="fa fa-pencil" aria-hidden="true"></span>Atualizar
+				Dados</button>
+				&nbsp;
+			<button
+				class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-vermelho"><span class="fa fa-trash" aria-hidden="true"></span>Deletar</button>
 		</div>
 
 	</div>
