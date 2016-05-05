@@ -1,0 +1,53 @@
+.verde {
+	color: #fff;
+	background-color: #3ABEC0;
+	
+}
+
+.azul{
+	color: #fff;
+	background-color: #52AAD2;
+	
+}
+
+.laranja{
+	color: #fff;
+	background-color: #E87352;
+	
+}
+
+.amarelo{
+	color: #fff;
+	background-color: #EBC95E;
+	
+}
+
+.marrom{
+	color: #fff;
+	background-color: #444;
+	
+}
+
+.azul-escuro{
+	color: #fff;
+	background-color: #34495E;
+	
+}
+
+.vermelho{
+	color: #fff;
+	background-color: #f06259;
+	
+}
+
+.mdl-layout-title{
+	margin: auto;
+}
+
+body{
+	font-family: 'Open Sans';
+}
+
+.fa{
+	font-size: 24px;
+}
