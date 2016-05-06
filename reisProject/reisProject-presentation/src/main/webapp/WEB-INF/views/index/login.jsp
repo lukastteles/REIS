@@ -5,10 +5,9 @@
 			<div class='col-md-6'>
 				<form action="#">
 					<div class='col-lg-12 text-center'>
-						<h2>
+						<h2 class="negrito">
 							<img class='img-responsive' width="100px" height="100px"
-								src='../images/reis_logo.png' style="margin: auto;" />
-							Login
+								src='../images/reis_logo.png' style="margin: auto;" /> Login
 						</h2>
 
 					</div>

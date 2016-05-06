@@ -53,8 +53,17 @@
 	margin: auto;
 }
 
+.negrito{
+	font-weight: bold;
+}
+
+.tamanho-14{
+	font-size: 14px;
+}
+
 body{
-	font-family: 'Open Sans';
+	font-family: 'Roboto', sans-serif;
+	font-style: normal;
 }
 
 .fa{
@@ -69,7 +78,7 @@ body{
 .centro {
 	position:absolute;
 	top:10%;
-	left:40%;
+	left:20%;
 	margin-top:-50px;
 	margin-left:-50px;
 }

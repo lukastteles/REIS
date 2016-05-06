@@ -2,7 +2,7 @@
 
 <div class="mdl-grid">
 	<div class="mdl-cell mdl-cell--12-col">
-		<h3 class="demo-section-title">Aparelhos</h3>
+		<h3 class="negrito">Aparelhos</h3>
 	</div>
 
 	<div class="mdl-cell mdl-cell--4-col">
@@ -59,7 +59,7 @@
 	</div>
 
 	<div class="mdl-cell mdl-cell--12-col">
-		<h3 class="demo-section-title">Medidor de Pulso</h3>
+		<h3 class="negrito">Serial</h3>
 	</div>
 
 	<div class="mdl-cell mdl-cell--12-col">

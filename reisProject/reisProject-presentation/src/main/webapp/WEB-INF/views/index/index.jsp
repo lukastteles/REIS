@@ -2,12 +2,12 @@
 
 
 <div class="mdl-grid">
-	<div class="mdl-cell mdl-cell--4-col" >
-		<img class='img-responsive' width="400px" height="400px"
+	<div class="mdl-cell mdl-cell--4-col">
+		<img class='img-responsive' width="450px" height="450px"
 			src='../images/reis_logo.png' style="margin: auto;" />
 		<div class='row'>
 			<div class='col-lg-12 text-center'>
-				<h1>REIS</h1>
+
 				<p>Registro Eletrônico para Interoperabilidade em Saúde</p>
 			</div>
 		</div>
@@ -16,8 +16,8 @@
 	<div class="mdl-cell mdl-cell--8-col">
 
 		<div class='col-lg-8 col-lg-offset-2'>
-		<h1>Sobre</h1>
-			<h3>O que é o REIS?</h3>
+			<br>
+			<h3 class="negrito">O que é o REIS?</h3>
 
 			<p>Registro Eletrônico para Interoperabilidade em Saúde - REIS -
 				é um projeto desenvolvido por um grupo de estudantes da Universidade
@@ -25,14 +25,14 @@
 				dispositivos de saúde de uso pessoal interoperável.</p>
 		</div>
 		<div class='col-lg-8 col-lg-offset-2'>
-			<h3>Qual a nossa proposta?</h3>
+			<h3 class="negrito">Qual a nossa proposta?</h3>
 
 			<p>Nossa proposta é armazenar em um perfil o acompanhamento a
 				cada medição de alguns dispositivos de uso pessoal voltado para a
 				saúde.</p>
 		</div>
 		<div class='col-lg-8 col-lg-offset-2'>
-			<h3>
+			<h3 class="negrito">
 				Quais são esses dispositívos? <span class='fa fa-heartbeat'></span>
 			</h3>
 
