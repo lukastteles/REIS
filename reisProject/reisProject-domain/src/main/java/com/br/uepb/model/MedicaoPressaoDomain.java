@@ -1,5 +1,7 @@
 package com.br.uepb.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -40,6 +42,12 @@ public class MedicaoPressaoDomain {
 	@Column(name = "taxa_pulso")
 	private double taxaDePulso;
 	
+	@Column(name="data_hora")
+	private Date dataHora;
+	
+	@Column(name="unidade_medida")
+	private String unidadeMedida;
+	
 	public int getId() {
 		return id;
 	}
@@ -75,6 +83,30 @@ public class MedicaoPressaoDomain {
 	}
 	public void setTaxaDePulso(double taxaDePulso) {
 		this.taxaDePulso = taxaDePulso;
+	}
+	public PacienteDomain getPaciente() {
+		return paciente;
+	}
+	public void setPaciente(PacienteDomain paciente) {
+		this.paciente = paciente;
+	}
+	public double getPressaoDiastolica() {
+		return pressaoDiastolica;
+	}
+	public void setPressaoDiastolica(double pressaoDiastolica) {
+		this.pressaoDiastolica = pressaoDiastolica;
+	}
+	public Date getDataHora() {
+		return dataHora;
+	}
+	public void setDataHora(Date dataHora) {
+		this.dataHora = dataHora;
+	}
+	public String getUnidadeMedida() {
+		return unidadeMedida;
+	}
+	public void setUnidadeMedida(String unidadeMedida) {
+		this.unidadeMedida = unidadeMedida;
 	}
 	
 	

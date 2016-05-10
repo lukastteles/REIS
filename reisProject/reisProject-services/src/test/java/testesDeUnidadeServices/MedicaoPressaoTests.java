@@ -12,7 +12,7 @@ import com.br.uepb.dao.LoginDAO;
 import com.br.uepb.model.MedicaoPressaoDomain;
 import com.br.uepb.model.PacienteDomain;
 
-public class MedicaoPressaoDAOTests {
+public class MedicaoPressaoTests {
 	
 	private int ultimaMedicao = 0;
 
