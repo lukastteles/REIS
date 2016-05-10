@@ -1,5 +1,7 @@
 package com.br.uepb.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="medicao_balanca")
@@ -29,6 +32,12 @@ public class MedicaoBalancaDomain {
 	
 	@Column(name="massa")
 	private double massa;
+	
+	@Column(name="data_hora")
+	private Date dataHora;
+	
+	@Column(name="unidade_medida")
+	private String unidadeMedida;
 	
 	public PacienteDomain getPaciente() {
 		return paciente;
@@ -59,6 +68,18 @@ public class MedicaoBalancaDomain {
 	}
 	public void setMassa(double massa) {
 		this.massa = massa;
+	}
+	public Date getDataHora() {
+		return dataHora;
+	}
+	public void setDataHora(Date dataHora) {
+		this.dataHora = dataHora;
+	}
+	public String getUnidadeMedida() {
+		return unidadeMedida;
+	}
+	public void setUnidadeMedida(String unidadeMedida) {
+		this.unidadeMedida = unidadeMedida;
 	}
 	
 }

@@ -36,7 +36,7 @@ public class LoginDomain {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "paciente_id", referencedColumnName="id")
 	@Fetch(FetchMode.JOIN)
-	@Cascade(CascadeType.SAVE_UPDATE)
+	@Cascade({CascadeType.SAVE_UPDATE, CascadeType.DELETE})
 	private PacienteDomain paciente;
 	
 	public int getId() {
