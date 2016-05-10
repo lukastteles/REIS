@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 
+<%@ include file="/WEB-INF/views/includeTags.jsp"%>
 <html>
 
 <section>
@@ -7,7 +8,7 @@
 		<div class='row'>
 			<div class='col-md-2'>&nbsp;</div>
 			<div class='col-md-6'>
-				<form action="#">
+				<form:form id="formCadastro" modelAttribute="login" method="post">
 					<div class='col-lg-12 text-center'>
 						<h2 class="negrito">
 							<img class='img-responsive' width="100px" height="100px"
@@ -19,25 +20,25 @@
 					<div class="col-md-12">
 						<label class="demo-panel-title">Login</label>
 						<div class="form-group">
-							<input type="text" value="" placeholder="Login"
-								class="form-control">
+							<form:input path="login" type="text" placeholder="Login"
+								class="form-control"/>
 						</div>
 					</div>
 					<br>
 					<div class="col-md-12">
 						<label class="demo-panel-title">Senha</label>
 						<div class="form-group">
-							<input type="password" value="" placeholder="Senha"
-								class="form-control">
+							<form:input path="senha" type="password" placeholder="Senha"
+								class="form-control" />
 						</div>
 					</div>
 					<br>
 					<div class="col-md-12">
 						<button
-							class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
-							Cadastrar</button>
+							class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"
+							type="submit">Cadastrar</button>
 					</div>
-				</form>
+				</form:form>
 			</div>
 			<div class='col-md-3'>&nbsp;</div>
 		</div>
