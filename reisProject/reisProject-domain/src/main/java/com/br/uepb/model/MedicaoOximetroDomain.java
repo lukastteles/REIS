@@ -39,8 +39,11 @@ public class MedicaoOximetroDomain {
 	@Column(name="data_hora")
 	private Date dataHora;
 	
-	@Column(name="unidade_medida")
-	private String unidadeMedida;
+	@Column(name="u_spo2")
+	private String uSPO2;
+	
+	@Column(name="u_taxa_pulso")
+	private String uTaxaDePulso;
 	
 	public int getId() {
 		return id;
@@ -78,11 +81,17 @@ public class MedicaoOximetroDomain {
 	public void setDataHora(Date dataHora) {
 		this.dataHora = dataHora;
 	}
-	public String getUnidadeMedida() {
-		return unidadeMedida;
+	public String getuSPO2() {
+		return uSPO2;
 	}
-	public void setUnidadeMedida(String unidadeMedida) {
-		this.unidadeMedida = unidadeMedida;
+	public void setuSPO2(String uSPO2) {
+		this.uSPO2 = uSPO2;
+	}
+	public String getuTaxaDePulso() {
+		return uTaxaDePulso;
+	}
+	public void setuTaxaDePulso(String uTaxaDePulso) {
+		this.uTaxaDePulso = uTaxaDePulso;
 	}
 	
 	

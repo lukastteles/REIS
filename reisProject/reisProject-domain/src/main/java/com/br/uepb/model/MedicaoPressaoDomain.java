@@ -45,8 +45,17 @@ public class MedicaoPressaoDomain {
 	@Column(name="data_hora")
 	private Date dataHora;
 	
-	@Column(name="unidade_medida")
-	private String unidadeMedida;
+	@Column(name="u_pressao_sis")
+	private String uPressaoSistolica;
+	
+	@Column(name="u_pressao_dias")
+	private String uPressaoDiastolica;
+	
+	@Column(name="u_pressao_media")
+	private String uPressaoMedia;
+	
+	@Column(name="u_taxa_pulso")
+	private String uTaxaDePulso;
 	
 	public int getId() {
 		return id;
@@ -102,12 +111,31 @@ public class MedicaoPressaoDomain {
 	public void setDataHora(Date dataHora) {
 		this.dataHora = dataHora;
 	}
-	public String getUnidadeMedida() {
-		return unidadeMedida;
+	public String getUPressaoSistolica() {
+		return uPressaoSistolica;
 	}
-	public void setUnidadeMedida(String unidadeMedida) {
-		this.unidadeMedida = unidadeMedida;
+	public void setUPressaoSistolica(String unidadeMedida) {
+		this.uPressaoSistolica = unidadeMedida;
 	}
+	public String getuPressaoDiastolica() {
+		return uPressaoDiastolica;
+	}
+	public void setuPressaoDiastolica(String uPressaoDiastolica) {
+		this.uPressaoDiastolica = uPressaoDiastolica;
+	}
+	public String getuPressaoMedia() {
+		return uPressaoMedia;
+	}
+	public void setuPressaoMedia(String uPressaoMedia) {
+		this.uPressaoMedia = uPressaoMedia;
+	}
+	public String getuTaxaDePulso() {
+		return uTaxaDePulso;
+	}
+	public void setuTaxaDePulso(String uTaxaDePulso) {
+		this.uTaxaDePulso = uTaxaDePulso;
+	}
+	
 	
 	
 }

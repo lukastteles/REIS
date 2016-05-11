@@ -43,8 +43,14 @@ public class MedicaoBalancaDomain {
 	@Column(name="data_hora")
 	private Date dataHora;
 	
-	@Column(name="unidade_medida")
-	private String unidadeMedida;
+	@Column(name="u_peso")
+	private double uPeso;
+	
+	@Column(name="u_altura")
+	private double uAltura;
+	
+	@Column(name="u_massa")
+	private double uMassa;
 	
 	public PacienteDomain getPaciente() {
 		return paciente;
@@ -82,11 +88,23 @@ public class MedicaoBalancaDomain {
 	public void setDataHora(Date dataHora) {
 		this.dataHora = dataHora;
 	}
-	public String getUnidadeMedida() {
-		return unidadeMedida;
+	public double getuPeso() {
+		return uPeso;
 	}
-	public void setUnidadeMedida(String unidadeMedida) {
-		this.unidadeMedida = unidadeMedida;
+	public void setuPeso(double uPeso) {
+		this.uPeso = uPeso;
+	}
+	public double getuAltura() {
+		return uAltura;
+	}
+	public void setuAltura(double uAltura) {
+		this.uAltura = uAltura;
+	}
+	public double getuMassa() {
+		return uMassa;
+	}
+	public void setuMassa(double uMassa) {
+		this.uMassa = uMassa;
 	}
 	
 }
