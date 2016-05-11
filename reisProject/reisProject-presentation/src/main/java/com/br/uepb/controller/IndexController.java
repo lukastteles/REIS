@@ -19,14 +19,6 @@ public class IndexController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "/index/cadastrar.html", method = RequestMethod.GET)
-	public ModelAndView cadastrarGet(HttpServletRequest request) {
-
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("cadastrar");
-		return modelAndView;
-	}
-
 	@RequestMapping(value = "/index/login.html", method = RequestMethod.GET)
 	public ModelAndView loginGet(HttpServletRequest request) {
 
