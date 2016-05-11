@@ -19,6 +19,8 @@ public class CadastroController {
 
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("cadastrar");
+		modelAndView.addObject("login",
+				new LoginDomain());
 		return modelAndView;
 	}
 
@@ -27,6 +29,7 @@ public class CadastroController {
 
 		System.out.println(login.getLogin());
 		System.out.println(login.getSenha());
+		System.out.println(login.getPaciente().getSexo());
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("cadastrar");
 		return modelAndView;
