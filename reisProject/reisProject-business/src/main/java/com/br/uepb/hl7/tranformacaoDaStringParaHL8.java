@@ -59,8 +59,8 @@ public class tranformacaoDaStringParaHL8 {
 		obx.getSetIDOBX().setValue("1");
 		
 		// OBX2
-		OBX obx2 = mensagem.getOBX();
-		obx2.getSetIDOBX().setValue("2");
+//		OBX obx2 = mensagem.getOBX();
+//		obx2.getSetIDOBX().setValue("2");
 		
 		//
 		PV1 pv1 = mensagem.getPV1();
