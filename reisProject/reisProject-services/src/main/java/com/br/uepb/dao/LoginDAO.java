@@ -2,6 +2,7 @@ package com.br.uepb.dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 import com.br.uepb.model.LoginDomain;
@@ -45,20 +46,18 @@ public class LoginDAO {
 	}
 	
 	public LoginDomain obtemLogin(String usuario, String senha){
-		LoginDomain login = (LoginDomain)SessaoAtual().createQuery("from LoginDomain"
-				+ " where login ='" + usuario + "' AND senha ='" + senha + "'").list().get(0);
+		Query query = SessaoAtual().createQuery("FROM LoginDomain WHERE login = :usuario AND senha = :senha");
+		query.setString("usuario", usuario);
+		query.setString("senha", senha);
+		LoginDomain login = (LoginDomain)query.uniqueResult();
 		
 		return login;
-	}
+	}	
 	
-	@SuppressWarnings("unchecked")
 	public boolean jaExisteUsuario(String usuario){
-		List<LoginDomain> logins = 
-				(List<LoginDomain>)SessaoAtual().createQuery("from LoginDomain").list();
-		if(logins == null || logins.isEmpty()){
-			return false;
-		}
-		else return true;
+		Query query = SessaoAtual().createQuery("FROM LoginDomain WHERE login = :usuario");
+		query.setString("usuario", usuario);
+		return (query.uniqueResult() != null);
 	}
 	
 	@SuppressWarnings("unchecked")

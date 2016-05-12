@@ -1,6 +1,8 @@
 package testesDeUnidadeServices;
 
 import static junit.framework.Assert.assertTrue;
+import static org.junit.Assert.*;
+
 import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
@@ -51,7 +53,7 @@ public class PersistenciaLoginTests {
 	}
 	
 	@Test
-	public void obterLogin2Test(){
+	public void obterLoginCadastradoTest(){
 		LoginDAO loginDAO = new LoginDAO();
 		LoginDomain login = loginDAO.obtemLogin("chico", "senha123");
 		
@@ -59,9 +61,15 @@ public class PersistenciaLoginTests {
 	}
 	
 	@Test
-	public void usuarioJaCadastradoTest(){
+	public void verificaUsuarioJaCadastradoTest(){
 		LoginDAO loginDAO = new LoginDAO();
 		assertTrue(loginDAO.jaExisteUsuario("chico"));
+	}
+	
+	@Test
+	public void verificaUsuarioNaoCadastradoTest(){
+		LoginDAO loginDAO = new LoginDAO();
+		assertFalse(loginDAO.jaExisteUsuario("maria"));
 	}
 
 }
