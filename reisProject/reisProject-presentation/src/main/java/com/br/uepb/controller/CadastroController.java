@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.br.uepb.business.LoginBusiness;
 import com.br.uepb.model.LoginDomain;
 
 @Controller
@@ -19,16 +20,23 @@ public class CadastroController {
 
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("cadastrar");
+		modelAndView.addObject("login",
+				new LoginDomain());
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/index/cadastrar.html", method = RequestMethod.POST)
 	public ModelAndView cadastrarPost(@ModelAttribute("login") LoginDomain login, Model model) {
-
-		System.out.println(login.getLogin());
-		System.out.println(login.getSenha());
+		LoginBusiness loginBusiness = new LoginBusiness();
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("cadastrar");
+		if(login!=null){
+			if(loginBusiness.salvar(login)){
+
+				modelAndView.setViewName("perfil");
+			}else{
+				modelAndView.setViewName("cadastrar");
+			}
+		}
 		return modelAndView;
 	}
 

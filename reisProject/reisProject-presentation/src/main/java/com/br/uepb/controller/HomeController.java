@@ -37,14 +37,5 @@ public class HomeController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value = "/home/historico.html", method = RequestMethod.GET)
-	public ModelAndView historicoGet(HttpServletRequest request) {
-
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("historico");
-		modelAndView.addObject("usuario", "fulano");
-		return modelAndView;
-	}
-	
 
 }

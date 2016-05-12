@@ -1,24 +1,31 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <!DOCTYPE hibernate-configuration PUBLIC
-		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
-		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+ "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+ "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
 	<session-factory>
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="hibernate.connection.password">root</property>
-		<property name="hibernate.connection.url">jdbc:mysql://localhost/ecarona </property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/reis</property>
 		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password">root</property>
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.show_sql">false</property>
 		<property name="hibernate.format_sql">false</property>
 		<property name="hbm2ddl.auto">update</property>
-		<!-- Mapeamento -->
-		<mapping class="com.br.uepb.domain.CaronaDomain" />
-		<mapping class="com.br.uepb.domain.SessaoDomain" />
-		<mapping class="com.br.uepb.domain.SolicitacaoDomain" />
-		<mapping class="com.br.uepb.domain.SugestaoEncontroDomain" />
-		<mapping class="com.br.uepb.domain.UsuarioDomain" />
+		<property name="hibernate.default_schema">reis</property>
+		<property name="hibernate.connection.pool_size">1</property>
+		<property name="hibernate.current_session_context_class">thread</property>
+		<property name="hibernate.c3p0.min_size">5</property>
+		<property name="hibernate.c3p0.max_size">100</property>
+		<property name="hibernate.c3p0.timeout">5000</property>
+		<property name="hibernate.c3p0.max_statements">50</property>
 
+		<!-- Mapeamentos -->
+		<mapping class="com.br.uepb.model.MedicaoPressaoDomain" /> 
+		<mapping class="com.br.uepb.model.PacienteDomain" />
+		<mapping class="com.br.uepb.model.LoginDomain" />
+		<mapping class="com.br.uepb.model.MedicaoBalancaDomain" />
+		<mapping class="com.br.uepb.model.MedicaoOximetroDomain" /> 		
+		
 	</session-factory>
 </hibernate-configuration>
-
