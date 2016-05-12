@@ -3,16 +3,20 @@ package com.br.uepb.xml;
 import java.util.ArrayList;
 import java.util.Map;
 
+import com.br.uepb.model.MedicaoBalancaDomain;
+import com.br.uepb.model.MedicaoOximetroDomain;
+
 public class Medicoes {
 	private DataList _dataList = null;
-	private ArrayList<Pair<String,String>> medicoes = new ArrayList<Pair<String,String>>();
+	private ArrayList<Pair<String,String>> medicoes;
 	
 	public Medicoes(DataList dataList) {
 		_dataList = dataList;
 	}
 	
 	public ArrayList<Pair<String,String>> getMedicoes() {
-		Pair<String,String> node = new Pair<String, String>(null, null);
+		medicoes = new ArrayList<Pair<String,String>>();
+		//Pair<String,String> node = new Pair<String, String>(null, null);
 		
 		for (Entry entry : _dataList.getEntries()) {
 			//Imprime a lista de meta de cada entidade
@@ -36,19 +40,19 @@ public class Medicoes {
 				if (sub.getName().equals("Absolute-Time-Stamp")) {
 					absolute_time_stamp(sub);
 				}
-			}
-			
+			}			
 		}
+
 		return medicoes;
 	}
 	
-	
 	private void getMeta(Map<String, String> meta) {
-		Pair<String,String> node = new Pair<String, String>(null, null);
 		
-		for (Map.Entry<String, String> e : meta.entrySet()) {			
+		for (Map.Entry<String, String> e : meta.entrySet()) {
+			Pair<String,String> node = new Pair<String, String>(null, null);
 			node.setFirst(e.getKey());
 			node.setSecond(e.getValue());
+			//System.out.println(node.getFirst()+" "+node.getSecond());
 			medicoes.add(node);			
 		}
 	}
@@ -57,6 +61,7 @@ public class Medicoes {
 		Pair<String,String> node = new Pair<String, String>(null, null);
 		node.setFirst("value");
 		node.setSecond(sub.getValue());
+		//System.out.println(node.getFirst()+" "+node.getSecond());
 		medicoes.add(node);		
 	}
 
@@ -64,6 +69,7 @@ public class Medicoes {
 		Pair<String,String> node = new Pair<String, String>(null, null);
 		node.setFirst("value");
 		node.setSecond(sub.getValue());
+		//System.out.println(node.getFirst()+" "+node.getSecond());
 		medicoes.add(node);		
 	}
 	
@@ -89,8 +95,9 @@ public class Medicoes {
 	    }
 		
 		values += ")";
-		node.setFirst("value");
+		node.setFirst("compound");
 		node.setSecond(values);
+		//System.out.println(node.getFirst()+" "+node.getSecond());
 		medicoes.add(node);			   
 	}
 	
@@ -115,6 +122,7 @@ public class Medicoes {
 		Pair<String,String> node = new Pair<String, String>(null, null);
 		node.setFirst("dateTime");
 		node.setSecond(data);
+		//System.out.println(node.getFirst()+" "+node.getSecond());
 		medicoes.add(node);		
 	}
 	
@@ -125,4 +133,130 @@ public class Medicoes {
 		}
 		return name;
 	}	
+
+	public MedicaoOximetroDomain medicaoOximetro(ArrayList<Pair<String,String>> arrayMedicao) {
+		MedicaoOximetroDomain oximetro = new MedicaoOximetroDomain();				
+		Pair<String, String> medicao;
+		int j = 0;
+		
+		for (int i = 0; i < arrayMedicao.size(); i++) {
+			medicao = arrayMedicao.get(i);
+			
+			//lê o primeiro elemento do Oximeto
+			if (medicao.getFirst().equals("HANDLE")) {
+				i++;
+				medicao = arrayMedicao.get(i);				
+				String metricId = "";
+				String unit_cod = ""; 		
+				String unit = "";
+				float value = 0;
+
+				j = i;
+				while ((!medicao.getFirst().equals("HANDLE")) && (j < arrayMedicao.size())) {
+					System.out.println(medicao.getFirst() + " " + medicao.getSecond());
+					
+					if (medicao.getFirst().equals("metric-id")) {
+						metricId = medicao.getSecond();
+					}
+					
+					if (medicao.getFirst().equals("unit-code")) {
+						unit_cod = medicao.getSecond();
+					}
+					
+					if (medicao.getFirst().equals("unit")) {
+						unit = medicao.getSecond();
+					}
+					
+					if (medicao.getFirst().equals("value")) {
+						value = Float.parseFloat(medicao.getSecond());
+					}
+					j++;
+					if (j < arrayMedicao.size()) {
+						medicao = arrayMedicao.get(j);
+					}
+				}
+				j--;
+				i=j;
+				
+				if (metricId.equals("19384")) { //spo2
+					oximetro.setSpo2(value);
+					oximetro.setuSPO2(unit);
+				}
+				
+				if (metricId.equals("18458")) { //pulse rate
+					oximetro.setTaxaPulso(value);
+					oximetro.setuTaxaDePulso(unit);
+				}
+				
+			}
+		}
+		System.out.println("fim");
+		return oximetro;
+	}
+
+	public MedicaoBalancaDomain medicaoBalanca(ArrayList<Pair<String,String>> arrayMedicao) {
+		MedicaoBalancaDomain balanca = new MedicaoBalancaDomain();				
+		Pair<String, String> medicao;
+		int j = 0;
+		
+		for (int i = 0; i < arrayMedicao.size(); i++) {
+			medicao = arrayMedicao.get(i);
+			
+			//lê o primeiro elemento do Oximeto
+			if (medicao.getFirst().equals("HANDLE")) {
+				i++;
+				medicao = arrayMedicao.get(i);				
+				String metricId = "";
+				String unit_cod = ""; 		
+				String unit = "";
+				float value = 0;
+
+				j = i;
+				while ((!medicao.getFirst().equals("HANDLE")) && (j < arrayMedicao.size())) {
+					System.out.println(medicao.getFirst() + " " + medicao.getSecond());
+					
+					if (medicao.getFirst().equals("metric-id")) {
+						metricId = medicao.getSecond();
+					}
+					
+					if (medicao.getFirst().equals("unit-code")) {
+						unit_cod = medicao.getSecond();
+					}
+					
+					if (medicao.getFirst().equals("unit")) {
+						unit = medicao.getSecond();
+					}
+					
+					if (medicao.getFirst().equals("value")) {
+						value = Float.parseFloat(medicao.getSecond());
+					}
+					
+					j++;
+					if (j < arrayMedicao.size()) {
+						medicao = arrayMedicao.get(j);
+					}
+				}
+				j--;
+				i=j;
+				
+				if (metricId.equals("57664")) { //Body Weight
+					balanca.setPeso(value);
+					//balanca.setuPeso(unit);
+				}
+				
+				if (metricId.equals("57668")) { //Body height 
+					balanca.setAltura(value);
+					//balanca.setuAltura(unit);
+				}
+				
+				if (metricId.equals("57680")) { //Body Mass
+					balanca.setMassa(value);
+					//balanca.setuMassa(unit);
+				}
+				
+			}
+		}
+		System.out.println("fim");
+		return balanca;
+	}
 }
