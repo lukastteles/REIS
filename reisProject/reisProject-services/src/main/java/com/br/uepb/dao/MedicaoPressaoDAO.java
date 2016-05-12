@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import com.br.uepb.model.MedicaoBalancaDomain;
 import com.br.uepb.model.MedicaoPressaoDomain;
 
 import conexaoBD.HibernateUtil;
@@ -55,6 +56,16 @@ private Session sessaoAtual;
 		
 		SessaoAtual().close();
 		return medicoes;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<MedicaoPressaoDomain> listaMedicoesDoPaciente(int idPaciente){
+		List<MedicaoPressaoDomain> medicao =
+				(List<MedicaoPressaoDomain>)SessaoAtual().createQuery(
+						"from MedicaoPressaoDomain where  paciente.id =" + idPaciente).list();
+		
+		SessaoAtual().close();
+		return medicao;
 	}
 	
 	private Session SessaoAtual(){

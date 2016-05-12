@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 
+import com.br.uepb.model.MedicaoBalancaDomain;
 import com.br.uepb.model.MedicaoOximetroDomain;
 
 import conexaoBD.HibernateUtil;
@@ -39,6 +40,16 @@ public class MedicaoOximetroDAO {
 		
 		List<MedicaoOximetroDomain> medicao = 
 				(List<MedicaoOximetroDomain>)SessaoAtual().createQuery("from MedicaoOximetroDomain").list();
+		
+		SessaoAtual().close();
+		return medicao;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<MedicaoOximetroDomain> listaMedicoesDoPaciente(int idPaciente){
+		List<MedicaoOximetroDomain> medicao =
+				(List<MedicaoOximetroDomain>)SessaoAtual().createQuery(
+						"from MedicaoOximetroDomain where  paciente.id =" + idPaciente).list();
 		
 		SessaoAtual().close();
 		return medicao;

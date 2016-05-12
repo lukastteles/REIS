@@ -25,18 +25,18 @@ public class PersistenciaLoginTests {
 		LoginDomain novoLogin = new LoginDomain();
 		PacienteDomain novoPaciente = new PacienteDomain();
 		
-		novoPaciente.setNome("Franciso");
-		novoPaciente.setCidade("Campina Grande");
-		novoPaciente.setEndereco("Rua do Maracujá");
-		novoPaciente.setSexo("M");
-		novoPaciente.setTelefoneCasa("8333234400");
-		
-		novoLogin.setLogin("chico");
-		novoLogin.setSenha("senha123");
-		novoLogin.setPaciente(novoPaciente);
-		
-		loginDAO.salvaLogin(novoLogin);
-		assertTrue(novoLogin.getId() > 0);
+//		novoPaciente.setNome("Franciso");
+//		novoPaciente.setCidade("Campina Grande");
+//		novoPaciente.setEndereco("Rua do Maracujá");
+//		novoPaciente.setSexo("M");
+//		novoPaciente.setTelefoneCasa("8333234400");
+//		
+//		novoLogin.setLogin("chico");
+//		novoLogin.setSenha("senha123");
+//		novoLogin.setPaciente(novoPaciente);
+//		
+//		loginDAO.salvaLogin(novoLogin);
+//		assertTrue(novoLogin.getId() > 0);
 	}
 	
 	@Test
@@ -48,6 +48,20 @@ public class PersistenciaLoginTests {
 		
 		assertTrue(logins.size() > 0);
 		assertTrue(login.getId() > 0);
+	}
+	
+	@Test
+	public void obterLogin2Test(){
+		LoginDAO loginDAO = new LoginDAO();
+		LoginDomain login = loginDAO.obtemLogin("chico", "senha123");
+		
+		assertTrue(login.getId() > 0);
+	}
+	
+	@Test
+	public void usuarioJaCadastradoTest(){
+		LoginDAO loginDAO = new LoginDAO();
+		assertTrue(loginDAO.jaExisteUsuario("chico"));
 	}
 
 }
