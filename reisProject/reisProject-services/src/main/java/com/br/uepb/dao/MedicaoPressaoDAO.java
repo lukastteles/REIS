@@ -2,10 +2,10 @@ package com.br.uepb.dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 import com.br.uepb.model.MedicaoPressaoDomain;
-import com.br.uepb.model.PerfilDomain;
 
 import conexaoBD.HibernateUtil;
 
@@ -33,8 +33,10 @@ private Session sessaoAtual;
 		SessaoAtual().close();
 	}
 	
-	public void excluiPerfil(MedicaoPressaoDomain medicao){
-		SessaoAtual().delete(medicao);
+	public void excluiPressao(MedicaoPressaoDomain medicao){
+		Query query = SessaoAtual().createQuery("DELETE MedicaoPressaoDomain WHERE id= :id");
+		query.setParameter("id", medicao.getId());
+		query.executeUpdate();
 		SessaoAtual().close();
 	}
 	

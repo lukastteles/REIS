@@ -5,31 +5,38 @@
 <section>
 	<div class='container'>
 		<div class='row'>
-			<div class='col-lg-12 text-center'>
-				<h2>Cadastre-se! :)</h2>
-				<hr class='star-primary'>
-			</div>
-		</div>
-		<div class='row'>
 			<div class='col-md-2'>&nbsp;</div>
 			<div class='col-md-6'>
 				<form action="#">
-					<div
-						class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-						<input class="mdl-textfield__input" type="text" id="sample3">
-						<label class="mdl-textfield__label" for="sample3">Login...</label>
+					<div class='col-lg-12 text-center'>
+						<h2>
+							<img class='img-responsive' width="100px" height="100px"
+								src='../images/reis_logo.png' style="margin: auto;" />
+							Cadastre-se! :)
+						</h2>
 
 					</div>
-					<br>
-					<div
-						class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-						<input class="mdl-textfield__input" type="password" id="sample3">
-						<label class="mdl-textfield__label" for="sample3">Senha...</label>
+					<div class="col-md-12">
+						<label class="demo-panel-title">Login</label>
+						<div class="form-group">
+							<input type="text" value="" placeholder="Login"
+								class="form-control">
+						</div>
 					</div>
 					<br>
-					<button
-						class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
-						Cadastrar</button>
+					<div class="col-md-12">
+						<label class="demo-panel-title">Senha</label>
+						<div class="form-group">
+							<input type="password" value="" placeholder="Senha"
+								class="form-control">
+						</div>
+					</div>
+					<br>
+					<div class="col-md-12">
+						<button
+							class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+							Cadastrar</button>
+					</div>
 				</form>
 			</div>
 			<div class='col-md-3'>&nbsp;</div>

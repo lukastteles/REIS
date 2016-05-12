@@ -30,22 +30,22 @@
 	
 	
 	<definition name="home" extends="dashboard">
-		<put-attribute name="title"	value="REIS | Início "></put-attribute>
+		<put-attribute name="title"	value="Início "></put-attribute>
 		<put-attribute name="body" value="/WEB-INF/views/home/home.jsp" />
 	</definition>
 	
 	<definition name="perfil" extends="dashboard">
-		<put-attribute name="title"	value="REIS | Perfil "></put-attribute>
+		<put-attribute name="title"	value="Perfil "></put-attribute>
 		<put-attribute name="body" value="/WEB-INF/views/home/perfil.jsp" />
 	</definition>
 	
 	<definition name="medicao" extends="dashboard">
-		<put-attribute name="title"	value="REIS | Medições "></put-attribute>
+		<put-attribute name="title"	value="Medições "></put-attribute>
 		<put-attribute name="body" value="/WEB-INF/views/home/medicao.jsp" />
 	</definition>
 	
 	<definition name="historico" extends="dashboard">
-		<put-attribute name="title"	value="REIS | Histórico "></put-attribute>
+		<put-attribute name="title"	value="Histórico "></put-attribute>
 		<put-attribute name="body" value="/WEB-INF/views/home/historico.jsp" />
 	</definition>
 
