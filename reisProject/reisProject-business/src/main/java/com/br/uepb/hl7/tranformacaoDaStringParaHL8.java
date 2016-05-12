@@ -1,6 +1,7 @@
+
 package com.br.uepb.hl7;
 
-import java.io.IOException;
+import java.io.IOException; 
 
 import com.br.uepb.dao.MedicaoBalancaDAO;
 import com.br.uepb.dao.PacienteDAO;
@@ -14,7 +15,6 @@ import ca.uhn.hl7v2.model.Message;
 import ca.uhn.hl7v2.model.v25.group.ORM_O01_PATIENT;
 import ca.uhn.hl7v2.model.v25.message.ADT_A01;
 import ca.uhn.hl7v2.model.v25.message.ORM_O01;
-import ca.uhn.hl7v2.model.v25.message.ORU_R01;
 import ca.uhn.hl7v2.model.v25.segment.MSH;
 import ca.uhn.hl7v2.model.v25.segment.OBR;
 import ca.uhn.hl7v2.model.v25.segment.OBX;
@@ -59,8 +59,8 @@ public class tranformacaoDaStringParaHL8 {
 		obx.getSetIDOBX().setValue("1");
 		
 		// OBX2
-//		OBX obx2 = mensagem.getOBX();
-//		obx2.getSetIDOBX().setValue("2");
+		OBX obx2 = mensagem.getOBX();
+		obx2.getSetIDOBX().setValue("2");
 		
 		//
 		PV1 pv1 = mensagem.getPV1();
