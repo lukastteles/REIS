@@ -1,6 +1,11 @@
 package com.br.uepb.xml;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Map;
 
 import com.br.uepb.model.MedicaoBalancaDomain;
@@ -9,6 +14,7 @@ import com.br.uepb.model.MedicaoOximetroDomain;
 public class Medicoes {
 	private DataList _dataList = null;
 	private ArrayList<Pair<String,String>> medicoes;
+	private SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss:SSS");
 	
 	public Medicoes(DataList dataList) {
 		_dataList = dataList;
@@ -110,13 +116,13 @@ public class Medicoes {
 	    }
 	    
 	    //formatação da data
-	    String ano = format(times[0])+format(times[1]);
-	    String dia = format(times[3]);
-	    String mes = format(times[2]);
-	    String hora = format(times[4]);
-	    String min = format(times[5]);
-	    String seg = format(times[6]);
-	    String milseg = format(times[7]);
+	    String ano = format(times[0], 2)+format(times[1], 2);
+	    String dia = format(times[3], 2);
+	    String mes = format(times[2], 2);
+	    String hora = format(times[4], 2);
+	    String min = format(times[5], 2);
+	    String seg = format(times[6], 2);
+	    String milseg = format(times[7], 3);
 		String data = dia+"/"+mes+"/"+ano+" "+hora+":"+min+":"+seg+":"+milseg;
 				
 		Pair<String,String> node = new Pair<String, String>(null, null);
@@ -124,12 +130,17 @@ public class Medicoes {
 		node.setSecond(data);
 		//System.out.println(node.getFirst()+" "+node.getSecond());
 		medicoes.add(node);		
-	}
+	}	
 	
-	private String format(String value) {
+	private String format(String value, int tamanho) {
 		String name = value.trim();
-		if (value.length() == 1) {
-			name = "0"+value;
+		
+		if (value.length() < tamanho) {
+			name = "";
+			for (int i=0; i< (tamanho-value.length()); i++) {
+				name += "0";
+			}
+			name += value;
 		}
 		return name;
 	}	
@@ -138,6 +149,9 @@ public class Medicoes {
 		MedicaoOximetroDomain oximetro = new MedicaoOximetroDomain();				
 		Pair<String, String> medicao;
 		int j = 0;
+		
+		Calendar c = Calendar.getInstance();
+		Date data = c.getTime();			
 		
 		for (int i = 0; i < arrayMedicao.size(); i++) {
 			medicao = arrayMedicao.get(i);
@@ -169,6 +183,15 @@ public class Medicoes {
 					
 					if (medicao.getFirst().equals("value")) {
 						value = Float.parseFloat(medicao.getSecond());
+					}
+					
+					if (medicao.getFirst().equals("dateTime")) {		
+						try {
+							data = (Date) formatter.parse(medicao.getSecond());
+						} catch (ParseException e) {
+							e.printStackTrace();
+						}
+						//data = medicao.getSecond();
 					}
 					j++;
 					if (j < arrayMedicao.size()) {
@@ -187,9 +210,11 @@ public class Medicoes {
 					oximetro.setTaxaPulso(value);
 					oximetro.setuTaxaDePulso(unit);
 				}
-				
 			}
 		}
+		
+		oximetro.setDataHora(data);
+		
 		System.out.println("fim");
 		return oximetro;
 	}
@@ -198,6 +223,9 @@ public class Medicoes {
 		MedicaoBalancaDomain balanca = new MedicaoBalancaDomain();				
 		Pair<String, String> medicao;
 		int j = 0;
+
+		Calendar c = Calendar.getInstance();
+		Date data = c.getTime();
 		
 		for (int i = 0; i < arrayMedicao.size(); i++) {
 			medicao = arrayMedicao.get(i);
@@ -210,7 +238,7 @@ public class Medicoes {
 				String unit_cod = ""; 		
 				String unit = "";
 				float value = 0;
-
+				
 				j = i;
 				while ((!medicao.getFirst().equals("HANDLE")) && (j < arrayMedicao.size())) {
 					System.out.println(medicao.getFirst() + " " + medicao.getSecond());
@@ -231,6 +259,16 @@ public class Medicoes {
 						value = Float.parseFloat(medicao.getSecond());
 					}
 					
+					if (medicao.getFirst().equals("dateTime")) {		
+						try {
+							data = (Date) formatter.parse(medicao.getSecond());
+							System.out.println("Data formatada: "+data.toString());
+						} catch (ParseException e) {
+							e.printStackTrace();
+						}
+						//data = medicao.getSecond();
+					}
+					
 					j++;
 					if (j < arrayMedicao.size()) {
 						medicao = arrayMedicao.get(j);
@@ -241,21 +279,22 @@ public class Medicoes {
 				
 				if (metricId.equals("57664")) { //Body Weight
 					balanca.setPeso(value);
-					//balanca.setuPeso(unit);
+					balanca.setuPeso(unit);
 				}
 				
 				if (metricId.equals("57668")) { //Body height 
 					balanca.setAltura(value);
-					//balanca.setuAltura(unit);
+					balanca.setuAltura(unit);
 				}
 				
 				if (metricId.equals("57680")) { //Body Mass
 					balanca.setMassa(value);
-					//balanca.setuMassa(unit);
+					balanca.setuMassa(unit);
 				}
 				
 			}
 		}
+		balanca.setDataHora(data);
 		System.out.println("fim");
 		return balanca;
 	}
