@@ -29,7 +29,7 @@
 	</definition>
 	
 	
-	<definition name="home" extends="dashboard">
+	<definition name="home/home" extends="dashboard">
 		<put-attribute name="title"	value="Início "></put-attribute>
 		<put-attribute name="body" value="/WEB-INF/views/home/home.jsp" />
 	</definition>

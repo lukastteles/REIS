@@ -98,7 +98,6 @@
 	});
 	function selecionarSexo(){
 			 var sexoSelecionado = document.getElementById("sexo").value;
-			 alert(sexoSelecionado);
 			 document.getElementById("sexoValor").value = sexoSelecionado;
 
 	}

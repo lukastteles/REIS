@@ -30,11 +30,12 @@ public class CadastroController {
 		LoginBusiness loginBusiness = new LoginBusiness();
 		ModelAndView modelAndView = new ModelAndView();
 		if(login!=null){
+			
 			if(loginBusiness.salvar(login)){
 
-				modelAndView.setViewName("home");
+				modelAndView.setViewName("home/home");
 			}else{
-				modelAndView.setViewName("cadastrar");
+				modelAndView.setViewName("cadastro");
 			}
 		}
 		return modelAndView;
