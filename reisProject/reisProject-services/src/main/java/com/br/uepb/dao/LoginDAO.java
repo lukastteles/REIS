@@ -51,10 +51,13 @@ public class LoginDAO {
 		return login;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public boolean jaExisteUsuario(String usuario){
-		LoginDomain login = (LoginDomain)SessaoAtual().createQuery("from LoginDomain"
-				+ " where login ='" + usuario + "'").list().get(0);
-		if(login == null) return false;
+		List<LoginDomain> logins = 
+				(List<LoginDomain>)SessaoAtual().createQuery("from LoginDomain").list();
+		if(logins == null || logins.isEmpty()){
+			return false;
+		}
 		else return true;
 	}
 	
