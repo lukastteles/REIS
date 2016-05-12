@@ -213,9 +213,7 @@ public class Medicoes {
 			}
 		}
 		
-		oximetro.setDataHora(data);
-		
-		System.out.println("fim");
+		oximetro.setDataHora(data);	
 		return oximetro;
 	}
 
@@ -295,7 +293,6 @@ public class Medicoes {
 			}
 		}
 		balanca.setDataHora(data);
-		System.out.println("fim");
 		return balanca;
 	}
 }
