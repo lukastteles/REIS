@@ -26,7 +26,6 @@ public class MedicoesBusiness {
 			MedicaoOximetroDAO medicaoOximetroDAO = new MedicaoOximetroDAO();			
 			medicaoOximetroDAO.salvaMedicaoOximetro(medicaoOximetroDomain);
 			
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
