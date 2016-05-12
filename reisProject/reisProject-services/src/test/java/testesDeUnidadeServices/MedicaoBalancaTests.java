@@ -50,4 +50,15 @@ public class MedicaoBalancaTests {
 		assertTrue(medicoes.size() > 0);
 		assertTrue(medicao.getId() > 0);
 	}
+	
+	@Test
+	public void listarMedicaoBalancaDoPacienteTest(){
+		MedicaoBalancaDAO medicaoDAO = new MedicaoBalancaDAO();
+		List<MedicaoBalancaDomain> medicoes = medicaoDAO.listaMedicoes();	
+		int idUltimoMedicao = medicoes.get(0).getPaciente().getId();
+				
+		List<MedicaoBalancaDomain> medicoesDoPaciente = medicaoDAO.listaMedicoesDoPaciente(idUltimoMedicao);
+		
+		assertTrue(medicoesDoPaciente.size() > 0);
+	}
 }
