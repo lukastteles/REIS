@@ -44,6 +44,20 @@ public class LoginDAO {
 		return login;
 	}
 	
+	public LoginDomain obtemLogin(String usuario, String senha){
+		LoginDomain login = (LoginDomain)SessaoAtual().createQuery("from LoginDomain"
+				+ " where login ='" + usuario + "' AND senha ='" + senha + "'").list().get(0);
+		
+		return login;
+	}
+	
+	public boolean jaExisteUsuario(String usuario){
+		LoginDomain login = (LoginDomain)SessaoAtual().createQuery("from LoginDomain"
+				+ " where login ='" + usuario + "'").list().get(0);
+		if(login == null) return false;
+		else return true;
+	}
+	
 	@SuppressWarnings("unchecked")
 	public List<LoginDomain> listaLogins(){
 		
