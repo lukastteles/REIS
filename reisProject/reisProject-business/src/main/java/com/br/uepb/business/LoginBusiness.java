@@ -2,6 +2,7 @@ package com.br.uepb.business;
 
 import com.br.uepb.dao.LoginDAO;
 import com.br.uepb.model.LoginDomain;
+import com.br.uepb.model.PacienteDomain;
 
 public class LoginBusiness {
 	
@@ -18,11 +19,13 @@ public class LoginBusiness {
 	
 	public boolean loginValido(String login, String senha){
 		try {
-			//loginDAO.obtemLogin();
-			return true;
+			for (LoginDomain loginDomain : loginDAO.listaLogins()) {
+				if(loginDomain.getLogin().equals(login) && loginDomain.getSenha().equals(senha)){
+					return true;
+				}
+			}
 		} catch (Exception e) {
-			// TODO: handle exception
-			return false;
 		}
+		return false;
 	}
 }
