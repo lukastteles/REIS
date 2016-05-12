@@ -19,13 +19,4 @@ public class IndexController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "/index/login.html", method = RequestMethod.GET)
-	public ModelAndView loginGet(HttpServletRequest request) {
-
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("login");
-
-		return modelAndView;
-	}
-
 }

@@ -63,8 +63,8 @@
 <script src="../js/flat-ui-reis/flat-ui-reis.js"></script>
 
 <script language="javascript"> 
-	carregaVariaveisBalanca('${ultimoHistorico.data}', '${ultimoHistorico.balanca.massa}', '${ultimoHistorico.balanca.altura}', '${ultimoHistorico.balanca.unidadeMedida}');
-	carregaVariaveisOximetro('${ultimoHistorico.data}', '${ultimoHistorico.oximetro.spo2}', '${ultimoHistorico.oximetro.taxaPulso}', '${ultimoHistorico.balanca.unidadeMedida}');
+	carregaVariaveisBalanca('${ultimoHistorico.data}', '${ultimoHistorico.balanca.massa}', '${ultimoHistorico.balanca.altura}', '${ultimoHistorico.balanca.uMassa}');
+	carregaVariaveisOximetro('${ultimoHistorico.data}', '${ultimoHistorico.oximetro.spo2}', '${ultimoHistorico.oximetro.taxaPulso}', '${ultimoHistorico.oximetro.spo2}');
 	carregaVariaveisPressao('${ultimoHistorico.data}', '${ultimoHistorico.pressao.pressaoDiastolica}', '${ultimoHistorico.pressao.pressaoDistolica}', '${ultimoHistorico.pressao.pressaoMedia}','${ultimoHistorico.pressao.pressaoSistolica}')
 
  </script>
