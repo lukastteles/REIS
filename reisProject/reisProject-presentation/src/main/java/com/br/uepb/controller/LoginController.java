@@ -19,7 +19,7 @@ public class LoginController {
 	public ModelAndView cadastrarGet(HttpServletRequest request) {
 
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("login");
+		modelAndView.setViewName("index/login");
 		modelAndView.addObject("loginDomain",
 				new LoginDomain());
 		return modelAndView;
@@ -32,9 +32,13 @@ public class LoginController {
 		if(login!=null ){
 			if(loginBusiness.loginValido(login.getLogin(), login.getSenha())){
 
-				modelAndView.setViewName("home");
+				modelAndView.setViewName("home/home");
 			}else{
-				modelAndView.setViewName("login");
+				modelAndView.setViewName("index/login");
+				String mensagem = "Login ou senha está incorreto";
+				modelAndView.addObject("mensagem", mensagem);
+				modelAndView.addObject("status",
+						"1");
 			}
 		}
 		return modelAndView;

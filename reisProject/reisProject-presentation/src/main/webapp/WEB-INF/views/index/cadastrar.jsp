@@ -16,6 +16,13 @@
 
 						</div>
 						<div class="mdl-cell mdl-cell--12-col">
+							
+							<c:if test="${status == 1}">
+								<div class="alert alert-danger" role="alert">
+									<span class="fa fa-exclamation-circle" aria-hidden="true"></span>
+									<span class="sr-only">Erro:</span> ${mensagem}
+								</div>
+							</c:if>
 							<label class="demo-panel-title">Login</label>
 							<div class="form-group">
 								<form:input path="login" type="text" class="form-control"

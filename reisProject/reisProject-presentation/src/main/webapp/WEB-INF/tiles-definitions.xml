@@ -13,17 +13,17 @@
 
 	</definition>
 
-	<definition name="index" extends="default">
+	<definition name="index/index" extends="default">
 		<put-attribute name="title"	value="REIS - Registro Eletrônico para Interoperabilidade em Saúde"></put-attribute>
 		<put-attribute name="body" value="/WEB-INF/views/index/index.jsp" />
 	</definition>
 
-	<definition name="cadastrar" extends="default">
+	<definition name="index/cadastrar" extends="default">
 		<put-attribute name="title"	value="REIS | Cadastrar"></put-attribute>
 		<put-attribute name="body" value="/WEB-INF/views/index/cadastrar.jsp" />
 	</definition>
 
-	<definition name="login" extends="default">
+	<definition name="index/login" extends="default">
 		<put-attribute name="title"	value="REIS | Login "></put-attribute>
 		<put-attribute name="body" value="/WEB-INF/views/index/login.jsp" />
 	</definition>
@@ -34,17 +34,17 @@
 		<put-attribute name="body" value="/WEB-INF/views/home/home.jsp" />
 	</definition>
 	
-	<definition name="perfil" extends="dashboard">
+	<definition name="home/perfil" extends="dashboard">
 		<put-attribute name="title"	value="Perfil "></put-attribute>
 		<put-attribute name="body" value="/WEB-INF/views/home/perfil.jsp" />
 	</definition>
 	
-	<definition name="medicao" extends="dashboard">
+	<definition name="home/medicao" extends="dashboard">
 		<put-attribute name="title"	value="Medições "></put-attribute>
 		<put-attribute name="body" value="/WEB-INF/views/home/medicao.jsp" />
 	</definition>
 	
-	<definition name="historico" extends="dashboard">
+	<definition name="home/historico" extends="dashboard">
 		<put-attribute name="title"	value="Histórico "></put-attribute>
 		<put-attribute name="body" value="/WEB-INF/views/home/historico.jsp" />
 	</definition>

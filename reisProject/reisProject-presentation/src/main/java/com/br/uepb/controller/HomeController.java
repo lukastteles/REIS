@@ -23,7 +23,7 @@ public class HomeController {
 	public ModelAndView perfilGet(HttpServletRequest request) {
 
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("perfil");
+		modelAndView.setViewName("home/perfil");
 		modelAndView.addObject("usuario", "fulano");
 		return modelAndView;
 	}
@@ -32,7 +32,7 @@ public class HomeController {
 	public ModelAndView medicaoGet(HttpServletRequest request) {
 
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("medicao");
+		modelAndView.setViewName("home/medicao");
 		modelAndView.addObject("usuario", "fulano");
 		return modelAndView;
 	}
