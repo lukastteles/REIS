@@ -9,22 +9,19 @@ public class LoginBusiness {
 	private LoginDAO loginDAO = new LoginDAO();
 	
 	public boolean salvar(LoginDomain loginDomain){
-		try {
+		
+		if(!loginDAO.jaExisteUsuario(loginDomain.getLogin())){
 			loginDAO.salvaLogin(loginDomain);
 			return true;
-		} catch (Exception e) {
-			return false;
 		}
+		return false;
 	}
 	
 	public boolean loginValido(String login, String senha){
-		try {
-			for (LoginDomain loginDomain : loginDAO.listaLogins()) {
-				if(loginDomain.getLogin().equals(login) && loginDomain.getSenha().equals(senha)){
-					return true;
-				}
-			}
-		} catch (Exception e) {
+		LoginDomain loginDomain = loginDAO.obtemLogin(login, senha);
+		if(loginDomain!=null){
+			SessaoBusiness.setLoginDomain(loginDomain);
+			return true;
 		}
 		return false;
 	}

@@ -40,11 +40,11 @@ public class HistoricoController {
 		
 		balanca.setMassa(75);
 		balanca.setAltura(177);
-		balanca.setUnidadeMedida("Kg");
+		balanca.setuMassa("Kg");
 		
 		oximetro.setSpo2(105);
 		oximetro.setTaxaPulso(80);
-		oximetro.setUnidadeMedida("%");
+		oximetro.setuSPO2("%");
 		
 		pressao.setPressaoDiastolica(72);
 		pressao.setPressaoDistolica(80);

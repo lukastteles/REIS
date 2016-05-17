@@ -13,29 +13,28 @@ import com.br.uepb.business.LoginBusiness;
 import com.br.uepb.model.LoginDomain;
 
 @Controller
-public class CadastroController {
+public class LoginController {
 
-	@RequestMapping(value = "/index/cadastrar.html", method = RequestMethod.GET)
+	@RequestMapping(value = "/index/login.html", method = RequestMethod.GET)
 	public ModelAndView cadastrarGet(HttpServletRequest request) {
 
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("cadastrar");
+		modelAndView.setViewName("login");
 		modelAndView.addObject("loginDomain",
 				new LoginDomain());
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "/index/cadastrar.html", method = RequestMethod.POST)
-	public ModelAndView cadastrarPost(@ModelAttribute("loginDomain") LoginDomain login, Model model) {
+	@RequestMapping(value = "/index/login.html", method = RequestMethod.POST)
+	public ModelAndView loginPost(@ModelAttribute("loginDomain") LoginDomain login, Model model) {
 		LoginBusiness loginBusiness = new LoginBusiness();
 		ModelAndView modelAndView = new ModelAndView();
-		if(login!=null){
-			
-			if(loginBusiness.salvar(login)){
+		if(login!=null ){
+			if(loginBusiness.loginValido(login.getLogin(), login.getSenha())){
 
-				modelAndView.setViewName("home/home");
+				modelAndView.setViewName("home");
 			}else{
-				modelAndView.setViewName("cadastro");
+				modelAndView.setViewName("login");
 			}
 		}
 		return modelAndView;

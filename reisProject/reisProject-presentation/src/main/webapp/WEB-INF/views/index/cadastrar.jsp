@@ -6,7 +6,7 @@
 			<div class="mdl-grid">
 				<div class='col-md-2'>&nbsp;</div>
 				<div class='col-md-6'>
-					<form:form id="formCadastro" modelAttribute="login" method="post">
+					<form:form id="formCadastro" modelAttribute="loginDomain" method="post">
 						<div class='col-lg-12 text-center'>
 							<h2 class="negrito">
 								<img class='img-responsive' width="100px" height="100px"
@@ -98,7 +98,6 @@
 	});
 	function selecionarSexo(){
 			 var sexoSelecionado = document.getElementById("sexo").value;
-			 alert(sexoSelecionado);
 			 document.getElementById("sexoValor").value = sexoSelecionado;
 
 	}

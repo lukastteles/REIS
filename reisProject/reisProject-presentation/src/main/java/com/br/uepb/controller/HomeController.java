@@ -14,7 +14,7 @@ public class HomeController {
 	public ModelAndView homeGet(HttpServletRequest request) {
 
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("home");
+		modelAndView.setViewName("home/home");
 		modelAndView.addObject("usuario", "fulano");
 		return modelAndView;
 	}
