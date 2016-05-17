@@ -1,7 +1,8 @@
 
 package com.br.uepb.hl7;
 
-import java.io.IOException; 
+import java.io.IOException;
+import java.util.Calendar;
 
 import com.br.uepb.dao.MedicaoBalancaDAO;
 import com.br.uepb.dao.PacienteDAO;
@@ -16,6 +17,8 @@ import ca.uhn.hl7v2.model.Varies;
 import ca.uhn.hl7v2.model.v25.message.ORU_R01;
 import ca.uhn.hl7v2.model.v25.datatype.CE;
 import ca.uhn.hl7v2.model.v25.datatype.NM;
+import ca.uhn.hl7v2.model.v25.datatype.ST;
+import ca.uhn.hl7v2.model.v25.datatype.TX;
 import ca.uhn.hl7v2.model.v25.group.ORM_O01_PATIENT;
 import ca.uhn.hl7v2.model.v25.group.ORU_R01_OBSERVATION;
 import ca.uhn.hl7v2.model.v25.group.ORU_R01_ORDER_OBSERVATION;
@@ -35,9 +38,109 @@ public class tranformacaoDaStringParaHL8 {
 
 	}
 
-	public String criarHL7TESTE(PacienteDomain paciente) throws HL7Exception, IOException {
+	// Segundo o nosso gerente, o nome do método teria que ser esse, se não entenderem pergunte a ele!!
+	public String criarMensagemHL7Pressao(PacienteDomain paciente) throws HL7Exception, IOException {
 		ORU_R01 mensagem = new ORU_R01();
-		mensagem.initQuickstart("ADT", "A01", "P");
+		mensagem.initQuickstart("ORU", "R01", "P");
+
+		// Cabeçalho da mensagem
+		MSH mshMensagem = mensagem.getMSH();
+		mshMensagem.getMessageControlID().setValue("MESSAGE_CONTROL_ID_1");
+		mshMensagem.getSequenceNumber().setValue("123");
+
+		// Informações básicas do paciente
+		PID pid = mensagem.getPATIENT_RESULT().getPATIENT().getPID();
+		pid.getPatientName(0).getGivenName().setValue(paciente.getNome());
+
+		// OBR
+		ORU_R01_ORDER_OBSERVATION orderOBR = mensagem.getPATIENT_RESULT().getORDER_OBSERVATION();
+		OBR obr = orderOBR.getOBR();
+		obr.getSetIDOBR().setValue("1");
+		obr.getFillerOrderNumber().getEntityIdentifier().setValue("UEPB");
+		obr.getFillerOrderNumber().getNamespaceID().setValue("123");
+		obr.getUniversalServiceIdentifier().getIdentifier().setValue("Medicao de Pressão");
+
+		// OBX 1 - Pressão Sistolica
+		ORU_R01_OBSERVATION orderOBX = orderOBR.getOBSERVATION();
+		OBX obx = orderOBX.getOBX();
+		obx.getSetIDOBX().setValue("1");
+		obx.getObservationIdentifier().getIdentifier().setValue("Pressão Sistolica");
+		obx.getValueType().setValue("NM");
+
+		CE ce = new CE(mensagem);
+		ce.getText().setValue("132");
+
+		obx.getUnits().getCe2_Text().setValue("mm[Hg]");
+		obx.getObx7_ReferencesRange().setValue("90-120");
+		obx.getDateTimeOfTheObservation().getTime().setValue(Calendar.getInstance().getTime());
+		
+		Varies varie = obx.getObservationValue(0);
+		varie.setData(ce);//
+		
+		// OBX 2 - Pressão Diastolica
+		obx = orderOBR.getOBSERVATION(1).getOBX();
+		
+		obx.getSetIDOBX().setValue("2");
+		obx.getObservationIdentifier().getIdentifier().setValue("Pressão Diastolica");
+		obx.getValueType().setValue("NM");
+		
+		CE ce1 = new CE(mensagem);
+		ce1.getText().setValue("86");
+
+		obx.getUnits().getCe2_Text().setValue("mm[Hg]");
+		obx.getObx7_ReferencesRange().setValue("60-80");
+		obx.getDateTimeOfTheObservation().getTime().setValue(Calendar.getInstance().getTime());
+		
+		Varies varies = obx.getObservationValue(0);
+		varies.setData(ce1);//
+		
+		// OBX 3 - Pressão media
+		obx = orderOBR.getOBSERVATION(2).getOBX();
+		
+		obx.getSetIDOBX().setValue("3");
+		obx.getObservationIdentifier().getIdentifier().setValue("Pressão Media");
+		obx.getValueType().setValue("NM");
+		
+		CE ce3 = new CE(mensagem);
+		ce3.getText().setValue("94");
+
+		obx.getUnits().getCe2_Text().setValue("mm[Hg]");
+		obx.getObx7_ReferencesRange().setValue("92-96");
+		obx.getDateTimeOfTheObservation().getTime().setValue(Calendar.getInstance().getTime());
+		
+		Varies varie3 = obx.getObservationValue(0);
+		varie3.setData(ce3);//
+		
+		// OBX 4 - Taxa de Pulso
+		obx = orderOBR.getOBSERVATION(3).getOBX();
+		
+		obx.getSetIDOBX().setValue("4");
+		obx.getObservationIdentifier().getIdentifier().setValue("Taxa de Pulso");
+		obx.getValueType().setValue("NM");
+		
+		CE ce4 = new CE(mensagem);
+		ce4.getText().setValue("80");
+
+		obx.getUnits().getCe2_Text().setValue("bpm");
+		obx.getObx7_ReferencesRange().setValue("60-100");
+		obx.getDateTimeOfTheObservation().getTime().setValue(Calendar.getInstance().getTime());
+		
+		Varies varie4 = obx.getObservationValue(0);
+		varie4.setData(ce4);//
+
+		// Transforma os objetos no arquivo HL7.
+		HapiContext context = new DefaultHapiContext();
+		Parser parser = context.getPipeParser();
+		String encodedMessage = parser.encode(mensagem);
+
+		System.out.println(encodedMessage);
+
+		return encodedMessage;
+	}
+	
+	public String criarMensagemHL7Oximetro(PacienteDomain paciente) throws HL7Exception, IOException {
+		ORU_R01 mensagem = new ORU_R01();
+		mensagem.initQuickstart("ORU", "R01", "P");
 
 		// Cabeçalho da mensagem
 		MSH mshMensagem = mensagem.getMSH();
@@ -56,24 +159,40 @@ public class tranformacaoDaStringParaHL8 {
 		obr.getFillerOrderNumber().getNamespaceID().setValue("123");
 		obr.getUniversalServiceIdentifier().getIdentifier().setValue("Oximetro");
 
-		// OBX
+		// OBX 1 - SPO2
 		ORU_R01_OBSERVATION orderOBX = orderOBR.getOBSERVATION();
 		OBX obx = orderOBX.getOBX();
 		obx.getSetIDOBX().setValue("1");
-		obx.getObservationIdentifier().getIdentifier().setValue("Pressão Sistolica");
+		obx.getObservationIdentifier().getIdentifier().setValue("SPO2");
 		obx.getValueType().setValue("NM");
 
 		CE ce = new CE(mensagem);
-		ce.getText().setValue("");
-		ce.getNameOfCodingSystem().setValue("PS");
+		ce.getText().setValue("90");
 
+		obx.getUnits().getCe2_Text().setValue("%");
+		obx.getObx7_ReferencesRange().setValue("94-100");
+		obx.getDateTimeOfTheObservation().getTime().setValue(Calendar.getInstance().getTime());
 		
 		Varies varie = obx.getObservationValue(0);
 		varie.setData(ce);//
 		
+		// OBX 2 - Taxa de Pulso
 		obx = orderOBR.getOBSERVATION(1).getOBX();
 		
+		obx.getSetIDOBX().setValue("2");
+		obx.getObservationIdentifier().getIdentifier().setValue("Taxa de Pulso");
+		obx.getValueType().setValue("NM");
+		
+		CE ce1 = new CE(mensagem);
+		ce1.getText().setValue("80");
 
+		obx.getUnits().getCe2_Text().setValue("bpm");
+		obx.getObx7_ReferencesRange().setValue("60-100");
+		obx.getDateTimeOfTheObservation().getTime().setValue(Calendar.getInstance().getTime());
+		
+		Varies varies = obx.getObservationValue(0);
+		varies.setData(ce1);//
+		
 		// Transforma os objetos no arquivo HL7.
 		HapiContext context = new DefaultHapiContext();
 		Parser parser = context.getPipeParser();
@@ -84,6 +203,7 @@ public class tranformacaoDaStringParaHL8 {
 
 		return encodedMessage;
 	}
+
 
 	public String criarHL7(PacienteDomain paciente) throws HL7Exception, IOException {
 		ADT_A01 mensagem = new ADT_A01();
@@ -154,7 +274,7 @@ public class tranformacaoDaStringParaHL8 {
 		PacienteDomain paciente = tranformacaoDaStringParaHL7.informacoesDoPaciente(1);
 		try {
 			// tranformacaoDaStringParaHL7.createRadiologyOrderMessage();
-			tranformacaoDaStringParaHL7.criarHL7TESTE(paciente);
+			tranformacaoDaStringParaHL7.criarMensagemHL7Pressao(paciente);
 		} catch (HL7Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
