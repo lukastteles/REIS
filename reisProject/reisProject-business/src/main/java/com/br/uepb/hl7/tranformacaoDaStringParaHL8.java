@@ -60,13 +60,11 @@ public class tranformacaoDaStringParaHL8 {
 		ORU_R01_OBSERVATION orderOBX = orderOBR.getOBSERVATION();
 		OBX obx = orderOBX.getOBX();
 		obx.getSetIDOBX().setValue("1");
-		obx.getObservationIdentifier().getIdentifier().setValue("Oximetro");
-		obx.getObservationSubID().setValue("1");
+		obx.getObservationIdentifier().getIdentifier().setValue("Pressão Sistolica");
 		obx.getValueType().setValue("NM");
 
 		CE ce = new CE(mensagem);
-		ce.getIdentifier().setValue("T57000");
-		ce.getText().setValue("Pressão Sistolica");
+		ce.getText().setValue("");
 		ce.getNameOfCodingSystem().setValue("PS");
 
 		
