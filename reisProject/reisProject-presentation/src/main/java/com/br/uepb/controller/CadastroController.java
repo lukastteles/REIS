@@ -19,7 +19,7 @@ public class CadastroController {
 	public ModelAndView cadastrarGet(HttpServletRequest request) {
 
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("cadastrar");
+		modelAndView.setViewName("index/cadastrar");
 		modelAndView.addObject("loginDomain",
 				new LoginDomain());
 		return modelAndView;
@@ -34,8 +34,16 @@ public class CadastroController {
 			if(loginBusiness.salvar(login)){
 
 				modelAndView.setViewName("home/home");
+				String mensagem = "Cadastro realizado com sucesso";
+				modelAndView.addObject("mensagem", mensagem);
+				modelAndView.addObject("status",
+						"0");
 			}else{
-				modelAndView.setViewName("cadastro");
+				modelAndView.setViewName("index/cadastrar");
+				String mensagem = "Login já está sendo usado";
+				modelAndView.addObject("mensagem", mensagem);
+				modelAndView.addObject("status",
+						"1");
 			}
 		}
 		return modelAndView;
