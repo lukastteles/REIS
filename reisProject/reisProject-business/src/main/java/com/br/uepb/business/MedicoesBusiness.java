@@ -7,10 +7,12 @@ import javax.sound.sampled.DataLine;
 import com.br.uepb.dao.LoginDAO;
 import com.br.uepb.dao.MedicaoBalancaDAO;
 import com.br.uepb.dao.MedicaoOximetroDAO;
+import com.br.uepb.dao.MedicaoPressaoDAO;
 import com.br.uepb.dao.PacienteDAO;
 import com.br.uepb.model.LoginDomain;
 import com.br.uepb.model.MedicaoBalancaDomain;
 import com.br.uepb.model.MedicaoOximetroDomain;
+import com.br.uepb.model.MedicaoPressaoDomain;
 import com.br.uepb.model.PacienteDomain;
 import com.br.uepb.xml.DataList;
 import com.br.uepb.xml.Medicoes;
@@ -20,6 +22,7 @@ public class MedicoesBusiness {
 
 	private MedicaoBalancaDAO medicaoBalancaDAO = new MedicaoBalancaDAO();
 	private MedicaoOximetroDAO medicaoOximetroDAO = new MedicaoOximetroDAO();
+	private MedicaoPressaoDAO medicaoPressaoDAO = new MedicaoPressaoDAO();
 	private LoginDAO loginDAO = new LoginDAO();
 	private LoginDomain loginDomain;
 	
@@ -58,6 +61,28 @@ public class MedicoesBusiness {
 			PacienteDomain paciente = loginDomain.getPaciente();			
 			medicaoBalancaDomain.setPaciente(paciente);								
 			medicaoBalancaDAO.salvaMedicaoBalanca(medicaoBalancaDomain);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		return false;
+	}
+	
+	public Boolean medicaoPressao(String pathXML) {
+		
+		try {
+			DataList dataList = new DataList(pathXML);
+			Medicoes medicoes = new Medicoes(dataList);
+			//Metodo para gerar um ArrayList de Par;
+			ArrayList<Pair<String,String>> med = medicoes.getMedicoes();
+			
+			MedicaoPressaoDomain medicaoPressaoDomain =  medicoes.medicaoPressao(med);
+			loginDomain = loginDAO.obtemLogin(SessaoBusiness.getLoginDomain().getLogin(), SessaoBusiness.getLoginDomain().getSenha());				
+			PacienteDomain paciente = loginDomain.getPaciente();			
+			medicaoPressaoDomain.setPaciente(paciente);								
+			medicaoPressaoDAO.salvaMedicaoPressao(medicaoPressaoDomain);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

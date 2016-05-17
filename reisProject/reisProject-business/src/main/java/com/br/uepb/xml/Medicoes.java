@@ -10,6 +10,7 @@ import java.util.Map;
 
 import com.br.uepb.model.MedicaoBalancaDomain;
 import com.br.uepb.model.MedicaoOximetroDomain;
+import com.br.uepb.model.MedicaoPressaoDomain;
 
 public class Medicoes {
 	private DataList _dataList = null;
@@ -294,5 +295,13 @@ public class Medicoes {
 		}
 		balanca.setDataHora(data);
 		return balanca;
+	}
+
+	public MedicaoPressaoDomain medicaoPressao(ArrayList<Pair<String, String>> med) {
+		MedicaoPressaoDomain pressao = new MedicaoPressaoDomain();
+		
+		//fazer
+		
+		return pressao;
 	}
 }
