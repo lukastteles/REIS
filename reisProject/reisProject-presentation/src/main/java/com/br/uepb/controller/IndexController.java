@@ -14,7 +14,7 @@ public class IndexController {
 	public ModelAndView indexGet(HttpServletRequest request) {
 
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("index");
+		modelAndView.setViewName("index/index");
 
 		return modelAndView;
 	}
