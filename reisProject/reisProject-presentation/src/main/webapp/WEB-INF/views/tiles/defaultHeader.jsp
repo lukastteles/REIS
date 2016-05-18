@@ -19,12 +19,12 @@
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-left">
 				<li class="hidden"><a href="index.html#page-top"></a></li>
-				<li class="page-scroll"><a href="index.html#page-top">Início</a></li>
-				<li class="page-scroll"><a href="index.html#sobre">Sobre</a></li>
+				<li class="page-scroll"><a href="/reisProject-presentation/index/index.html#page-top">Início</a></li>
+				<li class="page-scroll"><a href="/reisProject-presentation/index/index.html#sobre">Sobre</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li class="page-scroll"><a href="cadastrar.html">Cadastre-se</a></li>
-				<li class="page-scroll"><a href="login.html">Entrar</a></li>
+				<li class="page-scroll"><a href="/reisProject-presentation/index/cadastrar.html">Cadastre-se</a></li>
+				<li class="page-scroll"><a href="/reisProject-presentation/index/login.html">Entrar</a></li>
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->

@@ -32,7 +32,7 @@ public class LoginController {
 		if(login!=null ){
 			if(loginBusiness.loginValido(login.getLogin(), login.getSenha())){
 
-				modelAndView.setViewName("home/home");
+				modelAndView.setViewName("redirect:/home/home.html");
 			}else{
 				modelAndView.setViewName("index/login");
 				String mensagem = "Login ou senha está incorreto";

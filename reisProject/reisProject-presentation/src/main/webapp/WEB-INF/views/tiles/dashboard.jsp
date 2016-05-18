@@ -51,9 +51,9 @@
 				<ul
 					class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right"
 					for="hdrbtn">
-					<a class="mdl-menu__item" href="perfil.html">Perfil</a>
+					<a class="mdl-menu__item" href="/reisProject-presentation/home/perfil.html">Perfil</a>
 					<a class="mdl-menu__item"
-						href="/reisProject-presentation/index/index.html">Sair</a>
+						href="/reisProject-presentation/index/sair.html">Sair</a>
 				</ul>
 			</div>
 		</header>
@@ -67,16 +67,16 @@
 				</div>
 			</header>
 			<nav class="demo-navigation mdl-navigation azul-escuro">
-				<a class="mdl-navigation__link " href="home.html"> <i
+				<a class="mdl-navigation__link " href="../home/home.html"> <i
 					class="fa fa-home"></i><span class="">Início</span></a> <a
-					class="mdl-navigation__link " href="perfil.html"> <i
+					class="mdl-navigation__link " href="../home/perfil.html"> <i
 					class=" fa fa-user"></i>Perfil
-				</a> <a class="mdl-navigation__link " href="medicao.html"> <i
+				</a> <a class="mdl-navigation__link " href="../home/medicao.html"> <i
 					class=" fa fa-user-md"></i>Medição
-				</a> <a class="mdl-navigation__link " href="historico.html"> <i
+				</a> <a class="mdl-navigation__link " href="../home/historico.html"> <i
 					class=" fa fa-bar-chart"></i>Histórico
 				</a>
-				<a class="mdl-navigation__link " href="historico.html"> <i
+				<a class="mdl-navigation__link " href="../home/historico.html"> <i
 					class=" fa fa-file-text-o"></i>HL7
 				</a>
 				<div class="mdl-layout-spacer"></div>

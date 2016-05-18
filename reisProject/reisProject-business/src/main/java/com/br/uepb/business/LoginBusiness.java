@@ -17,6 +17,16 @@ public class LoginBusiness {
 		return false;
 	}
 	
+	public boolean atualizar(LoginDomain loginDomain) {
+		try {
+			loginDAO.salvaLogin(loginDomain);
+			SessaoBusiness.setLoginDomain(loginDomain);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+	
 	public boolean loginValido(String login, String senha){
 		LoginDomain loginDomain = loginDAO.obtemLogin(login, senha);
 		if(loginDomain!=null){
@@ -24,5 +34,14 @@ public class LoginBusiness {
 			return true;
 		}
 		return false;
+	}
+	
+	public boolean excluir(LoginDomain loginDomain){
+		try {
+			loginDAO.excluiLogin(loginDomain);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 }

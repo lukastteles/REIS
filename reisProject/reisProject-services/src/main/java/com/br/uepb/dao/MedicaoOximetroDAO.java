@@ -2,10 +2,14 @@ package com.br.uepb.dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 
 import com.br.uepb.model.MedicaoBalancaDomain;
 import com.br.uepb.model.MedicaoOximetroDomain;
+import com.br.uepb.model.PacienteDomain;
 
 import conexaoBD.HibernateUtil;
 
@@ -32,6 +36,37 @@ public class MedicaoOximetroDAO {
 	public MedicaoOximetroDomain obtemMedicaoOximetro(int idOximetro){
 		MedicaoOximetroDomain medicao = (MedicaoOximetroDomain)SessaoAtual().get(MedicaoOximetroDomain.class, idOximetro);
 		SessaoAtual().close();
+		return medicao;
+	}	
+	
+//	public MedicaoOximetroDomain obtemUltimaMedicao(String login){
+//		
+//		
+//		String comando = "SELECT mo FROM medicao_oximetroDomain mo " + 
+//				"inner join login l " +
+//				"inner join paciente p " + 
+//				"where p.id = l.paciente_id and mo.paciente_id = p_id and l_login = :login " +
+//				"order by mo.data_hora desc " +
+//				"limit 1";
+//		SQLQuery query = SessaoAtual().createSQLQuery(comando);
+//		query.addEntity(MedicaoOximetroDomain.class);
+//		query.setParameter("login", login);
+//		
+//		MedicaoOximetroDomain medicao = (MedicaoOximetroDomain)query.list().get(0);
+//		
+//		return medicao;
+//	}
+	
+	public MedicaoOximetroDomain obtemUltimaMedicao(int idPaciente){
+		String comando = "select mo.* from Medicao_oximetro mo " +
+						"where mo.paciente_id = :idPaciente " +
+						"order by data_hora desc " +
+						"limit 1";
+		SQLQuery query = SessaoAtual().createSQLQuery(comando);
+		query.setParameter("idPaciente", idPaciente);
+		query.addEntity(MedicaoOximetroDomain.class);
+		
+		MedicaoOximetroDomain medicao = (MedicaoOximetroDomain) query.uniqueResult();
 		return medicao;
 	}
 	

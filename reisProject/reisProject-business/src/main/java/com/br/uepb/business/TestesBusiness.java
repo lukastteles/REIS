@@ -1,6 +1,9 @@
 package com.br.uepb.business;
 
+import com.br.uepb.dao.LoginDAO;
+import com.br.uepb.dao.PacienteDAO;
 import com.br.uepb.model.LoginDomain;
+import com.br.uepb.model.PacienteDomain;
 
 public class TestesBusiness {
 
@@ -17,8 +20,8 @@ public class TestesBusiness {
 		paciente.setEndereco("Endereco");
 		paciente.setTelefoneCasa("88888888");
 		
-		PacienteDAO pacienteDAO = new PacienteDAO();
-		pacienteDAO.salvaPaciente(paciente);
+		//PacienteDAO pacienteDAO = new PacienteDAO();
+		//pacienteDAO.salvaPaciente(paciente);
 		
 		LoginDomain login = new LoginDomain();
 		login.setLogin("luana");
@@ -31,16 +34,17 @@ public class TestesBusiness {
 		LoginDomain login = new LoginDomain();
 		login.setLogin("luana");
 		login.setSenha("123");
+		
 		SessaoBusiness.setLoginDomain(login);
 		
 		//Deixei aqui pra vc Luana :)
 		//String xml = "C:/Users/Luana/workspace/Leitura_XML/arquivos_xml/Oximetro XML de medicoes1.xml";
-		String xml = "E:/Workspace/luna/Leitura_XML/arquivos_xml/pressao.xml";
+		//String xml = "E:/Workspace/luna/Leitura_XML/arquivos_xml/pressao.xml";
 		
 		//medicoesBusines.medicaoOximetro(xml);
 		//System.out.println("Leitura Oximetro");
 		
-		//xml = "C:/Users/Luana/workspace/Leitura_XML/arquivos_xml/Balança XML de medicoes.xml";		
+		String xml = "C:/Users/Luana/workspace/Leitura_XML/arquivos_xml/Medidor de pressão XML de medicoes.xml";		
 		medicoesBusines.medicaoPressao(xml);
 		System.out.println("Leitura Pressão");
 
