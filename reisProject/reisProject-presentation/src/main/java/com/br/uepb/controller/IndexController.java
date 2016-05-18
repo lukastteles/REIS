@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.br.uepb.business.SessaoBusiness;
+
 @Controller
 public class IndexController {
 
@@ -15,6 +17,16 @@ public class IndexController {
 
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("index/index");
+
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/index/sair.html", method = RequestMethod.GET)
+	public ModelAndView sairGet(HttpServletRequest request) {
+
+		ModelAndView modelAndView = new ModelAndView();
+		SessaoBusiness.setLoginDomain(null);
+		modelAndView.setViewName("redirect:/index/index.html");
 
 		return modelAndView;
 	}

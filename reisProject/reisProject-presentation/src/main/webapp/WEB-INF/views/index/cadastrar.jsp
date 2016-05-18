@@ -33,7 +33,7 @@
 						<div class="mdl-cell mdl-cell--12-col">
 							<label class="demo-panel-title">Senha</label>
 							<div class="form-group">
-								<form:input path="senha" type="text" class="form-control"
+								<form:input path="senha" type="password" class="form-control"
 									placeholder="Senha" />
 							</div>
 						</div>
