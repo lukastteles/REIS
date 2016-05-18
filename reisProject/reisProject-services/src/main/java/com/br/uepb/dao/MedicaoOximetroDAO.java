@@ -39,32 +39,33 @@ public class MedicaoOximetroDAO {
 		return medicao;
 	}	
 	
-	public MedicaoOximetroDomain obtemUltimaMedicao(String login){
-		
-		
-		String comando = "SELECT mo FROM medicao_oximetroDomain mo " + 
-				"inner join login l " +
-				"inner join paciente p " + 
-				"where p.id = l.paciente_id and mo.paciente_id = p_id and l_login = :login " +
-				"order by mo.data_hora desc " +
-				"limit 1";
-		SQLQuery query = SessaoAtual().createSQLQuery(comando);
-		query.addEntity(MedicaoOximetroDomain.class);
-		query.setParameter("login", login);
-		
-		MedicaoOximetroDomain medicao = (MedicaoOximetroDomain)query.list().get(0);
-		
-		return medicao;
-	}
+//	public MedicaoOximetroDomain obtemUltimaMedicao(String login){
+//		
+//		
+//		String comando = "SELECT mo FROM medicao_oximetroDomain mo " + 
+//				"inner join login l " +
+//				"inner join paciente p " + 
+//				"where p.id = l.paciente_id and mo.paciente_id = p_id and l_login = :login " +
+//				"order by mo.data_hora desc " +
+//				"limit 1";
+//		SQLQuery query = SessaoAtual().createSQLQuery(comando);
+//		query.addEntity(MedicaoOximetroDomain.class);
+//		query.setParameter("login", login);
+//		
+//		MedicaoOximetroDomain medicao = (MedicaoOximetroDomain)query.list().get(0);
+//		
+//		return medicao;
+//	}
 	
 	public MedicaoOximetroDomain obtemUltimaMedicao(int idPaciente){
 		String comando = "select mo.* from Medicao_oximetro mo " +
 						"where mo.paciente_id = :idPaciente " +
-						"order by dataHora desc " +
+						"order by data_hora desc " +
 						"limit 1";
 		SQLQuery query = SessaoAtual().createSQLQuery(comando);
 		query.setParameter("idPaciente", idPaciente);
 		query.addEntity(MedicaoOximetroDomain.class);
+		
 		MedicaoOximetroDomain medicao = (MedicaoOximetroDomain) query.uniqueResult();
 		return medicao;
 	}
