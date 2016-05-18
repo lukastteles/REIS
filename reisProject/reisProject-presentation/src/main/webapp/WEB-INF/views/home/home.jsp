@@ -2,6 +2,7 @@
 <div class="centro">
 	<c:if test="${status == 0}">
 		<div class="alert alert-success" role="alert" >
+				<span class="close" data-dismiss="alert" aria-label="close">&times;</span>
 			<span class="fa fa-exclamation-circle" aria-hidden="true"></span> <span
 				class="sr-only">Sucesso:</span> ${mensagem}
 		</div>

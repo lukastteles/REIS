@@ -2,19 +2,25 @@
 
 <form:form id="formAtualizar" modelAttribute="loginDomain" method="post">
 	<div class="mdl-grid">
+		
 		<div class="mdl-cell mdl-cell--12-col">
-			<h3 class="negrito">Perfil</h3>
-		</div>
-		<div class="mdl-cell mdl-cell--12-col">
-			
+
 			<c:if test="${status == 0}">
-				<div class="alert alert-success" role="alert" >
+				<div class="alert alert-success" role="alert">
+				<span class="close" data-dismiss="alert" aria-label="close">&times;</span>
 					<span class="fa fa-exclamation-circle" aria-hidden="true"></span> <span
 						class="sr-only">Sucesso:</span> ${mensagem}
 				</div>
 			</c:if>
 			<c:if test="${status == 1}">
 				<div class="alert alert-danger" role="alert">
+				<span class="close" data-dismiss="alert" aria-label="close">&times;</span>
+					<span class="fa fa-exclamation-circle" aria-hidden="true"></span> <span
+						class="sr-only">Erro:</span> ${mensagem}
+				</div>
+			</c:if>
+			<c:if test="${statusExcluir == 1}">
+				<div class="alert alert-danger" role="alert" >
 					<span class="fa fa-exclamation-circle" aria-hidden="true"></span> <span
 						class="sr-only">Erro:</span> ${mensagem}
 				</div>
@@ -27,7 +33,7 @@
 					placeholder="nome" class="form-control" />
 			</div>
 		</div>
-		
+
 		<div class="mdl-cell mdl-cell--4-col">
 			<label class="demo-panel-title">Sexo</label>
 			<form:input path="paciente.sexo" type="text" class="form-control"
@@ -45,7 +51,7 @@
 			<label class="demo-panel-title">Login</label>
 			<div class="form-group">
 				<form:input path="login" type="text" class="form-control"
-					placeholder="Login" disabled="true"/>
+					placeholder="Login" disabled="true" />
 
 			</div>
 		</div>
@@ -58,7 +64,7 @@
 			</div>
 		</div>
 
-		
+
 		<div class="mdl-cell mdl-cell--8-col">
 			<label class="demo-panel-title">Endereço</label>
 			<div class="form-group">
@@ -80,26 +86,22 @@
 					placeholder="telefone" class="form-control" />
 			</div>
 		</div>
-		<div class="mdl-cell mdl-cell--12-col">
 
 			<div class="mdl-cell mdl-cell--6-col">
 				<button
 					class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-azul"
 					onclick="selecionarSexo()">
-					 <span class="fa fa-pencil tamanho-14"
-						aria-hidden="true"></span>Atualizar Dados
+					<span class="fa fa-pencil tamanho-14" aria-hidden="true"></span>Atualizar
+					Dados
 				</button>
 				&nbsp;
+				<button formaction="./excluir.html"
+					class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-vermelho">
+					<span class="fa fa-trash tamanho-14" aria-hidden="true"></span>Deletar
+				</button>
+			</div>
+		</div>
 </form:form>
-<button
-	class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-vermelho">
-	<span class="fa fa-trash tamanho-14" aria-hidden="true"></span>Deletar
-</button>
-</div>
-
-</div>
-
-</div>
 <script>
 	$(document)
 			.ready(
@@ -126,5 +128,4 @@
 
 }
 
-</script>
 </script>

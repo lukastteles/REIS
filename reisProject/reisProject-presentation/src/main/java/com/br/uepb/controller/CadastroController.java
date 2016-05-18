@@ -34,7 +34,7 @@ public class CadastroController {
 			
 			if(loginBusiness.salvar(login)){
 
-				modelAndView.setViewName("redirect:/home/home.html");
+				modelAndView.setViewName("home/home");
 				SessaoBusiness.setLoginDomain(login);
 				String mensagem = "Cadastro realizado com sucesso";
 				modelAndView.addObject("mensagem", mensagem);

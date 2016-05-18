@@ -50,10 +50,10 @@
 				<ul
 					class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right"
 					for="hdrbtn">
-					<a class="mdl-menu__item" href="index.html#page-top">Início</a>
-					<a class="mdl-menu__item" href="index.html#sobre">Sobre</a>
-					<a class="mdl-menu__item" href="cadastrar.html">Cadastre-se</a>
-					<a class="mdl-menu__item" href="login.html">Entrar</a>
+					<a class="mdl-menu__item" href="../index/index.html#page-top">Início</a>
+					<a class="mdl-menu__item" href="../index/index.html#sobre">Sobre</a>
+					<a class="mdl-menu__item" href="../index/cadastrar.html">Cadastre-se</a>
+					<a class="mdl-menu__item" href="../index/login.html">Entrar</a>
 
 				</ul>
 			</div>
