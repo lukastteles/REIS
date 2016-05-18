@@ -82,26 +82,25 @@ public class Medicoes {
 	
 	private void compound_nu(Entry sub) {
 		Pair<String,String> node = new Pair<String, String>(null, null);
-		String values = "(";
+		String values = "";
 		String metricId = "";
 		
 		for(Entry sub_entries : sub.getEntries()){
 			//getMeta(sub_entries.getMeta());
 			if (values.length() > 1) {
-				values += "|";
+				values += ":";
 			}
 			//Obtem os valores tipo "meta-data"
 			metricId = sub_entries.getMeta().get("metric-id"); 
 			values += "metric-id=" + metricId;
 			
 			if (values.length() > 1) {
-				values += "|";
+				values += ":";
 			}
 			
 			values += "value=" + sub_entries.getValue();
 	    }
-		
-		values += ")";
+				
 		node.setFirst("compound");
 		node.setSecond(values);
 		//System.out.println(node.getFirst()+" "+node.getSecond());
@@ -297,11 +296,114 @@ public class Medicoes {
 		return balanca;
 	}
 
-	public MedicaoPressaoDomain medicaoPressao(ArrayList<Pair<String, String>> med) {
-		MedicaoPressaoDomain pressao = new MedicaoPressaoDomain();
+	public MedicaoPressaoDomain medicaoPressao(ArrayList<Pair<String, String>> arrayMedicao) {
+		MedicaoPressaoDomain pressao = new MedicaoPressaoDomain();				
+		Pair<String, String> medicao;
+		int j = 0;
+
+		Calendar c = Calendar.getInstance();
+		Date data = c.getTime();
 		
-		//fazer
+		for (int i = 0; i < arrayMedicao.size(); i++) {
+			medicao = arrayMedicao.get(i);
+			
+			//lê o primeiro elemento do Oximeto
+			if (medicao.getFirst().equals("HANDLE")) {
+				i++;
+				medicao = arrayMedicao.get(i);				
+				String metricId = "";
+				String unit_cod = ""; 		
+				String unit = "";
+				float value = 0;
+				String compound = "";
+				
+				j = i;
+				while ((!medicao.getFirst().equals("HANDLE")) && (j < arrayMedicao.size())) {
+					System.out.println(medicao.getFirst() + " " + medicao.getSecond());
+					
+					if (medicao.getFirst().equals("metric-id")) {
+						metricId = medicao.getSecond();
+					}
+					
+					if (medicao.getFirst().equals("unit-code")) {
+						unit_cod = medicao.getSecond();
+					}
+					
+					if (medicao.getFirst().equals("unit")) {
+						unit = medicao.getSecond();
+					}
+					
+					if (medicao.getFirst().equals("value")) {
+						value = Float.parseFloat(medicao.getSecond());
+					}
+					
+					if (medicao.getFirst().equals("compound")) {
+						compound = medicao.getSecond();
+					}
+					
+					if (medicao.getFirst().equals("dateTime")) {		
+						try {
+							data = (Date) formatter.parse(medicao.getSecond());
+							System.out.println("Data formatada: "+data.toString());
+						} catch (ParseException e) {
+							e.printStackTrace();
+						}
+						//data = medicao.getSecond();
+					}
+					
+					j++;
+					if (j < arrayMedicao.size()) {
+						medicao = arrayMedicao.get(j);
+					}
+				}
+				j--;
+				i=j;
+				
+				if (metricId.equals("18474")) { //Pulse Rate
+					pressao.setTaxaDePulso(value);
+					pressao.setuTaxaDePulso(unit);
+				}
+				
+				if (metricId.equals("18948")) { //Blood Pressure
+					pressao.setuPressaoDiastolica(unit);
+					pressao.setUPressaoSistolica(unit);
+					pressao.setuPressaoMedia(unit);
+					
+					adicionaValores(pressao, compound);
+					
+				}
+				
+				
+			}
+		}
+		pressao.setDataHora(data);
 		
 		return pressao;
 	}
+
+	private void adicionaValores(MedicaoPressaoDomain pressao, String compound) {
+		String aux = "";
+		String[] valores = compound.split(":");
+		
+		String metric_id="";
+		float value = 0;
+		String[] expressao1;
+		String[] expressao2;
+		for(int i=0; i < valores.length; i=i+2) {
+			expressao1 = valores[i].split("=");		//metric_id			
+			expressao2 = valores[i+1].split("="); 	//value
+			if(expressao1[1].equals("18949")){	//pressao sistolica
+				pressao.setPressaoSistolica(Float.parseFloat(expressao2[1]));
+			}
+			
+			if(expressao1[1].equals("18950")){	//pressao sistolica
+				pressao.setPressaoDiastolica(Float.parseFloat(expressao2[1]));
+			}
+			
+			if(expressao1[1].equals("18951")){	//pressao sistolica
+				pressao.setPressaoMedia(Float.parseFloat(expressao2[1]));
+			}
+		}		
+	}
+		
 }
