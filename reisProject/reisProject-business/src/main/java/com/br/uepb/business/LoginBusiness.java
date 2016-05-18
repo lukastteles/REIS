@@ -44,4 +44,9 @@ public class LoginBusiness {
 			return false;
 		}
 	}
+	
+	public PacienteDomain getPaciente(String login, String senha) {
+		return loginDAO.obtemLogin(login, senha).getPaciente();
+		
+	}
 }
