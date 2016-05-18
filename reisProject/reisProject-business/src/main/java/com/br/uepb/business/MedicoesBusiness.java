@@ -1,14 +1,12 @@
 package com.br.uepb.business;
 
 import java.util.ArrayList;
-
-import javax.sound.sampled.DataLine;
+import java.util.List;
 
 import com.br.uepb.dao.LoginDAO;
 import com.br.uepb.dao.MedicaoBalancaDAO;
 import com.br.uepb.dao.MedicaoOximetroDAO;
 import com.br.uepb.dao.MedicaoPressaoDAO;
-import com.br.uepb.dao.PacienteDAO;
 import com.br.uepb.model.LoginDomain;
 import com.br.uepb.model.MedicaoBalancaDomain;
 import com.br.uepb.model.MedicaoOximetroDomain;
@@ -26,6 +24,7 @@ public class MedicoesBusiness {
 	private LoginDAO loginDAO = new LoginDAO();
 	private LoginDomain loginDomain;
 	
+	////////////////////////////////////OXIMETRO///////////////////////////////////////////
 	public Boolean medicaoOximetro(String pathXML) {
 		
 		try {
@@ -47,6 +46,16 @@ public class MedicoesBusiness {
 		
 		return false;
 	}
+	
+	public List<MedicaoOximetroDomain> listaMedicoesOximetroPaciente(int idPaciente){
+		return  medicaoOximetroDAO.listaMedicoesDoPaciente(idPaciente);
+	}
+	
+	public MedicaoOximetroDomain lisatUltimaMedicaoOximetro(int idPaciente){
+		return medicaoOximetroDAO.listaUltimaMedicaoDoPaciente(idPaciente);
+	}
+	
+	////////////////////////////////////BALANCA///////////////////////////////////////////
 	
 	public Boolean medicaoBalanca(String pathXML) {
 		
@@ -70,6 +79,16 @@ public class MedicoesBusiness {
 		return false;
 	}
 	
+	public List<MedicaoBalancaDomain> listaMedicoesBalancaPaciente(int idPaciente){
+		return  medicaoBalancaDAO.listaMedicoesDoPaciente(idPaciente);
+	}
+	
+	public MedicaoBalancaDomain lisatUltimaMedicaoBalanca(int idPaciente){
+		return medicaoBalancaDAO.listaUltimaMedicaoDoPaciente(idPaciente);
+	}
+	
+////////////////////////////////////MEDIDOR DE PRESSAO///////////////////////////////////////////
+	
 	public Boolean medicaoPressao(String pathXML) {
 		
 		try {
@@ -91,5 +110,13 @@ public class MedicoesBusiness {
 		
 		return false;
 	}
+	
+	public List<MedicaoPressaoDomain> listaMedicoesPressaoPaciente(int idPaciente){
+		return  medicaoPressaoDAO.listaMedicoesDoPaciente(idPaciente);
+	}
+	
+	public MedicaoPressaoDomain lisatUltimaMedicaoPressao(int idPaciente){
+		return medicaoPressaoDAO.listaUltimaMedicaoDoPaciente(idPaciente);
+	}	
 	
 }

@@ -54,6 +54,16 @@ public class MedicaoBalancaDAO {
 		return medicao;
 	}
 	
+	@SuppressWarnings("unchecked")
+	public MedicaoBalancaDomain listaUltimaMedicaoDoPaciente(int idPaciente){
+		List<MedicaoBalancaDomain> listamedicoes =
+				(List<MedicaoBalancaDomain>)SessaoAtual().createQuery(
+						"from MedicaoBalancaDomain order by data where  paciente.id =" + idPaciente).list();
+		
+		SessaoAtual().close();
+		return listamedicoes.get(0);
+	}
+	
 	private Session SessaoAtual(){
 		if (sessaoAtual == null || !sessaoAtual.isOpen()){
 			sessaoAtual = HibernateUtil.getSessionFactory().openSession();
