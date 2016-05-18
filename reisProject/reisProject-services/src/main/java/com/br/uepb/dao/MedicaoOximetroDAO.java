@@ -55,6 +55,16 @@ public class MedicaoOximetroDAO {
 		return medicao;
 	}
 	
+	@SuppressWarnings("unchecked")
+	public MedicaoOximetroDomain listaUltimaMedicaoDoPaciente(int idPaciente){
+		List<MedicaoOximetroDomain> listamedicoes =
+				(List<MedicaoOximetroDomain>)SessaoAtual().createQuery(
+						"from MedicaoOximetroDomain order by data where  paciente.id =" + idPaciente).list();
+		
+		SessaoAtual().close();
+		return listamedicoes.get(0);
+	}
+	
 	private Session SessaoAtual(){
 		if (sessaoAtual == null || !sessaoAtual.isOpen()){
 			sessaoAtual = HibernateUtil.getSessionFactory().openSession();

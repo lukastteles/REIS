@@ -5,7 +5,6 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-import com.br.uepb.model.MedicaoBalancaDomain;
 import com.br.uepb.model.MedicaoPressaoDomain;
 
 import conexaoBD.HibernateUtil;
@@ -66,6 +65,16 @@ private Session sessaoAtual;
 		
 		SessaoAtual().close();
 		return medicao;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public MedicaoPressaoDomain listaUltimaMedicaoDoPaciente(int idPaciente){
+		List<MedicaoPressaoDomain> listamedicoes =
+				(List<MedicaoPressaoDomain>)SessaoAtual().createQuery(
+						"from MedicaoPressaoDomain order by data where  paciente.id =" + idPaciente).list();
+		
+		SessaoAtual().close();
+		return listamedicoes.get(0);
 	}
 	
 	private Session SessaoAtual(){
