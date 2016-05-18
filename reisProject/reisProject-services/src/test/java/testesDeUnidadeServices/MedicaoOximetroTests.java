@@ -1,13 +1,16 @@
 package testesDeUnidadeServices;
 
 import static junit.framework.Assert.assertTrue;
+import static junit.framework.Assert.assertNotNull;
 
 import java.util.List;
 
 import org.junit.Test;
 
+import com.br.uepb.dao.LoginDAO;
 import com.br.uepb.dao.MedicaoOximetroDAO;
 import com.br.uepb.dao.PacienteDAO;
+import com.br.uepb.model.LoginDomain;
 import com.br.uepb.model.MedicaoOximetroDomain;
 import com.br.uepb.model.PacienteDomain;
 
@@ -50,5 +53,17 @@ public class MedicaoOximetroTests {
 		
 		assertTrue(medicoes.size() > 0);
 		assertTrue(medicao.getId() > 0);
+	}
+	
+	@Test
+	public void obterUltimaMedicaoTest(){
+		LoginDAO loginDAO = new LoginDAO();
+		MedicaoOximetroDAO medicaoDAO = new MedicaoOximetroDAO();
+		LoginDomain login = loginDAO.listaLogins().get(0);
+		if(login != null){
+			MedicaoOximetroDomain ultimaMedicao = medicaoDAO.obtemUltimaMedicao(login.getId());
+			assertNotNull(ultimaMedicao);
+			
+		}
 	}
 }
