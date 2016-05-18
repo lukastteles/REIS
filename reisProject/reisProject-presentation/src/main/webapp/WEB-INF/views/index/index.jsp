@@ -1,6 +1,12 @@
 <%@ include file="/WEB-INF/views/includeTags.jsp"%>
 
-
+<c:if test="${statusExcluir == 0}">
+				<div class="alert alert-success" role="alert" >
+				<span class="close" data-dismiss="alert" aria-label="close">&times;</span>
+					<span class="fa fa-exclamation-circle" aria-hidden="true"></span> <span
+						class="sr-only">Sucesso:</span> ${mensagem}
+				</div>
+			</c:if>
 <div class="mdl-grid">
 	<div class="mdl-cell mdl-cell--4-col">
 		<img class='img-responsive' width="450px" height="450px"

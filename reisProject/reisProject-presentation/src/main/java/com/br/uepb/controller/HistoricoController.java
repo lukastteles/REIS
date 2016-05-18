@@ -25,7 +25,7 @@ public class HistoricoController {
 		
 		HistoricoDomain ultimoHistorico = preencherHistorico();
 		
-		modelAndView.setViewName("historico");
+		modelAndView.setViewName("home/historico");
 		modelAndView.addObject("usuario", "Sidney");
 		modelAndView.addObject("ultimoHistorico", ultimoHistorico);
 		

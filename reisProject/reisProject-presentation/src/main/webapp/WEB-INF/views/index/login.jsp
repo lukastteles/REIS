@@ -16,6 +16,7 @@
 					<div class="col-md-12">
 					<c:if test="${status == 1}">
 								<div class="alert alert-danger" role="alert">
+				<span class="close" data-dismiss="alert" aria-label="close">&times;</span>
 									<span class="fa fa-exclamation-circle" aria-hidden="true"></span>
 									<span class="sr-only">Erro:</span> ${mensagem}
 								</div>

@@ -54,24 +54,29 @@ public class PerfilController {
 		return modelAndView;
 	}
 	
-	/*@RequestMapping(value = "/home/excluir.html", method = RequestMethod.GET)
-	public ModelAndView excluirGet(HttpServletRequest request) {
+	@RequestMapping(value = "/home/excluir.html", method = RequestMethod.POST)
+	public ModelAndView excluirGet(@ModelAttribute("loginExcluir") LoginDomain login, Model model) {
 
 		ModelAndView modelAndView = new ModelAndView();
 		LoginBusiness loginBusiness = new LoginBusiness();
 		if(loginBusiness.excluir(SessaoBusiness.getLoginDomain())){
 			SessaoBusiness.setLoginDomain(null);
-			modelAndView.setViewName("redirect:/index/index.html");
+			modelAndView.setViewName("index/index");
 			String mensagem = "Todas as suas informações foram removidas";
 			modelAndView.addObject("mensagem", mensagem);
-			modelAndView.addObject("status",
+			modelAndView.addObject("statusExcluir",
 					"0");
 		}else{
-			
+			SessaoBusiness.setLoginDomain(null);
+			modelAndView.setViewName("home/perfil");
+			String mensagem = "Não foi possível excluir suas informações";
+			modelAndView.addObject("mensagem", mensagem);
+			modelAndView.addObject("statusExcluir",
+					"1");
 		}
 		
 
 		return modelAndView;
-	}*/
+	}
 
 }
