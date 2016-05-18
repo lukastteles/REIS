@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.br.uepb.business.LoginBusiness;
+import com.br.uepb.business.SessaoBusiness;
 import com.br.uepb.model.LoginDomain;
 
 @Controller
@@ -33,7 +34,8 @@ public class CadastroController {
 			
 			if(loginBusiness.salvar(login)){
 
-				modelAndView.setViewName("home/home");
+				modelAndView.setViewName("redirect:/home/home.html");
+				SessaoBusiness.setLoginDomain(login);
 				String mensagem = "Cadastro realizado com sucesso";
 				modelAndView.addObject("mensagem", mensagem);
 				modelAndView.addObject("status",

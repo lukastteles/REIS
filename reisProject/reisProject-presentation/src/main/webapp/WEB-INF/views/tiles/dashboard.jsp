@@ -53,7 +53,7 @@
 					for="hdrbtn">
 					<a class="mdl-menu__item" href="perfil.html">Perfil</a>
 					<a class="mdl-menu__item"
-						href="/reisProject-presentation/index/index.html">Sair</a>
+						href="/reisProject-presentation/index/sair.html">Sair</a>
 				</ul>
 			</div>
 		</header>
