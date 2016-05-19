@@ -57,11 +57,11 @@ public class MedicaoOximetroTests {
 	
 	@Test
 	public void obterUltimaMedicaoTest(){
-		LoginDAO loginDAO = new LoginDAO();
+		PacienteDAO pacienteDAO = new PacienteDAO();
 		MedicaoOximetroDAO medicaoDAO = new MedicaoOximetroDAO();
-		LoginDomain login = loginDAO.listaLogins().get(0);
-		if(login != null){
-			MedicaoOximetroDomain ultimaMedicao = medicaoDAO.obtemUltimaMedicao(login.getId());
+		PacienteDomain paciente = pacienteDAO.listaPacientes().get(0);
+		if(paciente != null){
+			MedicaoOximetroDomain ultimaMedicao = medicaoDAO.obtemUltimaMedicao(paciente.getId());
 			assertNotNull(ultimaMedicao);
 			
 		}

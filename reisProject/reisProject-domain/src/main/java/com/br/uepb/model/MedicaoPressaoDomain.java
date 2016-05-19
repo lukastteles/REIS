@@ -26,8 +26,7 @@ public class MedicaoPressaoDomain {
 	
 	@ManyToOne
 	@JoinColumn(name = "paciente_id", referencedColumnName="id")
-	@Fetch(FetchMode.JOIN)
-	@Cascade({CascadeType.SAVE_UPDATE, CascadeType.DELETE})
+	@Fetch(FetchMode.JOIN)	
 	private PacienteDomain paciente;
 	
 	@Column(name = "pressao_sistolica")

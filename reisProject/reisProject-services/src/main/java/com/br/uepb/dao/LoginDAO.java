@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import com.br.uepb.model.LoginDomain;
 import com.br.uepb.model.PacienteDomain;
@@ -35,8 +36,11 @@ public class LoginDAO {
 	}
 	
 	public void excluiLogin(LoginDomain login){
-		SessaoAtual().delete(login);
-		SessaoAtual().close();
+		Session novaSessao = SessaoAtual();
+		Transaction tx = SessaoAtual().beginTransaction();
+		novaSessao.delete(login);
+		novaSessao.flush();
+		tx.commit();
 	}
 	
 	public LoginDomain obtemLogin(int idLogin){
@@ -52,7 +56,16 @@ public class LoginDAO {
 		LoginDomain login = (LoginDomain)query.uniqueResult();
 		
 		return login;
-	}	
+	}
+	
+	public LoginDomain obtemLoginPorPaciente(int idPaciente){
+		
+		Query query = SessaoAtual().createQuery("FROM LoginDomain WHERE paciente.id = :idPaciente");
+		query.setParameter("idPaciente", idPaciente);
+		LoginDomain login = (LoginDomain)query.uniqueResult();
+		
+		return login;
+	}
 	
 	public boolean jaExisteUsuario(String usuario){
 		Query query = SessaoAtual().createQuery("FROM LoginDomain WHERE login = :usuario");

@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
 import com.br.uepb.model.MedicaoBalancaDomain;
@@ -28,9 +29,12 @@ public class MedicaoOximetroDAO {
 		SessaoAtual().getTransaction().commit();
 		SessaoAtual().close();
 	}
-	public void excluiPerfil(MedicaoOximetroDomain medicao){
-		SessaoAtual().delete(medicao);
-		SessaoAtual().close();
+	public void excluiMedicaoOximetro(MedicaoOximetroDomain medicao){
+		Session novaSessao = SessaoAtual();
+		Transaction tx = SessaoAtual().beginTransaction();
+		novaSessao.delete(medicao);
+		novaSessao.flush();
+		tx.commit();
 	}
 	
 	public MedicaoOximetroDomain obtemMedicaoOximetro(int idOximetro){

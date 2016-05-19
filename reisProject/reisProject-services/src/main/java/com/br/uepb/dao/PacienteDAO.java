@@ -3,7 +3,13 @@ package com.br.uepb.dao;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
+import com.br.uepb.model.LoginDomain;
+import com.br.uepb.model.MedicaoBalancaDomain;
+import com.br.uepb.model.MedicaoOximetroDomain;
+import com.br.uepb.model.MedicaoPressaoDomain;
 import com.br.uepb.model.PacienteDomain;
 
 import conexaoBD.HibernateUtil;
@@ -32,9 +38,30 @@ private Session sessaoAtual;
 		SessaoAtual().close();
 	}
 	
-	public void excluiPaciente(PacienteDomain perfil){
-		SessaoAtual().delete(perfil);
-		SessaoAtual().close();
+	public void excluiPaciente(PacienteDomain paciente){
+		Session novaSessao = SessaoAtual();
+		LoginDAO loginDAO = new LoginDAO();
+		MedicaoOximetroDAO medicaoOxDAO = new MedicaoOximetroDAO();
+		MedicaoPressaoDAO medicaoPres = new MedicaoPressaoDAO();
+		MedicaoBalancaDAO medicaoB = new MedicaoBalancaDAO();
+		LoginDomain login = loginDAO.obtemLoginPorPaciente(paciente.getId());		
+		
+		Transaction tx = SessaoAtual().beginTransaction();
+		if(login != null){
+		novaSessao.delete(login);
+		}
+		for (MedicaoOximetroDomain medicao  : medicaoOxDAO.listaMedicoesDoPaciente(paciente.getId())) {
+			novaSessao.delete(medicao);
+		}
+		for(MedicaoPressaoDomain medicao : medicaoPres.listaMedicoesDoPaciente(paciente.getId())){
+			novaSessao.delete(medicao);
+		}
+		for(MedicaoBalancaDomain medicao : medicaoB.listaMedicoesDoPaciente(paciente.getId())){
+			novaSessao.delete(medicao);
+		}
+		novaSessao.delete(paciente);
+		novaSessao.flush();
+		tx.commit();
 	}
 	
 	public PacienteDomain obtemPaciente(int idPaciente){
