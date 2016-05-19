@@ -58,6 +58,7 @@ public class PersistenciaPacienteTests {
 	public void limparDados(){
 		PacienteDAO pacienteDAO = new PacienteDAO();
 		PacienteDomain paciente = pacienteDAO.obtemPaciente(ultimoPaciente);
+		if(paciente != null)
 		pacienteDAO.excluiPaciente(paciente);
 	}
 
