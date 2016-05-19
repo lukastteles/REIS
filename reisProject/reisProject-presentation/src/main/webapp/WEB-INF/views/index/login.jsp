@@ -3,8 +3,8 @@
 <section>
 	<div class='container'>
 		<div class='row'>
-			<div class='col-md-2'>&nbsp;</div>
-			<div class='col-md-6'>
+			<div class='col-md-4'>&nbsp;</div>
+			<div class='col-md-4'>
 				<form:form id="formLogin" modelAttribute="loginDomain" method="post">
 					<div class='col-lg-12 text-center'>
 						<h2 class="negrito">
@@ -42,7 +42,7 @@
 					</div>
 				</form:form>
 			</div>
-			<div class='col-md-3'>&nbsp;</div>
+			<div class='col-md-4'>&nbsp;</div>
 		</div>
 	</div>
 </section>

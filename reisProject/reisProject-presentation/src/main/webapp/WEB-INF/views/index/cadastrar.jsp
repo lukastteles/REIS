@@ -4,8 +4,8 @@
 	<div class='container'>
 		<div class='row'>
 			<div class="mdl-grid">
-				<div class='col-md-2'>&nbsp;</div>
-				<div class='col-md-6'>
+				<div class='col-md-4'>&nbsp;</div>
+				<div class='col-md-4'>
 					<form:form id="formCadastro" modelAttribute="loginDomain" method="post">
 						<div class='col-lg-12 text-center'>
 							<h2 class="negrito">
@@ -92,7 +92,7 @@
 					</form:form>
 				</div>
 			</div>
-			<div class='col-md-3'>&nbsp;</div>
+			<div class='col-md-4'>&nbsp;</div>
 		</div>
 	</div>
 </section>
