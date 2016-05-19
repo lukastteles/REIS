@@ -34,7 +34,7 @@ public class MedicoesBusiness {
 			ArrayList<Pair<String,String>> med = medicoes.getMedicoes();
 			
 			MedicaoOximetroDomain medicaoOximetroDomain =  medicoes.medicaoOximetro(med);
-			loginDomain = loginDAO.obtemLogin(SessaoBusiness.getLoginDomain().getLogin(), SessaoBusiness.getLoginDomain().getSenha());			
+			loginDomain = SessaoBusiness.getLoginDomain();//loginDAO.obtemLogin(SessaoBusiness.getLoginDomain().getLogin(), SessaoBusiness.getLoginDomain().getSenha());			
 			PacienteDomain paciente = loginDomain.getPaciente();			
 			medicaoOximetroDomain.setPaciente(paciente);			
 			medicaoOximetroDAO.salvaMedicaoOximetro(medicaoOximetroDomain);
@@ -68,7 +68,7 @@ public class MedicoesBusiness {
 			ArrayList<Pair<String,String>> med = medicoes.getMedicoes();
 			
 			MedicaoBalancaDomain medicaoBalancaDomain =  medicoes.medicaoBalanca(med);
-			loginDomain = loginDAO.obtemLogin(SessaoBusiness.getLoginDomain().getLogin(), SessaoBusiness.getLoginDomain().getSenha());				
+			loginDomain = SessaoBusiness.getLoginDomain();//loginDAO.obtemLogin(SessaoBusiness.getLoginDomain().getLogin(), SessaoBusiness.getLoginDomain().getSenha());				
 			PacienteDomain paciente = loginDomain.getPaciente();			
 			medicaoBalancaDomain.setPaciente(paciente);								
 			medicaoBalancaDAO.salvaMedicaoBalanca(medicaoBalancaDomain);
@@ -101,7 +101,7 @@ public class MedicoesBusiness {
 			ArrayList<Pair<String,String>> med = medicoes.getMedicoes();
 			
 			MedicaoPressaoDomain medicaoPressaoDomain =  medicoes.medicaoPressao(med);
-			loginDomain = loginDAO.obtemLogin(SessaoBusiness.getLoginDomain().getLogin(), SessaoBusiness.getLoginDomain().getSenha());				
+			loginDomain = SessaoBusiness.getLoginDomain();//loginDAO.obtemLogin(SessaoBusiness.getLoginDomain().getLogin(), SessaoBusiness.getLoginDomain().getSenha());				
 			PacienteDomain paciente = loginDomain.getPaciente();			
 			medicaoPressaoDomain.setPaciente(paciente);								
 			medicaoPressaoDAO.salvaMedicaoPressao(medicaoPressaoDomain);
