@@ -36,11 +36,11 @@ import ca.uhn.hl7v2.model.v25.segment.PID;
 import ca.uhn.hl7v2.model.v25.segment.PV1;
 import ca.uhn.hl7v2.parser.Parser;
 
-public class tranformacaoDaStringParaHL8 {
+public class MensagensHL7 {
 	
 	private MedicoesBusiness business = new MedicoesBusiness();
 
-	public tranformacaoDaStringParaHL8() {
+	public MensagensHL7() {
 
 	}
 
@@ -54,18 +54,23 @@ public class tranformacaoDaStringParaHL8 {
 
 		// Cabeçalho da mensagem
 		MSH mshMensagem = mensagem.getMSH();
-		mshMensagem.getMessageControlID().setValue("MESSAGE_CONTROL_ID_1");
+		mshMensagem.getMessageControlID().setValue("MESSAGE_CONTROL");
 		mshMensagem.getSequenceNumber().setValue("123");
 
 		// Informações básicas do paciente
 		PID pid = mensagem.getPATIENT_RESULT().getPATIENT().getPID();
 		pid.getPatientName(0).getGivenName().setValue(paciente.getNome());
+		//pid.getPatientID().getIdentifierTypeCode().setTable(paciente.getId());
+		pid.getSetIDPID().setValue(String.valueOf(paciente.getId()));
+		pid.getPatientAddress(0).getCity().setValue(paciente.getCidade());
+		pid.getPatientAddress(0).getStreetAddress().getStreetName().setValue(paciente.getEndereco());
+		pid.getPhoneNumberBusiness(0).getTelephoneNumber().setValue(paciente.getTelefoneCasa());
 
 		// OBR
 		ORU_R01_ORDER_OBSERVATION orderOBR = mensagem.getPATIENT_RESULT().getORDER_OBSERVATION();
 		OBR obr = orderOBR.getOBR();
 		obr.getSetIDOBR().setValue("1");
-		obr.getFillerOrderNumber().getEntityIdentifier().setValue("UEPB");
+		obr.getFillerOrderNumber().getEntityIdentifier().setValue("Dispositivo");
 		obr.getUniversalServiceIdentifier().getIdentifier().setValue("Pressão");
 
 		// OBX 1 - Pressão Sistolica
@@ -155,18 +160,22 @@ public class tranformacaoDaStringParaHL8 {
 
 		// Cabeçalho da mensagem
 		MSH mshMensagem = mensagem.getMSH();
-		mshMensagem.getMessageControlID().setValue("MESSAGE_CONTROL_ID_1");
+		mshMensagem.getMessageControlID().setValue("MESSAGE_CONTROL");
 		mshMensagem.getSequenceNumber().setValue("123");
 
 		// Informações básicas do paciente
 		PID pid = mensagem.getPATIENT_RESULT().getPATIENT().getPID();
 		pid.getPatientName(0).getGivenName().setValue(paciente.getNome());
+		pid.getSetIDPID().setValue(String.valueOf(paciente.getId()));
+		pid.getPatientAddress(0).getCity().setValue(paciente.getCidade());
+		pid.getPatientAddress(0).getStreetAddress().getStreetName().setValue(paciente.getEndereco());
+		pid.getPhoneNumberBusiness(0).getTelephoneNumber().setValue(paciente.getTelefoneCasa());
 
 		// OBR
 		ORU_R01_ORDER_OBSERVATION orderOBR = mensagem.getPATIENT_RESULT().getORDER_OBSERVATION();
 		OBR obr = orderOBR.getOBR();
 		obr.getSetIDOBR().setValue("1");
-		obr.getFillerOrderNumber().getEntityIdentifier().setValue("UEPB");
+		obr.getFillerOrderNumber().getEntityIdentifier().setValue("Dispositivo");
 		obr.getUniversalServiceIdentifier().getIdentifier().setValue("Oximetro");
 
 		// OBX 1 - SPO2
@@ -214,28 +223,31 @@ public class tranformacaoDaStringParaHL8 {
 	}
 
 	public String criarMensagemHL7Balanca(PacienteDomain paciente) throws HL7Exception, IOException {
-		System.out.println(paciente.getId());
 		
 		MedicaoBalancaDomain medicaoBalancaDomain = business.lisatUltimaMedicaoBalanca(paciente.getId());
-		System.out.println(medicaoBalancaDomain.getAltura());
 		
 		ORU_R01 mensagem = new ORU_R01();
 		mensagem.initQuickstart("ORU", "R01", "P");
 
 		// Cabeçalho da mensagem
 		MSH mshMensagem = mensagem.getMSH();
-		mshMensagem.getMessageControlID().setValue("MESSAGE_CONTROL_ID_1");
+		mshMensagem.getMessageControlID().setValue("MESSAGE_CONTROL");
 		mshMensagem.getSequenceNumber().setValue("123");
 
 		// Informações básicas do paciente
 		PID pid = mensagem.getPATIENT_RESULT().getPATIENT().getPID();
 		pid.getPatientName(0).getGivenName().setValue(paciente.getNome());
+		//pid.getPatientID().getIdentifierTypeCode().setTable(paciente.getId());
+		pid.getSetIDPID().setValue(String.valueOf(paciente.getId()));
+		pid.getPatientAddress(0).getCity().setValue(paciente.getCidade());
+		pid.getPatientAddress(0).getStreetAddress().getStreetName().setValue(paciente.getEndereco());
+		pid.getPhoneNumberBusiness(0).getTelephoneNumber().setValue(paciente.getTelefoneCasa());
 
 		// OBR
 		ORU_R01_ORDER_OBSERVATION orderOBR = mensagem.getPATIENT_RESULT().getORDER_OBSERVATION();
 		OBR obr = orderOBR.getOBR();
 		obr.getSetIDOBR().setValue("1");
-		obr.getFillerOrderNumber().getEntityIdentifier().setValue("UEPB");
+		obr.getFillerOrderNumber().getEntityIdentifier().setValue("Dispositivo");
 		obr.getUniversalServiceIdentifier().getIdentifier().setValue("Balança");
 
 		// OBX 1 - Peso
@@ -312,7 +324,7 @@ public class tranformacaoDaStringParaHL8 {
 	}
 
 	public static void main(String[] args) {
-		tranformacaoDaStringParaHL8 tranformacaoDaStringParaHL7 = new tranformacaoDaStringParaHL8();
+		MensagensHL7 tranformacaoDaStringParaHL7 = new MensagensHL7();
 		PacienteDomain paciente = tranformacaoDaStringParaHL7.informacoesDoPaciente(1);
 		try {
 			// tranformacaoDaStringParaHL7.createRadiologyOrderMessage();

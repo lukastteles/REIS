@@ -11,7 +11,7 @@ import ca.uhn.hl7v2.model.v22.message.ADT_A01;
 import ca.uhn.hl7v2.parser.EncodingNotSupportedException;
 import ca.uhn.hl7v2.parser.Parser;
 
-public class tranformacaoDaStringParaHL7 {
+public class TestesComHL7 {
 
 	private static ADT_A01 adtMsg;
 
@@ -34,7 +34,7 @@ public class tranformacaoDaStringParaHL7 {
 			+ "OBX|5|NM|78564009^Pulse rate^SNOMED-CT||80|bpm|60-100|N|||F|||20100511220525"
 			+ "OBX|6|NM|431314004^SpO2^SNOMED-CT||90|%|94-100|L|||F|||20100511220525";
 
-	public tranformacaoDaStringParaHL7() {
+	public TestesComHL7() {
 		HapiContext context = new DefaultHapiContext();
 
 		Parser p = context.getGenericParser();
@@ -63,7 +63,7 @@ public class tranformacaoDaStringParaHL7 {
 
 	public static void main(String[] args) {
 
-		tranformacaoDaStringParaHL7 tranformacaoDaStringParaHL7 = new tranformacaoDaStringParaHL7();
+		TestesComHL7 tranformacaoDaStringParaHL7 = new TestesComHL7();
 
 		//MSH msh = adtMsg.getMSH();
 
