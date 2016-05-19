@@ -38,14 +38,17 @@ public class TestesBusiness {
 		SessaoBusiness.setLoginDomain(login);
 		
 		//Deixei aqui pra vc Luana :)
-		//String xml = "C:/Users/Luana/workspace/Leitura_XML/arquivos_xml/Oximetro XML de medicoes1.xml";
-		//String xml = "E:/Workspace/luna/Leitura_XML/arquivos_xml/pressao.xml";
+		String xmlOximetro = "C:/Users/Luana/workspace/Leitura_XML/arquivos_xml/Oximetro XML de medicoes1.xml";
+		String xmlBalanca = "C:/Users/Luana/workspace/Leitura_XML/arquivos_xml/Balança XML de medicoes.xml";
+		String xmlPressao = "C:/Users/Luana/workspace/Leitura_XML/arquivos_xml/Medidor de pressão XML de medicoes.xml";
 		
-		//medicoesBusines.medicaoOximetro(xml);
-		//System.out.println("Leitura Oximetro");
+		medicoesBusines.medicaoOximetro(xmlOximetro);
+		System.out.println("Leitura Oximetro");
 		
-		String xml = "C:/Users/Luana/workspace/Leitura_XML/arquivos_xml/Medidor de pressão XML de medicoes.xml";		
-		medicoesBusines.medicaoPressao(xml);
+		medicoesBusines.medicaoBalanca(xmlBalanca);
+		System.out.println("Leitura Balança");
+		
+		medicoesBusines.medicaoPressao(xmlPressao);
 		System.out.println("Leitura Pressão");
 
 	}
