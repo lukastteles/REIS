@@ -52,7 +52,7 @@ public class MedicoesBusiness {
 	}
 	
 	public MedicaoOximetroDomain lisatUltimaMedicaoOximetro(int idPaciente){
-		return medicaoOximetroDAO.listaUltimaMedicaoDoPaciente(idPaciente);
+		return medicaoOximetroDAO.obtemUltimaMedicao(idPaciente);
 	}
 	
 	////////////////////////////////////BALANCA///////////////////////////////////////////

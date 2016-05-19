@@ -1,78 +1,101 @@
 <%@ include file="/WEB-INF/views/includeTags.jsp"%>
 
-<div class="mdl-grid mdl-layout__content">	
+<div class="mdl-grid mdl-layout__content">
 	<div class="mdl-grid mdl-cell mdl-cell--12-col">
-	
-		<!-- Infromacoes do Paciente -->	
-		<div class="mdl-grid mdl-cell mdl-cell--4-col mdl-card mdl-shadow--4dp">  
-			<div class="mdl-card__title">
-				<h2 class="mdl-card__title-text">${usuario}</h2>
-			</div>		
-        	<div class="mdl-card__supporting-text no-left-padding">
-                <p>Idade: --</p>
-                <p>Sexo: ${paciente.sexo}</p>
-                <p>Data de Nascimento: --</p>
-                <p>Endereço: ${paciente.endereco} </p>
-                <p>Cidade: ${paciente.cidade} </p>
-                <p>Telefone: ${paciente.telefoneCasa}</p>                	
-            </div>
+
+		<!-- Infromacoes do Paciente -->
+		<div
+			class="mdl-grid mdl-cell mdl-cell--4-col mdl-card mdl-shadow--4dp">
+			<div class="mdl-card__title ">
+				<img src="../images/perfil.png" class="demo-avatar"> <br>
+				<h2 class="mdl-card__title-text negrito">${usuario}</h2>
+			</div>
+			<div class="mdl-card__supporting-text no-left-padding">
+				<p>
+					Idade: <span class="negrito">--</span>
+				</p>
+				<p>
+					Sexo: <span class="negrito">${paciente.sexo}</span>
+				</p>
+				<p>
+					Data de Nascimento: <span class="negrito">--</span>
+				</p>
+				<p>
+					Endereço: <span class="negrito">${paciente.endereco}</span>
+				</p>
+				<p>
+					Cidade: <span class="negrito">${paciente.cidade}</span>
+				</p>
+				<p>
+					Telefone: <span class="negrito">${paciente.telefoneCasa}</span>
+				</p>
+			</div>
 		</div>
-		
+
 		<!-- Medicoes do Paciente -->
-		<div class="mdl-grid mdl-cell mdl-cell--8-col  mdl-card mdl-shadow--4dp">			
-			<div class="mdl-grid mdl-cell mdl-cell--4-col mdl-card__supporting-text no-left-padding">
+		<div
+			class="mdl-grid mdl-cell mdl-cell--8-col  mdl-card mdl-shadow--4dp">
+			<div
+				class="mdl-grid mdl-cell mdl-cell--4-col mdl-card__supporting-text no-left-padding">
 				<div class="mdl-card__supporting-text no-left-padding">
 					<h2 class="mdl-card__title-text">Peso</h2>
-                	<p>60 kg</p>
-                </div>
-	               
-	        </div>
-	             
-			<div class="mdl-grid mdl-cell mdl-cell--4-col mdl-card__supporting-text no-left-padding">
+					<h3>${balanca.peso}${balanca.uPeso}</h3>
+				</div>
+
+			</div>
+
+			<div
+				class="mdl-grid mdl-cell mdl-cell--4-col mdl-card__supporting-text no-left-padding">
 				<div class="mdl-card__supporting-text no-left-padding">
 					<h2 class="mdl-card__title-text">Altura</h2>
-               		<p>163 cm</p>
-               	</div>
-	               
-	        </div>
-	           
-			<div class="mdl-grid mdl-cell mdl-cell--4-col mdl-card__supporting-text no-left-padding">
+					<h3>${balanca.altura}${balanca.uAltura}</h3>
+				</div>
+
+			</div>
+
+			<div
+				class="mdl-grid mdl-cell mdl-cell--4-col mdl-card__supporting-text no-left-padding">
 				<div class="mdl-card__supporting-text no-left-padding">
 					<h2 class="mdl-card__title-text">IMC</h2>
-               		<p>17,4 kg m²</p>
-               	</div>
-	        </div>
-	        
-	        <div class="mdl-grid mdl-cell mdl-cell--12-col mdl-card__supporting-text no-left-padding">
+					<h3>${balanca.massa}${balanca.uMassa}</h3>
+				</div>
+			</div>
+
+			<div
+				class="mdl-grid mdl-cell mdl-cell--12-col mdl-card__supporting-text no-left-padding">
 				<div class="mdl-card__supporting-text no-left-padding">
 					<h2 class="mdl-card__title-text">Pressão Sanguínea</h2>
-               		<p>17,4 kg m²</p>
-               	</div>
-	        </div>
-        	
-        	<div class="mdl-grid mdl-cell mdl-cell--6-col mdl-card__supporting-text no-left-padding">
+					<h3>${pressao.pressaoMedia}${pressao.uPressaoMedia}</h3>
+				</div>
+			</div>
+
+			<div
+				class="mdl-grid mdl-cell mdl-cell--6-col mdl-card__supporting-text no-left-padding">
 				<div class="mdl-card__supporting-text no-left-padding">
 					<h2 class="mdl-card__title-text">sp02</h2>
-               		<p>17,4 kg m²</p>
-               	</div>
-	        </div>
-	        
-	        <div class="mdl-grid mdl-cell mdl-cell--6-col mdl-card__supporting-text no-left-padding">
-				<div class="mdl-card__supporting-text no-left-padding">
-					<h2 class="mdl-card__title-text">Taxa de Paulso</h2>
-               		<p>17,4 kg m²</p>
-               	</div>
-	        </div>
-        	
-        </div>
-        
-       	
+					<h3>${oximetro.spo2}${oximetro.uSPO2}</h3>
+					<div id="spo2" class="mdl-progress mdl-js-progress"></div>
+				</div>
+			</div>
+		</div>
+
+		<div
+			class="mdl-grid mdl-cell mdl-cell--6-col mdl-card__supporting-text no-left-padding">
+			<div class="mdl-card__supporting-text no-left-padding">
+				<h2 class="mdl-card__title-text">Taxa de Pulso</h2>
+				<h3>${oximetro.taxaPulso}${oximetro.uTaxaDePulso}</h3>
+			</div>
+		</div>
+
 	</div>
-	
+
+
 </div>
-			
- 
- <!-- 
+
+</div>
+
+
+<!-- 
 <div class="mdl-grid">
 	<div class="mdl-cell mdl-cell--4-col">
 		<div class="demo-card-square mdl-card mdl-shadow--2dp">
@@ -148,3 +171,10 @@
 	</div>
 </div>
  -->
+
+
+<script>
+  document.querySelector('#spo2').addEventListener('mdl-componentupgraded', function() {
+    this.MaterialProgress.setProgress('${oximetro.spo2}');
+  });
+</script>
