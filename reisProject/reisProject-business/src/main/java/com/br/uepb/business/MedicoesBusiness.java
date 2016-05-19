@@ -84,7 +84,7 @@ public class MedicoesBusiness {
 	}
 	
 	public MedicaoBalancaDomain lisatUltimaMedicaoBalanca(int idPaciente){
-		return medicaoBalancaDAO.listaUltimaMedicaoDoPaciente(idPaciente);
+		return medicaoBalancaDAO.obtemUltimaMedicao(idPaciente);
 	}
 	
 ////////////////////////////////////MEDIDOR DE PRESSAO///////////////////////////////////////////
