@@ -53,7 +53,7 @@ public class MedicaoPressaoTests {
 	public void limparDados(){		
 		MedicaoPressaoDAO medicaoDAO = new MedicaoPressaoDAO();
 		MedicaoPressaoDomain medicao = medicaoDAO.obtemMedicaoPressao(ultimaMedicao);
-		medicaoDAO.excluiPressao(medicao);
+		medicaoDAO.excluiMedicaoPressao(medicao);
 	}
 
 }

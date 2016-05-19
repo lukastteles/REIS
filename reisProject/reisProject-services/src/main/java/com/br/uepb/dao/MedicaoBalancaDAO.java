@@ -3,6 +3,7 @@ package com.br.uepb.dao;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import com.br.uepb.model.MedicaoBalancaDomain;
 
@@ -23,9 +24,12 @@ public class MedicaoBalancaDAO {
 		SessaoAtual().getTransaction().commit();
 		SessaoAtual().close();
 	}
-	public void excluiPerfil(MedicaoBalancaDomain medicao){
-		SessaoAtual().delete(medicao);
-		SessaoAtual().close();
+	public void excluiMedicaoBalanca(MedicaoBalancaDomain medicao){
+		Session novaSessao = SessaoAtual();
+		Transaction tx = SessaoAtual().beginTransaction();
+		novaSessao.delete(medicao);
+		novaSessao.flush();
+		tx.commit();
 	}
 	
 	public MedicaoBalancaDomain obtemMedicaoBalanca(int idBalanca){

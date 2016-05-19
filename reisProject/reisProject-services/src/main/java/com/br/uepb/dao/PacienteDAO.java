@@ -3,7 +3,10 @@ package com.br.uepb.dao;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
+import com.br.uepb.model.LoginDomain;
 import com.br.uepb.model.PacienteDomain;
 
 import conexaoBD.HibernateUtil;
@@ -32,9 +35,16 @@ private Session sessaoAtual;
 		SessaoAtual().close();
 	}
 	
-	public void excluiPaciente(PacienteDomain perfil){
-		SessaoAtual().delete(perfil);
-		SessaoAtual().close();
+	public void excluiPaciente(PacienteDomain paciente){
+		Session novaSessao = SessaoAtual();
+		LoginDAO loginDAO = new LoginDAO();
+		LoginDomain login = loginDAO.obtemLoginPorPaciente(paciente.getId());
+		
+		Transaction tx = SessaoAtual().beginTransaction();
+		novaSessao.delete(login);
+		novaSessao.delete(paciente);
+		novaSessao.flush();
+		tx.commit();
 	}
 	
 	public PacienteDomain obtemPaciente(int idPaciente){

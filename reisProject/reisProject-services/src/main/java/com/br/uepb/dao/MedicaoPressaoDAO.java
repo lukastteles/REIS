@@ -2,10 +2,6 @@ package com.br.uepb.dao;
 
 import java.util.List;
 
-
-
-import org.hibernate.Query;
-import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -37,18 +33,12 @@ private Session sessaoAtual;
 		SessaoAtual().close();
 	}
 	
-	public void excluiPressao(MedicaoPressaoDomain medicao){
-		Session novaSessao = HibernateUtil.getSessionFactory().getCurrentSession();
-		Transaction tx = novaSessao.beginTransaction();
+	public void excluiMedicaoPressao(MedicaoPressaoDomain medicao){
+		Session novaSessao = SessaoAtual();
+		Transaction tx = SessaoAtual().beginTransaction();
 		novaSessao.delete(medicao);
 		novaSessao.flush();
 		tx.commit();
-//		SQLQuery query = SessaoAtual().createSQLQuery("DELETE FROM medicao_pressao WHERE id= :id AND paciente_id= :pacienteId");
-//		query.setParameter("id", medicao.getId());
-//		query.setParameter("pacienteId", medicao.getPaciente().getId());
-//		query.addEntity(MedicaoPressaoDomain.class);
-//		query.executeUpdate();
-//		SessaoAtual().close();
 	}
 	
 	public MedicaoPressaoDomain obtemMedicaoPressao(int idMedicao){
