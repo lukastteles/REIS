@@ -98,7 +98,7 @@ public class MedicaoOximetroDAO {
 	public MedicaoOximetroDomain listaUltimaMedicaoDoPaciente(int idPaciente){
 		List<MedicaoOximetroDomain> listamedicoes =
 				(List<MedicaoOximetroDomain>)SessaoAtual().createQuery(
-						"from MedicaoOximetroDomain order by data where  paciente.id =" + idPaciente).list();
+						"from MedicaoOximetroDomain where  paciente.id = " + idPaciente+"order by dataHora").list();
 		
 		SessaoAtual().close();
 		return listamedicoes.get(0);
