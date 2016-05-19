@@ -40,14 +40,7 @@ public class HomeController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value = "/home/medicao.html", method = RequestMethod.GET)
-	public ModelAndView medicaoGet(HttpServletRequest request) {
-
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("home/medicao");
-		modelAndView.addObject("usuario", "fulano");
-		return modelAndView;
-	}
+	
 	
 
 }

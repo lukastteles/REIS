@@ -59,6 +59,12 @@ http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 		</property>
 	</bean>
 	
+	<!-- Configure the multipart resolver -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- one of the properties available; the maximum file size in bytes -->
+        <property name="maxUploadSize" value="100000"/>
+    </bean>
+    
 	<bean id="validator" class="com.br.uepb.validator.adapter.CustomConstraintSpringValidatorAdapter">
 		<property name="validationMessageSource" ref="messageSource" ></property>
 	</bean>
