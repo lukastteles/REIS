@@ -81,6 +81,8 @@ public class MedicaoController {
 				String tipo_dispositivo = uploadItem.getTipo_dispositivo();
 				String arquivo = serverFile.toString();
 
+				System.out.println("login:" + SessaoBusiness.getLoginDomain().getLogin() );
+				System.out.println("senha:" + SessaoBusiness.getLoginDomain().getSenha() );
 				if (tipo_dispositivo.equals("0")) { // oximetro
 					if (medicoesBusiness.medicaoOximetro(arquivo)) {
 						medicoesBusiness.medicaoOximetro(arquivo);
