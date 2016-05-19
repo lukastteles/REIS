@@ -25,6 +25,7 @@ public class PerfilController {
 			return modelAndView;
 		}
 		modelAndView.setViewName("home/perfil");
+		LoginDomain login1 = SessaoBusiness.getLoginDomain();
 		modelAndView.addObject("loginDomain",
 				SessaoBusiness.getLoginDomain());
 		return modelAndView;
