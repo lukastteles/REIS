@@ -116,7 +116,7 @@ public class MedicoesBusiness {
 	}
 	
 	public MedicaoPressaoDomain lisatUltimaMedicaoPressao(int idPaciente){
-		return medicaoPressaoDAO.listaUltimaMedicaoDoPaciente(idPaciente);
+		return medicaoPressaoDAO.obtemUltimaMedicao(idPaciente);
 	}	
 	
 }

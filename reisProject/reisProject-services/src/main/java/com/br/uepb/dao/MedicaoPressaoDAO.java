@@ -2,9 +2,11 @@ package com.br.uepb.dao;
 
 import java.util.List;
 
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.br.uepb.model.MedicaoOximetroDomain;
 import com.br.uepb.model.MedicaoPressaoDomain;
 
 import conexaoBD.HibernateUtil;
@@ -69,13 +71,17 @@ private Session sessaoAtual;
 	}
 	
 	@SuppressWarnings("unchecked")
-	public MedicaoPressaoDomain listaUltimaMedicaoDoPaciente(int idPaciente){
-		List<MedicaoPressaoDomain> listamedicoes =
-				(List<MedicaoPressaoDomain>)SessaoAtual().createQuery(
-						"from MedicaoPressaoDomain order by data where  paciente.id =" + idPaciente).list();
+	public MedicaoPressaoDomain obtemUltimaMedicao(int idPaciente){
+		String comando = "select mp.* from medicao_pressao mp " +
+				"where mp.paciente_id = :idPaciente " +
+				"order by data_hora desc " +
+				"limit 1";
+		SQLQuery query = SessaoAtual().createSQLQuery(comando);
+		query.setParameter("idPaciente", idPaciente);
+		query.addEntity(MedicaoPressaoDomain.class);
 		
-		SessaoAtual().close();
-		return listamedicoes.get(0);
+		MedicaoPressaoDomain medicao = (MedicaoPressaoDomain) query.uniqueResult();
+		return medicao;
 	}
 	
 	private Session SessaoAtual(){

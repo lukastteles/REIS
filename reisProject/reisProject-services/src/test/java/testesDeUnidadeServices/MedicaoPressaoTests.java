@@ -1,5 +1,6 @@
 package testesDeUnidadeServices;
 
+import static junit.framework.Assert.assertNotNull;
 import static junit.framework.Assert.assertTrue;
 
 import org.junit.After;
@@ -9,6 +10,9 @@ import org.junit.Test;
 import com.br.uepb.dao.MedicaoPressaoDAO;
 import com.br.uepb.dao.PacienteDAO;
 import com.br.uepb.dao.LoginDAO;
+import com.br.uepb.dao.MedicaoOximetroDAO;
+import com.br.uepb.model.LoginDomain;
+import com.br.uepb.model.MedicaoOximetroDomain;
 import com.br.uepb.model.MedicaoPressaoDomain;
 import com.br.uepb.model.PacienteDomain;
 
@@ -49,11 +53,25 @@ public class MedicaoPressaoTests {
 		ultimaMedicao = medicao.getId();
 	}
 	
+	@Test
+	public void obterUltimaMedicaoTest(){
+		PacienteDAO pacienteDAO = new PacienteDAO();
+		MedicaoPressaoDAO medicaoDAO = new MedicaoPressaoDAO();
+		PacienteDomain paciente = pacienteDAO.listaPacientes().get(0);
+		if(paciente != null){
+			MedicaoPressaoDomain ultimaMedicao = medicaoDAO.obtemUltimaMedicao(paciente.getId());
+			assertNotNull(ultimaMedicao);
+			
+		}
+	}
+	
 	@After
 	public void limparDados(){		
 		MedicaoPressaoDAO medicaoDAO = new MedicaoPressaoDAO();
 		MedicaoPressaoDomain medicao = medicaoDAO.obtemMedicaoPressao(ultimaMedicao);
-		medicaoDAO.excluiMedicaoPressao(medicao);
+		if(medicao != null){
+			medicaoDAO.excluiMedicaoPressao(medicao);
+		}
 	}
 
 }
