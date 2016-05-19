@@ -23,7 +23,7 @@
 			<div class="mdl-grid mdl-cell mdl-cell--4-col mdl-card__supporting-text no-left-padding">
 				<div class="mdl-card__supporting-text no-left-padding">
 					<h2 class="mdl-card__title-text">Peso</h2>
-                	<p>60 kg</p>
+                	<h3>${balanca.peso} ${balanca.uPeso} </h3>
                 </div>
 	               
 	        </div>
@@ -31,7 +31,7 @@
 			<div class="mdl-grid mdl-cell mdl-cell--4-col mdl-card__supporting-text no-left-padding">
 				<div class="mdl-card__supporting-text no-left-padding">
 					<h2 class="mdl-card__title-text">Altura</h2>
-               		<p>163 cm</p>
+               		<h3>${balanca.altura} ${balanca.uAltura} </h3>
                	</div>
 	               
 	        </div>
@@ -39,28 +39,28 @@
 			<div class="mdl-grid mdl-cell mdl-cell--4-col mdl-card__supporting-text no-left-padding">
 				<div class="mdl-card__supporting-text no-left-padding">
 					<h2 class="mdl-card__title-text">IMC</h2>
-               		<p>17,4 kg m²</p>
+               		<h3>${balanca.massa} ${balanca.uMassa} </h3>
                	</div>
 	        </div>
 	        
 	        <div class="mdl-grid mdl-cell mdl-cell--12-col mdl-card__supporting-text no-left-padding">
 				<div class="mdl-card__supporting-text no-left-padding">
 					<h2 class="mdl-card__title-text">Pressão Sanguínea</h2>
-               		<p>17,4 kg m²</p>
+               		<h3>${pressao.pressaoMedia} ${pressao.uPressaoMedia} </h3>
                	</div>
 	        </div>
         	
         	<div class="mdl-grid mdl-cell mdl-cell--6-col mdl-card__supporting-text no-left-padding">
 				<div class="mdl-card__supporting-text no-left-padding">
 					<h2 class="mdl-card__title-text">sp02</h2>
-               		<p>17,4 kg m²</p>
+               		<h3>${oximetro.spo2} ${oximetro.uSPO2} </h3>
                	</div>
 	        </div>
 	        
 	        <div class="mdl-grid mdl-cell mdl-cell--6-col mdl-card__supporting-text no-left-padding">
 				<div class="mdl-card__supporting-text no-left-padding">
 					<h2 class="mdl-card__title-text">Taxa de Paulso</h2>
-               		<p>17,4 kg m²</p>
+               		<h3>${oximetro.taxaPulso} ${oximetro.uTaxaDePulso} </h3>
                	</div>
 	        </div>
         	

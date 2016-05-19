@@ -80,5 +80,4 @@ public class PacienteDomain {
 	public void setTelefoneCasa(String telefoneCasa) {
 		this.telefoneCasa = telefoneCasa;
 	}
-
 }
