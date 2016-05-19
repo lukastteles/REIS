@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.br.uepb.business.LoginBusiness;
 import com.br.uepb.business.SessaoBusiness;
 import com.br.uepb.model.LoginDomain;
+import com.br.uepb.model.PacienteDomain;
 
 @Controller
 public class HomeController {
@@ -27,6 +28,7 @@ public class HomeController {
 		}
 		modelAndView.setViewName("home/home");
 		modelAndView.addObject("usuario", SessaoBusiness.getLoginDomain().getPaciente().getNome());
+		modelAndView.addObject("paciente", SessaoBusiness.getLoginDomain().getPaciente());		
 		return modelAndView;
 	}
 	
