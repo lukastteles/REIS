@@ -39,6 +39,8 @@ public class MedicoesBusiness {
 			medicaoOximetroDomain.setPaciente(paciente);			
 			medicaoOximetroDAO.salvaMedicaoOximetro(medicaoOximetroDomain);
 			
+			return true;
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -71,6 +73,7 @@ public class MedicoesBusiness {
 			medicaoBalancaDomain.setPaciente(paciente);								
 			medicaoBalancaDAO.salvaMedicaoBalanca(medicaoBalancaDomain);
 			
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -103,6 +106,7 @@ public class MedicoesBusiness {
 			medicaoPressaoDomain.setPaciente(paciente);								
 			medicaoPressaoDAO.salvaMedicaoPressao(medicaoPressaoDomain);
 			
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

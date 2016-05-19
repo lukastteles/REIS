@@ -7,7 +7,6 @@
 		<div
 			class="mdl-grid mdl-cell mdl-cell--4-col mdl-card mdl-shadow--4dp">
 			<div class="mdl-card__title ">
-				<img src="../images/perfil.png" class="demo-avatar"> <br>
 				<h2 class="mdl-card__title-text negrito">${usuario}</h2>
 			</div>
 			<div class="mdl-card__supporting-text no-left-padding">
@@ -39,16 +38,17 @@
 				class="mdl-grid mdl-cell mdl-cell--4-col mdl-card__supporting-text no-left-padding">
 				<div class="mdl-card__supporting-text no-left-padding">
 					<h2 class="mdl-card__title-text">Peso</h2>
-					<h3>${balanca.peso}${balanca.uPeso}</h3>
+					<h4>${balanca.peso}${balanca.uPeso}</h4>
 				</div>
 
 			</div>
-
+			
+<hr style="height:2px; border: 2px; color:#000; background-color:#000; margin-top: 0px; margin-bottom: 0px;">
 			<div
 				class="mdl-grid mdl-cell mdl-cell--4-col mdl-card__supporting-text no-left-padding">
 				<div class="mdl-card__supporting-text no-left-padding">
 					<h2 class="mdl-card__title-text">Altura</h2>
-					<h3>${balanca.altura}${balanca.uAltura}</h3>
+					<h4>${balanca.altura}${balanca.uAltura}</h4>
 				</div>
 
 			</div>
@@ -57,7 +57,7 @@
 				class="mdl-grid mdl-cell mdl-cell--4-col mdl-card__supporting-text no-left-padding">
 				<div class="mdl-card__supporting-text no-left-padding">
 					<h2 class="mdl-card__title-text">IMC</h2>
-					<h3>${balanca.massa}${balanca.uMassa}</h3>
+					<h4>${balanca.massa}${balanca.uMassa}</h4>
 				</div>
 			</div>
 
@@ -65,7 +65,7 @@
 				class="mdl-grid mdl-cell mdl-cell--12-col mdl-card__supporting-text no-left-padding">
 				<div class="mdl-card__supporting-text no-left-padding">
 					<h2 class="mdl-card__title-text">Pressão Sanguínea</h2>
-					<h3>${pressao.pressaoMedia}${pressao.uPressaoMedia}</h3>
+					<h4>${pressao.pressaoMedia}${pressao.uPressaoMedia}</h4>
 				</div>
 			</div>
 
@@ -73,19 +73,20 @@
 				class="mdl-grid mdl-cell mdl-cell--6-col mdl-card__supporting-text no-left-padding">
 				<div class="mdl-card__supporting-text no-left-padding">
 					<h2 class="mdl-card__title-text">sp02</h2>
-					<h3>${oximetro.spo2}${oximetro.uSPO2}</h3>
+					<h4>${oximetro.spo2}${oximetro.uSPO2}</h4>
 					<div id="spo2" class="mdl-progress mdl-js-progress"></div>
 				</div>
 			</div>
-		</div>
-
-		<div
+			<div
 			class="mdl-grid mdl-cell mdl-cell--6-col mdl-card__supporting-text no-left-padding">
 			<div class="mdl-card__supporting-text no-left-padding">
 				<h2 class="mdl-card__title-text">Taxa de Pulso</h2>
-				<h3>${oximetro.taxaPulso}${oximetro.uTaxaDePulso}</h3>
+				<h4>${oximetro.taxaPulso}${oximetro.uTaxaDePulso}</h4>
 			</div>
 		</div>
+		</div>
+
+		
 
 	</div>
 

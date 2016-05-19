@@ -2,7 +2,7 @@
 
 <div class="mdl-grid">
 
-	<div class="mdl-cell mdl-cell--12-col">
+	<div class="mdl-grid mdl-cell mdl-cell--12-col">
 		<form:form modelAttribute="uploadItem" method="post" id="formMedicao"
 			enctype="multipart/form-data">
 			<c:if test="${status == 0}">
@@ -22,7 +22,7 @@
 			</c:if>
 
 
-			<div class="mdl-cell mdl-cell--4-col">
+			<div class="mdl-grid mdl-cell mdl-cell--4-col">
 				<label class="demo-panel-title">Tipo de Medição</label>
 				<form:input path="tipo_dispositivo" type="text" class="form-control"
 					id="tipoDispositivo" cssStyle="display: none;" />
@@ -36,12 +36,12 @@
 				</div>
 
 			</div>
-			<div class="mdl-cell mdl-cell--6-col">
+			<div class="mdl-grid mdl-cell mdl-cell--12-col">
 				<form:label for="fileData" path="fileData">Arquivo XML</form:label>
 
 				<form:input path="fileData" type="file" cssClass="form-control" />
 			</div>
-			<div class="mdl-cell mdl-cell--2-col">
+			<div class="mdl-grid mdl-cell mdl-cell--12-col">
 				<input type="button"
 					class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-verde" onclick="enviar()" value="Enviar" />
 
