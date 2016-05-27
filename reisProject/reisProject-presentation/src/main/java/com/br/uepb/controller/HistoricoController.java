@@ -30,6 +30,7 @@ public class HistoricoController {
 			return modelAndView;
 		}
 		
+		
 		HistoricoDomain ultimoHistorico = preencherHistorico();
 		
 		modelAndView.setViewName("home/historico");
