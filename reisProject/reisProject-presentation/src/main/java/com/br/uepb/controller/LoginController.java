@@ -37,11 +37,9 @@ public class LoginController {
 				modelAndView.setViewName("index/login");
 				String mensagem = "Login ou senha está incorreto";
 				modelAndView.addObject("mensagem", mensagem);
-				modelAndView.addObject("status",
-						"1");
+				modelAndView.addObject("status", "1");
 			}
 		}
 		return modelAndView;
 	}
-
 }

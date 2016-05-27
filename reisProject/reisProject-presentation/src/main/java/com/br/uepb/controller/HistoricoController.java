@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.br.uepb.business.MedicoesBusiness;
 import com.br.uepb.model.HistoricoDomain;
 import com.br.uepb.model.MedicaoBalancaDomain;
 import com.br.uepb.model.MedicaoOximetroDomain;
@@ -29,7 +30,7 @@ public class HistoricoController {
 		HistoricoDomain ultimoHistorico = preencherHistorico();
 		
 		modelAndView.setViewName("home/historico");
-		modelAndView.addObject("usuario", "Sidney");
+		modelAndView.addObject("usuario", request.getAttribute("loginDomain"));
 		modelAndView.addObject("ultimoHistorico", ultimoHistorico);
 		
 		System.out.println(ultimoHistorico.getData());
@@ -38,22 +39,13 @@ public class HistoricoController {
 	
 	public HistoricoDomain preencherHistorico(){
 		MedicaoBalancaDomain balanca = new MedicaoBalancaDomain();
+		MedicoesBusiness busBal = new MedicoesBusiness();
+			balanca = busBal.lisatUltimaMedicaoBalanca(4);
+		
 		MedicaoOximetroDomain oximetro = new MedicaoOximetroDomain();
+			oximetro = busBal.lisatUltimaMedicaoOximetro(4);
 		MedicaoPressaoDomain pressao = new MedicaoPressaoDomain();
-		
-		balanca.setMassa(75);
-		balanca.setAltura(177);
-		balanca.setuMassa("Kg");
-		
-		oximetro.setSpo2(105);
-		oximetro.setTaxaPulso(80);
-		oximetro.setuSPO2("%");
-		
-		pressao.setPressaoDiastolica(72);
-		pressao.setPressaoDistolica(80);
-		pressao.setPressaoMedia(79);
-		pressao.setPressaoSistolica(75);
-		
+			pressao = busBal.lisatUltimaMedicaoPressao(4);		
 		
 		HistoricoDomain ultimoHistorico = new HistoricoDomain(9, "11/05/2016", "14:00", balanca, oximetro, pressao);
 		return ultimoHistorico;
