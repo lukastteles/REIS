@@ -3,7 +3,6 @@ package com.br.uepb.business;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.br.uepb.dao.LoginDAO;
 import com.br.uepb.dao.MedicaoBalancaDAO;
 import com.br.uepb.dao.MedicaoOximetroDAO;
 import com.br.uepb.dao.MedicaoPressaoDAO;
@@ -21,11 +20,11 @@ public class MedicoesBusiness {
 	private MedicaoBalancaDAO medicaoBalancaDAO = new MedicaoBalancaDAO();
 	private MedicaoOximetroDAO medicaoOximetroDAO = new MedicaoOximetroDAO();
 	private MedicaoPressaoDAO medicaoPressaoDAO = new MedicaoPressaoDAO();
-	private LoginDAO loginDAO = new LoginDAO();
+	//private LoginDAO loginDAO = new LoginDAO();
 	private LoginDomain loginDomain;
 	
 	////////////////////////////////////OXIMETRO///////////////////////////////////////////
-	public Boolean medicaoOximetro(String pathXML) {
+	public Boolean medicaoOximetro(String pathXML, String login) {
 		
 		try {
 			DataList dataList = new DataList(pathXML);
@@ -34,7 +33,7 @@ public class MedicoesBusiness {
 			ArrayList<Pair<String,String>> med = medicoes.getMedicoes();
 			
 			MedicaoOximetroDomain medicaoOximetroDomain =  medicoes.medicaoOximetro(med);
-			loginDomain = SessaoBusiness.getLoginDomain();//loginDAO.obtemLogin(SessaoBusiness.getLoginDomain().getLogin(), SessaoBusiness.getLoginDomain().getSenha());			
+			loginDomain = GerenciarSessaoBusiness.getSessaoBusiness(login).getLoginDomain();//SessaoBusiness.getLoginDomain();//loginDAO.obtemLogin(SessaoBusiness.getLoginDomain().getLogin(), SessaoBusiness.getLoginDomain().getSenha());			
 			PacienteDomain paciente = loginDomain.getPaciente();			
 			medicaoOximetroDomain.setPaciente(paciente);			
 			medicaoOximetroDAO.salvaMedicaoOximetro(medicaoOximetroDomain);
@@ -59,7 +58,7 @@ public class MedicoesBusiness {
 	
 	////////////////////////////////////BALANCA///////////////////////////////////////////
 	
-	public Boolean medicaoBalanca(String pathXML) {
+	public Boolean medicaoBalanca(String pathXML, String login) {
 		
 		try {
 			DataList dataList = new DataList(pathXML);
@@ -68,7 +67,7 @@ public class MedicoesBusiness {
 			ArrayList<Pair<String,String>> med = medicoes.getMedicoes();
 			
 			MedicaoBalancaDomain medicaoBalancaDomain =  medicoes.medicaoBalanca(med);
-			loginDomain = SessaoBusiness.getLoginDomain();//loginDAO.obtemLogin(SessaoBusiness.getLoginDomain().getLogin(), SessaoBusiness.getLoginDomain().getSenha());				
+			loginDomain = GerenciarSessaoBusiness.getSessaoBusiness(login).getLoginDomain();//SessaoBusiness.getLoginDomain();//loginDAO.obtemLogin(SessaoBusiness.getLoginDomain().getLogin(), SessaoBusiness.getLoginDomain().getSenha());				
 			PacienteDomain paciente = loginDomain.getPaciente();			
 			medicaoBalancaDomain.setPaciente(paciente);								
 			medicaoBalancaDAO.salvaMedicaoBalanca(medicaoBalancaDomain);
@@ -92,7 +91,7 @@ public class MedicoesBusiness {
 	
 ////////////////////////////////////MEDIDOR DE PRESSAO///////////////////////////////////////////
 	
-	public Boolean medicaoPressao(String pathXML) {
+	public Boolean medicaoPressao(String pathXML, String login) {
 		
 		try {
 			DataList dataList = new DataList(pathXML);
@@ -101,7 +100,7 @@ public class MedicoesBusiness {
 			ArrayList<Pair<String,String>> med = medicoes.getMedicoes();
 			
 			MedicaoPressaoDomain medicaoPressaoDomain =  medicoes.medicaoPressao(med);
-			loginDomain = SessaoBusiness.getLoginDomain();//loginDAO.obtemLogin(SessaoBusiness.getLoginDomain().getLogin(), SessaoBusiness.getLoginDomain().getSenha());				
+			loginDomain = GerenciarSessaoBusiness.getSessaoBusiness(login).getLoginDomain();//SessaoBusiness.getLoginDomain();//loginDAO.obtemLogin(SessaoBusiness.getLoginDomain().getLogin(), SessaoBusiness.getLoginDomain().getSenha());				
 			PacienteDomain paciente = loginDomain.getPaciente();			
 			medicaoPressaoDomain.setPaciente(paciente);								
 			medicaoPressaoDAO.salvaMedicaoPressao(medicaoPressaoDomain);

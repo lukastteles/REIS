@@ -5,11 +5,11 @@ import com.br.uepb.model.LoginDomain;
 public class SessaoBusiness {
 	private static LoginDomain loginDomain = null;
 
-	public static LoginDomain getLoginDomain() {
+	public LoginDomain getLoginDomain() {
 		return loginDomain;
 	}
 
-	public static void setLoginDomain(LoginDomain loginDomain) {
+	public void setLoginDomain(LoginDomain loginDomain) {
 		SessaoBusiness.loginDomain = loginDomain;
 	}
 	

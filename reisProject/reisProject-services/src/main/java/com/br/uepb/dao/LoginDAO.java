@@ -7,7 +7,6 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import com.br.uepb.model.LoginDomain;
-import com.br.uepb.model.PacienteDomain;
 
 import conexaoBD.HibernateUtil;
 
