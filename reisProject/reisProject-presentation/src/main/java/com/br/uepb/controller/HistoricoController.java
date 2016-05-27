@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.br.uepb.business.GerenciarSessaoBusiness;
+import com.br.uepb.business.SessaoBusiness;
 import com.br.uepb.model.*;
 
 @Controller
@@ -21,7 +23,12 @@ public class HistoricoController {
 
 		ModelAndView modelAndView = new ModelAndView();
 		
-		
+		String login = request.getSession().getAttribute("login").toString();
+		SessaoBusiness sessao = GerenciarSessaoBusiness.getSessaoBusiness(login);
+		if(sessao == null){
+			modelAndView.setViewName("redirect:/index/login.html");
+			return modelAndView;
+		}
 		
 		HistoricoDomain ultimoHistorico = preencherHistorico();
 		

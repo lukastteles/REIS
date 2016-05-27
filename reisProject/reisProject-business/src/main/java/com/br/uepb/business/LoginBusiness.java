@@ -20,7 +20,6 @@ public class LoginBusiness {
 	public boolean atualizar(LoginDomain loginDomain) {
 		try {
 			loginDAO.salvaLogin(loginDomain);
-			SessaoBusiness.setLoginDomain(loginDomain);
 			return true;
 		} catch (Exception e) {
 			return false;
@@ -30,7 +29,7 @@ public class LoginBusiness {
 	public boolean loginValido(String login, String senha){
 		LoginDomain loginDomain = loginDAO.obtemLogin(login, senha);
 		if(loginDomain!=null){
-			SessaoBusiness.setLoginDomain(loginDomain);
+			//SessaoBusiness.setLoginDomain(loginDomain);
 			return true;
 		}
 		return false;

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.br.uepb.business.GerenciarSessaoBusiness;
 import com.br.uepb.business.MedicoesBusiness;
 import com.br.uepb.business.SessaoBusiness;
 import com.br.uepb.model.UploadItem;
@@ -24,11 +25,12 @@ public class MedicaoController {
 	MedicoesBusiness medicoesBusiness = new MedicoesBusiness();
 
 	@RequestMapping(value = "/home/medicao.html", method = RequestMethod.GET)
-	public ModelAndView medicaoGet(Model model) {
+	public ModelAndView medicaoGet(Model model, HttpServletRequest request) {
 
 		ModelAndView modelAndView = new ModelAndView();
-
-		if (SessaoBusiness.getLoginDomain() == null) {
+		String login = request.getSession().getAttribute("login").toString();
+		SessaoBusiness sessao = GerenciarSessaoBusiness.getSessaoBusiness(login);
+		if(sessao == null){
 			modelAndView.setViewName("redirect:/index/login.html");
 			return modelAndView;
 		}
@@ -45,6 +47,8 @@ public class MedicaoController {
 			Model model, //
 			@ModelAttribute("uploadItem") UploadItem uploadItem) {
 
+		String login = request.getSession().getAttribute("login").toString();
+		
 		ModelAndView modelAndView = new ModelAndView();
 		String mensagem = "";
 		String status = "";
@@ -81,11 +85,11 @@ public class MedicaoController {
 				String tipo_dispositivo = uploadItem.getTipo_dispositivo();
 				String arquivo = serverFile.toString();
 
-				System.out.println("login:" + SessaoBusiness.getLoginDomain().getLogin() );
-				System.out.println("senha:" + SessaoBusiness.getLoginDomain().getSenha() );
+				//System.out.println("login:" + SessaoBusiness.getLoginDomain().getLogin() );
+				//System.out.println("senha:" + SessaoBusiness.getLoginDomain().getSenha() );
 				if (tipo_dispositivo.equals("0")) { // oximetro
-					if (medicoesBusiness.medicaoOximetro(arquivo)) {
-						medicoesBusiness.medicaoOximetro(arquivo);
+					if (medicoesBusiness.medicaoOximetro(arquivo, login)) {
+						//medicoesBusiness.medicaoOximetro(arquivo);
 						mensagem = "Medição Oximetro cadastrada com sucesso!";
 						status = "0";
 					} else {
@@ -94,7 +98,7 @@ public class MedicaoController {
 					}
 
 				} else if (tipo_dispositivo.equals("1")) { // balanca
-					if (medicoesBusiness.medicaoBalanca(arquivo)) {
+					if (medicoesBusiness.medicaoBalanca(arquivo, login)) {
 						mensagem = "Medição Balança cadastrada com sucesso!";
 						status = "0";
 					} else {
@@ -103,7 +107,7 @@ public class MedicaoController {
 					}
 
 				} else if (tipo_dispositivo.equals("2")) { // pressao
-					if (medicoesBusiness.medicaoPressao(arquivo)) {
+					if (medicoesBusiness.medicaoPressao(arquivo, login)) {
 
 						mensagem = "Medição Pressão cadastrada com sucesso!";
 						status = "0";

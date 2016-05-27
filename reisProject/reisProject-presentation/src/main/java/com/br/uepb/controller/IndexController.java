@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.br.uepb.business.SessaoBusiness;
+import com.br.uepb.business.GerenciarSessaoBusiness;
 
 @Controller
 public class IndexController {
@@ -25,7 +25,8 @@ public class IndexController {
 	public ModelAndView sairGet(HttpServletRequest request) {
 
 		ModelAndView modelAndView = new ModelAndView();
-		SessaoBusiness.setLoginDomain(null);
+		String login = request.getSession().getAttribute("login").toString();
+		GerenciarSessaoBusiness.removeSessao(login);
 		modelAndView.setViewName("redirect:/index/index.html");
 
 		return modelAndView;

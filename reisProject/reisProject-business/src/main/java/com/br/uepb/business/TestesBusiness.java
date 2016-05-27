@@ -35,20 +35,21 @@ public class TestesBusiness {
 		login.setLogin("luana");
 		login.setSenha("123");
 		
-		SessaoBusiness.setLoginDomain(login);
+		SessaoBusiness sessao = new SessaoBusiness();
+		sessao.setLoginDomain(login);
 		
 		//Deixei aqui pra vc Luana :)
 		String xmlOximetro = "C:/Users/Luana/workspace/Leitura_XML/arquivos_xml/Oximetro XML de medicoes1.xml";
 		String xmlBalanca = "C:/Users/Luana/workspace/Leitura_XML/arquivos_xml/Balança XML de medicoes.xml";
 		String xmlPressao = "C:/Users/Luana/workspace/Leitura_XML/arquivos_xml/Medidor de pressão XML de medicoes.xml";
 		
-		medicoesBusines.medicaoOximetro(xmlOximetro);
+		medicoesBusines.medicaoOximetro(xmlOximetro, login.getLogin());
 		System.out.println("Leitura Oximetro");
 		
-		medicoesBusines.medicaoBalanca(xmlBalanca);
+		medicoesBusines.medicaoBalanca(xmlBalanca, login.getLogin());
 		System.out.println("Leitura Balança");
 		
-		medicoesBusines.medicaoPressao(xmlPressao);
+		medicoesBusines.medicaoPressao(xmlPressao, login.getLogin());
 		System.out.println("Leitura Pressão");
 
 	}
