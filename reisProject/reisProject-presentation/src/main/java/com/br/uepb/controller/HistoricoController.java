@@ -9,7 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.br.uepb.model.*;
+import com.br.uepb.model.HistoricoDomain;
+import com.br.uepb.model.MedicaoBalancaDomain;
+import com.br.uepb.model.MedicaoOximetroDomain;
+import com.br.uepb.model.MedicaoPressaoDomain;
 
 @Controller
 public class HistoricoController {
@@ -19,8 +22,8 @@ public class HistoricoController {
 	@RequestMapping(value = "/home/historico.html", method = RequestMethod.GET)
 	public ModelAndView historicoGet(HttpServletRequest request) {
 
-		ModelAndView modelAndView = new ModelAndView();
 		
+		ModelAndView modelAndView = new ModelAndView();
 		
 		
 		HistoricoDomain ultimoHistorico = preencherHistorico();
