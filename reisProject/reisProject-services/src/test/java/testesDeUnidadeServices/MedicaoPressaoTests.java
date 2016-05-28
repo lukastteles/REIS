@@ -3,16 +3,14 @@ package testesDeUnidadeServices;
 import static junit.framework.Assert.assertNotNull;
 import static junit.framework.Assert.assertTrue;
 
+import java.util.Calendar;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import com.br.uepb.dao.MedicaoPressaoDAO;
 import com.br.uepb.dao.PacienteDAO;
-import com.br.uepb.dao.LoginDAO;
-import com.br.uepb.dao.MedicaoOximetroDAO;
-import com.br.uepb.model.LoginDomain;
-import com.br.uepb.model.MedicaoOximetroDomain;
 import com.br.uepb.model.MedicaoPressaoDomain;
 import com.br.uepb.model.PacienteDomain;
 
@@ -38,28 +36,23 @@ public class MedicaoPressaoTests {
 	
 	@Test
 	public void criarMedicaoPressao() {
-		PacienteDAO pacienteDAO = new PacienteDAO();
-		MedicaoPressaoDAO medicaoDAO = new MedicaoPressaoDAO();
-		MedicaoPressaoDomain medicao = new MedicaoPressaoDomain();
-		PacienteDomain paciente = pacienteDAO.obtemPaciente(1);
-		medicao.setId_Paciente(paciente);
-		medicao.setPressaoDistolica(80);
-		medicao.setPressaoSistolica(120);
-		medicao.setPressaoMedia(112);
-		medicao.setTaxaDePulso(90);
-		
-		medicaoDAO.salvaMedicaoPressao(medicao);
+		MedicaoPressaoDomain medicao = criaMedicao();
 		assertTrue(medicao.getId() > 0);
 		ultimaMedicao = medicao.getId();
 	}
+
 	
 	@Test
 	public void obterUltimaMedicaoTest(){
 		PacienteDAO pacienteDAO = new PacienteDAO();
 		MedicaoPressaoDAO medicaoDAO = new MedicaoPressaoDAO();
-		PacienteDomain paciente = pacienteDAO.listaPacientes().get(0);
-		if(paciente != null){
+		PacienteDomain paciente = pacienteDAO.obtemUltimoPacienteCadastrado();
+		if(paciente != null){			
 			MedicaoPressaoDomain ultimaMedicao = medicaoDAO.obtemUltimaMedicao(paciente.getId());
+			if(ultimaMedicao == null){
+				criaMedicao();
+				ultimaMedicao = medicaoDAO.obtemMedicaoPressao(paciente.getId());
+			}
 			assertNotNull(ultimaMedicao);
 			
 		}
@@ -74,4 +67,20 @@ public class MedicaoPressaoTests {
 		}
 	}
 
+	private MedicaoPressaoDomain criaMedicao() {
+		PacienteDAO pacienteDAO = new PacienteDAO();
+		MedicaoPressaoDAO medicaoDAO = new MedicaoPressaoDAO();
+		MedicaoPressaoDomain medicao = new MedicaoPressaoDomain();
+		PacienteDomain paciente = pacienteDAO.obtemUltimoPacienteCadastrado();
+		medicao.setId_Paciente(paciente);
+		medicao.setPressaoDiastolica(80);
+		medicao.setPressaoSistolica(120);
+		medicao.setPressaoMedia(112);
+		medicao.setTaxaDePulso(90);
+		medicao.setDataHora(Calendar.getInstance().getTime());
+		medicao.setUnidadePressaoSistolica("bar");
+		
+		medicaoDAO.salvaMedicaoPressao(medicao);
+		return medicao;
+	}
 }

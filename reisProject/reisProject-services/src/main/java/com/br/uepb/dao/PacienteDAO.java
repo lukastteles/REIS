@@ -2,6 +2,7 @@ package com.br.uepb.dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
@@ -46,10 +47,12 @@ private Session sessaoAtual;
 		MedicaoBalancaDAO medicaoB = new MedicaoBalancaDAO();
 		LoginDomain login = loginDAO.obtemLoginPorPaciente(paciente.getId());		
 		
-		Transaction tx = SessaoAtual().beginTransaction();
 		if(login != null){
-		novaSessao.delete(login);
+			deletaLogin(login);
 		}
+		
+		Transaction tx = SessaoAtual().beginTransaction();
+		
 		for (MedicaoOximetroDomain medicao  : medicaoOxDAO.listaMedicoesDoPaciente(paciente.getId())) {
 			novaSessao.delete(medicao);
 		}
@@ -66,6 +69,13 @@ private Session sessaoAtual;
 	
 	public PacienteDomain obtemPaciente(int idPaciente){
 		PacienteDomain paciente = (PacienteDomain)SessaoAtual().get(PacienteDomain.class, idPaciente);
+		SessaoAtual().close();
+		return paciente;
+	}
+	
+	public PacienteDomain obtemUltimoPacienteCadastrado(){
+		Query query = SessaoAtual().createQuery("FROM PacienteDomain ORDER BY id DESC").setMaxResults(1);
+		PacienteDomain paciente = (PacienteDomain)query.uniqueResult();
 		SessaoAtual().close();
 		return paciente;
 	}
@@ -94,6 +104,15 @@ private Session sessaoAtual;
 		}
 		else{
 			return true;
+		}
+	}
+	
+	private void deletaLogin(LoginDomain login){
+		Transaction tx = SessaoAtual().beginTransaction();
+		if(login != null){
+		SessaoAtual().delete(login);
+		SessaoAtual().flush();
+		tx.commit();
 		}
 	}
 

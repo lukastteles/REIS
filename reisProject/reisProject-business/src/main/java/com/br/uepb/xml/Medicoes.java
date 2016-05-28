@@ -361,13 +361,13 @@ public class Medicoes {
 				
 				if (metricId.equals("18474")) { //Pulse Rate
 					pressao.setTaxaDePulso(value);
-					pressao.setuTaxaDePulso(unit);
+					pressao.setUnidadeTaxaDePulso(unit);
 				}
 				
 				if (metricId.equals("18948")) { //Blood Pressure
-					pressao.setuPressaoDiastolica(unit);
-					pressao.setUPressaoSistolica(unit);
-					pressao.setuPressaoMedia(unit);
+					pressao.setUnidadePressaoDiastolica(unit);
+					pressao.setUnidadePressaoSistolica(unit);
+					pressao.setUnidadePressaoMedia(unit);
 					
 					adicionaValores(pressao, compound);
 					

@@ -74,12 +74,6 @@ public class MedicaoPressaoDomain {
 	public void setPressaoSistolica(double pressaoSistolica) {
 		this.pressaoSistolica = pressaoSistolica;
 	}
-	public double getPressaoDistolica() {
-		return pressaoDiastolica;
-	}
-	public void setPressaoDistolica(double pressaoDistolica) {
-		this.pressaoDiastolica = pressaoDistolica;
-	}
 	public double getPressaoMedia() {
 		return pressaoMedia;
 	}
@@ -110,29 +104,38 @@ public class MedicaoPressaoDomain {
 	public void setDataHora(Date dataHora) {
 		this.dataHora = dataHora;
 	}
-	public String getUPressaoSistolica() {
+	public String getUnidadePressaoSistolica() {
 		return uPressaoSistolica;
 	}
-	public void setUPressaoSistolica(String unidadeMedida) {
+	public void setUnidadePressaoSistolica(String unidadeMedida) {
 		this.uPressaoSistolica = unidadeMedida;
 	}
-	public String getuPressaoDiastolica() {
+	public String getUnidadePressaoDiastolica() {
 		return uPressaoDiastolica;
 	}
-	public void setuPressaoDiastolica(String uPressaoDiastolica) {
+	public void setUnidadePressaoDiastolica(String uPressaoDiastolica) {
 		this.uPressaoDiastolica = uPressaoDiastolica;
 	}
-	public String getuPressaoMedia() {
+	public String getUnidadePressaoMedia() {
 		return uPressaoMedia;
 	}
-	public void setuPressaoMedia(String uPressaoMedia) {
+	public void setUnidadePressaoMedia(String uPressaoMedia) {
 		this.uPressaoMedia = uPressaoMedia;
 	}
 	public String getuTaxaDePulso() {
 		return uTaxaDePulso;
 	}
-	public void setuTaxaDePulso(String uTaxaDePulso) {
+	public void setUnidadeTaxaDePulso(String uTaxaDePulso) {
 		this.uTaxaDePulso = uTaxaDePulso;
+	}
+	
+	public double getPressaoDistolica(){
+		return this.pressaoDiastolica;
+	}
+	
+	public void setPressaoDistolica(double pressao) {
+		this.pressaoDiastolica = pressao;
+		
 	}
 	
 	
