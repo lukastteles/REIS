@@ -83,7 +83,7 @@ public class MensagensHL7 {
 		CE ce = new CE(mensagem);
 		ce.getText().setValue(String.valueOf(medicaoPressaoDomain.getPressaoSistolica()));
 
-		obx.getUnits().getCe2_Text().setValue(medicaoPressaoDomain.getUPressaoSistolica());
+		obx.getUnits().getCe2_Text().setValue(medicaoPressaoDomain.getUnidadePressaoSistolica());
 		obx.getObx7_ReferencesRange().setValue("90-120");
 		obx.getDateTimeOfTheObservation().getTime().setValue(medicaoPressaoDomain.getDataHora());
 		
@@ -100,7 +100,7 @@ public class MensagensHL7 {
 		CE ce1 = new CE(mensagem);
 		ce1.getText().setValue(String.valueOf(medicaoPressaoDomain.getPressaoDiastolica()));
 
-		obx.getUnits().getCe2_Text().setValue(medicaoPressaoDomain.getuPressaoDiastolica());
+		obx.getUnits().getCe2_Text().setValue(medicaoPressaoDomain.getUnidadePressaoDiastolica());
 		obx.getObx7_ReferencesRange().setValue("60-80");
 		obx.getDateTimeOfTheObservation().getTime().setValue(medicaoPressaoDomain.getDataHora());
 		
@@ -117,7 +117,7 @@ public class MensagensHL7 {
 		CE ce3 = new CE(mensagem);
 		ce3.getText().setValue(String.valueOf(medicaoPressaoDomain.getPressaoMedia()));
 
-		obx.getUnits().getCe2_Text().setValue(medicaoPressaoDomain.getuPressaoMedia());
+		obx.getUnits().getCe2_Text().setValue(medicaoPressaoDomain.getUnidadePressaoMedia());
 		obx.getObx7_ReferencesRange().setValue("92-96");
 		obx.getDateTimeOfTheObservation().getTime().setValue(medicaoPressaoDomain.getDataHora());
 		

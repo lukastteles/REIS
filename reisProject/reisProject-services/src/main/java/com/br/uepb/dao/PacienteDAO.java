@@ -2,6 +2,7 @@ package com.br.uepb.dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
@@ -66,6 +67,13 @@ private Session sessaoAtual;
 	
 	public PacienteDomain obtemPaciente(int idPaciente){
 		PacienteDomain paciente = (PacienteDomain)SessaoAtual().get(PacienteDomain.class, idPaciente);
+		SessaoAtual().close();
+		return paciente;
+	}
+	
+	public PacienteDomain obtemUltimoPacienteCadastrado(){
+		Query query = SessaoAtual().createQuery("FROM PacienteDomain ORDER BY id DESC").setMaxResults(1);
+		PacienteDomain paciente = (PacienteDomain)query.uniqueResult();
 		SessaoAtual().close();
 		return paciente;
 	}
