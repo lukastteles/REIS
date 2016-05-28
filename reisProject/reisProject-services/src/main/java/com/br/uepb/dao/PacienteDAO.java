@@ -47,10 +47,12 @@ private Session sessaoAtual;
 		MedicaoBalancaDAO medicaoB = new MedicaoBalancaDAO();
 		LoginDomain login = loginDAO.obtemLoginPorPaciente(paciente.getId());		
 		
-		Transaction tx = SessaoAtual().beginTransaction();
 		if(login != null){
-		novaSessao.delete(login);
+			deletaLogin(login);
 		}
+		
+		Transaction tx = SessaoAtual().beginTransaction();
+		
 		for (MedicaoOximetroDomain medicao  : medicaoOxDAO.listaMedicoesDoPaciente(paciente.getId())) {
 			novaSessao.delete(medicao);
 		}
@@ -102,6 +104,15 @@ private Session sessaoAtual;
 		}
 		else{
 			return true;
+		}
+	}
+	
+	private void deletaLogin(LoginDomain login){
+		Transaction tx = SessaoAtual().beginTransaction();
+		if(login != null){
+		SessaoAtual().delete(login);
+		SessaoAtual().flush();
+		tx.commit();
 		}
 	}
 
