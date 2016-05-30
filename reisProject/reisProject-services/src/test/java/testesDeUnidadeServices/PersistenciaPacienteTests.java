@@ -50,7 +50,7 @@ public class PersistenciaPacienteTests {
 		login.setLogin("jlopes");
 		login.setSenha("senha123");
 		login.setPaciente(novoPaciente);
-		novoPaciente.setLogin(login);
+//		novoPaciente.setLogin(login);
 		pacienteDAO.salvaPaciente(novoPaciente);
 		assertEquals(novoPaciente.getId(), login.getPaciente().getId());
 	}
