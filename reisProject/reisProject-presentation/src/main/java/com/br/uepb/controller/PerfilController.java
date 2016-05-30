@@ -31,6 +31,7 @@ public class PerfilController {
 		//LoginDomain login1 = sessao.getLoginDomain();
 		modelAndView.addObject("loginDomain",
 				sessao.getLoginDomain());
+		modelAndView.addObject("usuario", sessao.getLoginDomain().getPaciente().getNome());
 		return modelAndView;
 	}
 

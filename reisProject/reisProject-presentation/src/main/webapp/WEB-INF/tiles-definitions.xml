@@ -49,4 +49,8 @@
 		<put-attribute name="body" value="/WEB-INF/views/home/historico.jsp" />
 	</definition>
 
+	<definition name="home/hl7" extends="dashboard">
+		<put-attribute name="title"	value="HL7 "></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/home/hl7.jsp" />
+	</definition>
 </tiles-definitions>

@@ -76,7 +76,7 @@
 				</a> <a class="mdl-navigation__link " href="../home/historico.html"> <i
 					class=" fa fa-bar-chart"></i>Histórico
 				</a>
-				<a class="mdl-navigation__link " href="../home/historico.html"> <i
+				<a class="mdl-navigation__link " href="../home/hl7.html"> <i
 					class=" fa fa-file-text-o"></i>HL7
 				</a>
 				<div class="mdl-layout-spacer"></div>
