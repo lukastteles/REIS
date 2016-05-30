@@ -13,29 +13,31 @@ public class ServidorREIS {
 	public static void main(String[] args) throws Exception {
 		System.out.println("Iniciando servidor");
 
-		ServerSocket server = new ServerSocket(2525);
+		ServerSocket servidor = new ServerSocket(2525);
 
 		System.out.println("Aguardando conexao.");
 
-		Socket socket = server.accept();
+		Socket cliente = servidor.accept();
 
-		System.out.println("Conexão estabelecida.");
+		System.out.println("Conexão estabelecida com um cliente.");
 
-		InputStream input = socket.getInputStream();
-		OutputStream output = socket.getOutputStream();
+		InputStream input = cliente.getInputStream();
+		OutputStream output = cliente.getOutputStream();
 
 		BufferedReader in = new BufferedReader(new InputStreamReader(input));
 		PrintStream out = new PrintStream(output);
 
 		while (true) {
 			String mensagem = in.readLine();
-
-			System.out.println(
-					"Mensagem recebida do cliente: " 
-					+ socket.getInetAddress().getHostName() + ": " + mensagem);
-			if ("FIM".equals(mensagem)) {
-				break;
-			}
+			if (mensagem != null) {
+				System.out.println(
+						"Mensagem recebida do cliente: " 
+						+ cliente.getInetAddress().getHostName() + ": " + mensagem);	
+				if ("FIM".equals(mensagem)) {
+					System.out.println("Pediu para encerrar a mensagem.");
+					break;
+				}
+			}				
 			out.println(mensagem + " asd ");
 
 		}
@@ -44,10 +46,10 @@ public class ServidorREIS {
 
 		in.close();
 		out.close();
-		socket.close();
+		cliente.close();
 		System.err.println("Encerrada a conexao");
 
-		server.close();
+		servidor.close();
 	}
 
 }

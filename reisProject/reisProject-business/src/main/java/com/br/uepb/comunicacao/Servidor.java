@@ -6,6 +6,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Servidor {
  
@@ -23,32 +24,19 @@ public class Servidor {
    }
    
    public void executa () throws IOException {
-     ServerSocket servidor = new ServerSocket(this.porta);
-     System.out.println("Porta 12345 aberta!");
-     
-     while (true) {
-       // aceita um cliente
-       Socket cliente = servidor.accept();
-       System.out.println("Nova conex�o com o cliente " +   
-         cliente.getInetAddress().getHostAddress()
-       );
-       
-       // adiciona saida do cliente � lista
-       PrintStream ps = new PrintStream(cliente.getOutputStream());
-       this.clientes.add(ps);
-       
-       // cria tratador de cliente numa nova thread
-       TrataCliente tc = 
-           new TrataCliente(cliente.getInputStream(), this);
-       new Thread(tc).start();
-     }
- 
-   }
- 
-   public void distribuiMensagem(String msg) {
-     // envia msg para todo mundo
-     for (PrintStream cliente : this.clientes) {
-       cliente.println(msg);
-     }
+	   ServerSocket servidor = new ServerSocket(345);
+	     System.out.println("Porta 12345 aberta!");
+	     
+	     Socket cliente = servidor.accept();
+	     System.out.println("Nova conexão com o cliente " +   
+	       cliente.getInetAddress().getHostAddress());
+	     
+	     Scanner entrada = new Scanner(cliente.getInputStream());
+	     while (entrada.hasNextLine()) {
+	       System.out.println(entrada.nextLine());
+	     }
+	     
+	     entrada.close();
+	     servidor.close();
    }
  }

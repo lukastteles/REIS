@@ -17,7 +17,7 @@ public class TrataCliente implements Runnable {
      // quando chegar uma msg, distribui pra todos
      Scanner s = new Scanner(this.cliente);
      while (s.hasNextLine()) {
-       servidor.distribuiMensagem(s.nextLine());
+//       servidor.distribuiMensagem(s.nextLine());
      }
      s.close();
    }
