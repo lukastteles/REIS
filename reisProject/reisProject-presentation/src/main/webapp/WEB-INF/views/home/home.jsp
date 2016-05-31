@@ -65,7 +65,7 @@
 				class="mdl-grid mdl-cell mdl-cell--12-col mdl-card__supporting-text no-left-padding">
 				<div class="mdl-card__supporting-text no-left-padding">
 					<h2 class="mdl-card__title-text">Pressão Sanguínea</h2>
-					<h4>${pressao.pressaoMedia} ${pressao}</h4>
+					<h4>${pressao.pressaoMedia}</h4>
 				</div>
 			</div>
 
