@@ -10,16 +10,10 @@ import java.net.Socket;
 
 public class ServidorREIS {
 
-	public static void main(String[] args) throws Exception {
-		System.out.println("Iniciando servidor");
+	public void abrirAcesso(String ip, int porta) throws Exception {
 
-		ServerSocket servidor = new ServerSocket(2525);
-
-		System.out.println("Aguardando conexao.");
-
+		ServerSocket servidor = new ServerSocket(porta);
 		Socket cliente = servidor.accept();
-
-		System.out.println("Conexão estabelecida com um cliente.");
 
 		InputStream input = cliente.getInputStream();
 		OutputStream output = cliente.getOutputStream();

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.br.uepb.business.GerenciarSessaoBusiness;
+import com.br.uepb.business.MedicoesBusiness;
 import com.br.uepb.business.SessaoBusiness;
 import com.br.uepb.model.*;
 
@@ -22,6 +23,7 @@ public class HistoricoController {
 	public ModelAndView historicoGet(HttpServletRequest request) {
 
 		ModelAndView modelAndView = new ModelAndView();
+		MedicoesBusiness medicoesBusiness = new MedicoesBusiness();
 		
 		String login = request.getSession().getAttribute("login").toString();
 		SessaoBusiness sessao = GerenciarSessaoBusiness.getSessaoBusiness(login);
@@ -31,13 +33,20 @@ public class HistoricoController {
 		}
 		
 		
-		HistoricoDomain ultimoHistorico = preencherHistorico();
+		//HistoricoDomain ultimoHistorico = preencherHistorico();
+		List<MedicaoOximetroDomain> historicoOximetro = medicoesBusiness.listaMedicoesOximetroPaciente(sessao.getLoginDomain().getPaciente().getId());
+		List<MedicaoBalancaDomain> historicoBalanca = medicoesBusiness.listaMedicoesBalancaPaciente(sessao.getLoginDomain().getPaciente().getId());
+		List<MedicaoPressaoDomain> historicoPressao = medicoesBusiness.listaMedicoesPressaoPaciente(sessao.getLoginDomain().getPaciente().getId());
+		
+		MedicaoBalancaDomain med = new MedicaoBalancaDomain();
+		
 		
 		modelAndView.setViewName("home/historico");
-		modelAndView.addObject("usuario", "Sidney");
-		modelAndView.addObject("ultimoHistorico", ultimoHistorico);
+		modelAndView.addObject("usuario", login);
+		modelAndView.addObject("historicoOximetro", historicoOximetro);
+		modelAndView.addObject("historicoBalanca", historicoBalanca);
+		modelAndView.addObject("historicoPressao", historicoPressao);
 		
-		System.out.println(ultimoHistorico.getData());
 		return modelAndView;
 	}
 	
