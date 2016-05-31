@@ -14,7 +14,7 @@ function carregaVariaveisBalanca(_data, _peso, _altura, _unidadeMedida) {
 			labels : [ 'Peso', "Altura" ],
 			datasets : [ {
 				label : 'Última Medição',
-				 backgroundColor: "rgba(151,187,205,0.5)",
+				backgroundColor : "rgba(151,187,205,0.5)",
 				data : [ _peso, _altura ]
 			} ]
 		},
@@ -31,7 +31,7 @@ function carregaVariaveisBalanca(_data, _peso, _altura, _unidadeMedida) {
 
 }
 
-function carregaVariaveisOximetro(_data, _spo2, _taxaPulso, _unidadeMedida) {
+function carregaVariaveisOximetro(_spo2) {
 	/* CHART OXIMETRO */
 
 	var ctx = document.getElementById("chartOximetro");
@@ -40,13 +40,38 @@ function carregaVariaveisOximetro(_data, _spo2, _taxaPulso, _unidadeMedida) {
 
 	var ctx = document.getElementById("chartOximetro");
 	var myChart = new Chart(ctx, {
+		type : 'doughnut',
+		
+		data : {
+			labels : [ "SPO2" ],
+			datasets : [ {
+				data : [ _spo2 ],
+				backgroundColor : [ "#FF6384", "#36A2EB", "#FFCE56" ],
+				hoverBackgroundColor : [ "#FF6384", "#36A2EB", "#FFCE56" ]
+			} ]
+
+		},
+		
+	});
+
+}
+function carregaVariaveisPressao(_data, _diastolica, _distolica, _media,
+		_sistolica) {
+	/* CHART PRESSAO */
+
+	var ctx = document.getElementById("chartPressao");
+	var ctx = document.getElementById("chartPressao").getContext("2d");
+	var ctx = $("#chartPressao");
+
+	var ctx = document.getElementById("chartPressao");
+	var myChart = new Chart(ctx, {
 		type : 'bar',
 		data : {
-			labels : [ "SPO2","Taxa Pulso" ],
+			labels : [ "Dialóstica", "Distólica", "Média", "Sístólica" ],
 			datasets : [ {
 				label : 'Última Medição',
-				 backgroundColor: "rgba(151,187,205,0.5)",
-				data : [ _spo2, _taxaPulso ]
+				backgroundColor : "rgba(151,187,205,0.5)",
+				data : [ _diastolica, _distolica, _media, _sistolica ]
 			} ]
 		},
 		options : {
@@ -59,36 +84,6 @@ function carregaVariaveisOximetro(_data, _spo2, _taxaPulso, _unidadeMedida) {
 			}
 		}
 	});
-
-}
-function carregaVariaveisPressao(_data, _diastolica, _distolica, _media, _sistolica) {
-/* CHART PRESSAO */
-
-var ctx = document.getElementById("chartPressao");
-var ctx = document.getElementById("chartPressao").getContext("2d");
-var ctx = $("#chartPressao");
-
-var ctx = document.getElementById("chartPressao");
-var myChart = new Chart(ctx, {
-	type : 'bar',
-	data : {
-		labels : [ "Dialóstica", "Distólica", "Média", "Sístólica" ],
-		datasets : [ {
-			label : 'Última Medição',
-			 backgroundColor: "rgba(151,187,205,0.5)",
-			data : [ _diastolica, _distolica, _media, _sistolica ]
-		} ]
-	},
-	options : {
-		scales : {
-			yAxes : [ {
-				ticks : {
-					beginAtZero : true
-				}
-			} ]
-		}
-	}
-});
 }
 
 /* CHART MEDIDOR DE PULSO */
