@@ -45,8 +45,6 @@ public class ReceberMensagemHL7 extends HttpServlet {
 		senha = request.getParameter("senha");
 		dispositivo = request.getParameter("dispositivo");
 		
-		System.out.println(dispositivo);
-		
 		PrintWriter out = response.getWriter();
 		LoginBusiness loginBusiness = new LoginBusiness();
 		if (loginBusiness.loginValido(login, senha)) {
@@ -57,9 +55,7 @@ public class ReceberMensagemHL7 extends HttpServlet {
 			if(dispositivo.toString().equals("balanca")) {
 				try {
 					mensagem = hl7.criarMensagemHL7Balanca(pacienteDomain);
-					System.out.println(mensagem + "AQUI!");
 				} catch (HL7Exception e) {
-					System.out.println("ERROOOOOOO!!");
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
@@ -78,8 +74,8 @@ public class ReceberMensagemHL7 extends HttpServlet {
 					e.printStackTrace();
 				}
 			}
-		
-			out.print(mensagem);// Mensagem HL7
+
+			out.append(mensagem, 0, mensagem.length()-1);// Mensagem HL7
 		} else {
 			out.print("Não existe esse usuário cadastrado no REIS!");// Não existe usuario
 		}
