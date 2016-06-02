@@ -45,28 +45,32 @@ public class ReceberMensagemHL7 extends HttpServlet {
 		senha = request.getParameter("senha");
 		dispositivo = request.getParameter("dispositivo");
 		
+		System.out.println(dispositivo);
+		
 		PrintWriter out = response.getWriter();
 		LoginBusiness loginBusiness = new LoginBusiness();
 		if (loginBusiness.loginValido(login, senha)) {
 			PacienteDomain pacienteDomain = loginBusiness.getPaciente(login, senha);
 			
 			MensagensHL7 hl7 = new MensagensHL7();
-			String mensagem = "";
-			if(dispositivo == "balanca") {
+			String mensagem = "antes";
+			if(dispositivo.toString().equals("balanca")) {
 				try {
 					mensagem = hl7.criarMensagemHL7Balanca(pacienteDomain);
+					System.out.println(mensagem + "AQUI!");
 				} catch (HL7Exception e) {
+					System.out.println("ERROOOOOOO!!");
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			} else if(dispositivo == "oximetro") {
+			} else if(dispositivo.toString().equals("oximetro")) {
 				try {
 					mensagem = hl7.criarMensagemHL7Oximetro(pacienteDomain);
 				} catch (HL7Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			} else if(dispositivo == "pressao") {
+			} else if(dispositivo.toString().equals("pressao")) {
 				try {
 					mensagem = hl7.criarMensagemHL7Pressao(pacienteDomain);
 				} catch (HL7Exception e) {
