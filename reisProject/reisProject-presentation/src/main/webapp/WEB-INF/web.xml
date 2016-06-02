@@ -66,4 +66,14 @@
     <servlet-name>ReceberPortaSerial</servlet-name>
     <url-pattern>/ReceberPortaSerial</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ReceberMensagemHL7</display-name>
+    <servlet-name>ReceberMensagemHL7</servlet-name>
+    <servlet-class>servelet.ReceberMensagemHL7</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ReceberMensagemHL7</servlet-name>
+    <url-pattern>/ReceberMensagemHL7</url-pattern>
+  </servlet-mapping>
 </web-app>
