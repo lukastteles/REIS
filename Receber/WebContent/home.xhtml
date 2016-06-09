@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="" />
+
+	<link rel="icon" href="../../favicon.ico" />
+
+	<title>RECEBE MENSAGEM HL7</title>
+
+	<link href="css/bootstrap.min.css" rel="stylesheet" />
+
+	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+	<link href="../../assets/css/ie10-viewport-bug-workaround.css"
+		rel="stylesheet" />
+
+	<!-- Custom styles for this template -->
+	<link href="signin.css" rel="stylesheet" />
+
+	<!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+	<!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+	<script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+</h:head>
+
+<h:body>
+
+	<div class="container">
+
+		<h:form class="form-signin">
+			<h2 class="form-signin-heading">Solicitação da Mensagem HL7</h2>
+			<p>
+				<span>Login: </span>
+				<h:inputText id="inputLogin" value="#{telaPrincipalBean.login}"
+					styleClass="form-control" />
+			</p>
+			<p>
+				<span>Senha: </span>
+				<h:inputSecret id="inputSenha" value="#{telaPrincipalBean.senha}"
+					styleClass="form-control" />
+			</p>
+			<p>
+				<div class="mdl-cell mdl-cell--12-col">
+					<span>Dispositivo: </span>
+
+					<div class="form-group">
+						<h:selectOneMenu styleClass="form-control" value="#{telaPrincipalBean.dispositivo}">
+							<f:selectItem itemValue="balanca" itemLabel="balanca" />
+							<f:selectItem itemValue="oximetro" itemLabel="oximetro" />
+							<f:selectItem itemValue="pressao" itemLabel="pressao" />
+						</h:selectOneMenu>
+					</div>
+				</div>
+			</p>
+
+
+
+			<p>
+				<h:commandButton styleClass="btn btn-lg btn-primary btn-block"
+					type="submit" value="Solicitar
+					Mensagem HL7"
+					action="#{telaPrincipalBean.enviarMensagem}" />
+			</p>
+		</h:form>
+		<br />
+		<h:form class="form-signin">
+			<h2 class="form-signin-heading">Mensagem Recebida</h2>
+			<h:inputTextarea disabled="true" rows="10" cols="160"
+				value="#{telaPrincipalBean.mensagem.mensagem}" />
+		</h:form>
+
+	</div>
+	<!-- /container -->
+
+
+	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+	<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+</h:body>
+</html>

@@ -7,6 +7,8 @@ import java.util.List;
 
 import com.br.uepb.business.MedicoesBusiness;
 import com.br.uepb.dao.MedicaoBalancaDAO;
+import com.br.uepb.dao.MedicaoOximetroDAO;
+import com.br.uepb.dao.MedicaoPressaoDAO;
 import com.br.uepb.dao.PacienteDAO;
 import com.br.uepb.model.MedicaoBalancaDomain;
 import com.br.uepb.model.MedicaoOximetroDomain;
@@ -514,10 +516,14 @@ public class MensagensHL7 {
 	
 	public static void main(String[] args) {
 		MensagensHL7 tranformacaoDaStringParaHL7 = new MensagensHL7();
-		PacienteDomain paciente = tranformacaoDaStringParaHL7.informacoesDoPaciente(1);
+		PacienteDomain paciente = tranformacaoDaStringParaHL7.informacoesDoPaciente(2);
 		try {
 			// tranformacaoDaStringParaHL7.createRadiologyOrderMessage();
-			tranformacaoDaStringParaHL7.criarMensagemHL7Balanca(paciente);
+//			tranformacaoDaStringParaHL7.criarMensagemHL7Balanca(paciente);
+			MedicaoOximetroDomain oximetro = new MedicaoOximetroDAO().listaUltimaMedicaoDoPaciente(paciente.getId());
+			MedicaoPressaoDomain pressao = new MedicaoPressaoDAO().obtemUltimaMedicao(paciente.getId());
+			MedicaoBalancaDomain balanca = new MedicaoBalancaDAO().obtemMedicaoBalanca(paciente.getId());
+			tranformacaoDaStringParaHL7.criarMensagemHL7(paciente, oximetro, pressao, balanca);
 		} catch (HL7Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -42,7 +42,7 @@ public class HistoricoController {
 		
 		
 		modelAndView.setViewName("home/historico");
-		modelAndView.addObject("usuario", login);
+		modelAndView.addObject("usuario", sessao.getLoginDomain().getPaciente().getNome());
 		modelAndView.addObject("historicoOximetro", historicoOximetro);
 		modelAndView.addObject("historicoBalanca", historicoBalanca);
 		modelAndView.addObject("historicoPressao", historicoPressao);

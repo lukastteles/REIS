@@ -36,7 +36,7 @@ public class MedicaoController {
 		}
 		UploadItem uploadItem = new UploadItem();
 		model.addAttribute("uploadItem", uploadItem);
-
+		modelAndView.addObject("usuario", sessao.getLoginDomain().getPaciente().getNome());
 		modelAndView.setViewName("home/medicao");
 		return modelAndView;
 	}

@@ -72,10 +72,11 @@
 			<type>jar</type>
 			<scope>test</scope>
 		</dependency>
+		<!-- http://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-			<version>1.5.8</version>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.6</version>
 		</dependency>
 	</dependencies>
 
@@ -130,24 +131,24 @@
 					</configuration>
 				</plugin>
 				<plugin>
-					    <groupId>org.apache.maven.plugins</groupId>
-					    <artifactId>maven-surefire-plugin</artifactId>
-					    <version>2.19.1</version>	
-					    <configuration>
-		                    <includes>
-		                        <include>**/*Spec.*</include>
-		                        <include>**/*Test.*</include>
-		                        <include>*Tests*</include>
-		                    </includes>
-		                </configuration>				    
-					    <dependencies>
-					      <dependency>
-					        <groupId>org.apache.maven.surefire</groupId>
-					        <artifactId>surefire-junit47</artifactId>
-					        <version>2.19.1</version>					        
-					      </dependency>
-					    </dependencies>
-					  </plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>2.19.1</version>
+					<configuration>
+						<includes>
+							<include>**/*Spec.*</include>
+							<include>**/*Test.*</include>
+							<include>*Tests*</include>
+						</includes>
+					</configuration>
+					<dependencies>
+						<dependency>
+							<groupId>org.apache.maven.surefire</groupId>
+							<artifactId>surefire-junit47</artifactId>
+							<version>2.19.1</version>
+						</dependency>
+					</dependencies>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 		<plugins>
